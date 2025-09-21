@@ -23,11 +23,11 @@ export default defineConfig({
           template: resolve(__dirname, "src/pages/index.ejs"),
           filename: "index.html",
         },
-        // {
-        //   name: "terms-and-services",
-        //   template: resolve(__dirname, "src/pages/terms-and-services.ejs"),
-        //   filename: "terms-and-services.html",
-        // },
+        {
+          name: "terms-and-services",
+          template: resolve(__dirname, "src/pages/terms-and-services.ejs"),
+          filename: "terms-and-services.html",
+        },
       ],
       htmlMinify: true,
       watchOptions: {
