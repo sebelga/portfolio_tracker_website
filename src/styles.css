@@ -1,0 +1,13 @@
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer base {
+  a {
+    @apply no-underline; /* Ensures no underline by default */
+  }
+  a:hover {
+    @apply underline; /* Applies underline on hover */
+  }
+}
+
