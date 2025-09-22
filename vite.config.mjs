@@ -24,6 +24,16 @@ export default defineConfig({
           filename: "index.html",
         },
         {
+          name: "contact",
+          template: resolve(__dirname, "src/pages/contact.ejs"),
+          filename: "contact.html",
+        },
+        {
+          name: "docs",
+          template: resolve(__dirname, "src/pages/docs.ejs"),
+          filename: "docs.html",
+        },
+        {
           name: "terms-and-services",
           template: resolve(__dirname, "src/pages/terms-and-services.ejs"),
           filename: "terms-and-services.html",

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-theme="pastel">
+<%- include('./src/partials/head.ejs', { title: 'Privacy Policy: Portfolio Tracker', description: 'Review the privacy policy for Portfolio Tracker.' }) %>
+
+<body class="bg-white pt-25 font-sans text-gray-900 antialiased">
+
+  <section>
+    <div class="container mx-auto px-4 py-4 md:px-6 md:py-16">
+      <h1 class="font-display text-2xl md:text-5xl mb-3">
+        Contact Us
+      </h1>
+      <p>Here we will provide information on how to contact us regarding any questions or concerns you may have about the Portfolio Tracker Add-on.</p>
+      <h2 class="text-3xl mt-2 mb-3">Contact Information</h2>
+      <p>If you need assistance, please reach out to us at <script>
+          var user = "contact";
+          var domain = "portfoliotrackergooglesheets.com";
+          var email = user + "@" + domain;
+          document.write(
+            '<a href="mailto:' + email + '">' + email + "</a>",
+          );
+        </script>.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <%- include('./src/partials/footer.ejs') %>
+</body>
+
+</html>
