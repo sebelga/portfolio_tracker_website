@@ -1,6 +1,9 @@
-
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes:
+    emerald --default,
+    forest --prefersdark;
+}
 
 @layer base {
   a {
@@ -10,4 +13,3 @@
     @apply underline; /* Applies underline on hover */
   }
 }
-
