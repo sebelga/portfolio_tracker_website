@@ -4,89 +4,95 @@
 
 <body>
   <!-- Hero Section -->
-  <section class="hero min-h-screen bg-base-200">
-    <div class="hero-content flex-col lg:flex-row container mx-auto max-w-5xl">
-      <img src="/img/hero-image.jpg" class="max-w-sm rounded-lg shadow-2xl scale-75" />
-      <div>
-        <img src="/img/logo.svg" alt="Portfolio Tracker Logo" class="w-96 max-w-full">
-        <h1 class="text-4xl font-bold mb-4">Effortless Portfolio Tracker<br>in Google Sheets</h1>
-        <p class="text-xl mb-8">Automate your stock, crypto, and options investments in Google Sheets. Track trades, taxes, and performance with precision.</p>
+  <section class="hero min-h-screen">
+    <div class="hero-content flex-col lg:flex-row mx-auto gap-10">
+      <img src="/img/hero-image.jpg" class="max-w-xl" />
+      <div class="max-w-96">
+        <img src="/img/logo.svg" alt="Portfolio Tracker Logo" class="w-96 max-w-full ml-[-16px]">
+        <h1 class="text-4xl font-bold mb-4">Portfolio Tracker in Google Sheets™</h1>
+        <p class="text-xl mb-8">Track your stock, crypto, and options investments in Google Sheets™.<br>Follow your trades, manage your taxes, and visualize your performance effortlessly in a single spreadsheet.</p>
         <button class="btn btn-primary mr-2">Install Add-on</button> <button class="btn btn-secondary">Download template</button>
       </div>
     </div>
   </section>
 
   <!-- Problem & Solution Section -->
-  <section class="py-20 px-4 bg-white">
-    <div class="container mx-auto max-w-5xl">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <h2 class="text-4xl font-bold mb-4">The Problem</h2>
-          <p class="text-lg mb-4">Manual tracking of investments across stocks, crypto, and options is tedious. Matching trades, calculating taxes, handling currencies, and visualizing performance often leads to errors and wasted time.</p>
-          <p class="text-lg">Spreadsheets alone can't automate complex trade logic, multi-currency adjustments, or tax implications efficiently.</p>
-        </div>
-        <div>
-          <h2 class="text-4xl font-bold mb-4">Our Solution</h2>
-          <p class="text-lg mb-4">This Google Sheets add-on transforms your transaction ledger into smart trades. It handles FIFO/LIFO matching, computes realized/unrealized P&L, and generates a dashboard for clear insights.</p>
-          <p class="text-lg">Seamlessly integrate with Google Sheets for automated snapshots, tax calculations, and more—all in one place.</p>
-        </div>
+  <section class="py-20 px-4 bg-gray-100">
+    <div class="container mx-auto max-w-5xl flex gap-8">
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Our Add-on</h2>
+        <p class="text-lg mb-4">Our Google Sheets™ add-on transforms your transaction ledger into smart trades. It handles FIFO/LIFO matching, computes realized/unrealized P&L, tax calculation, live prices for stock, crypto and options contracts, and generates a dashboard for clear insights.</p>
+        <p class="text-lg">Seamlessly integrate with Google Sheets™ App Script triggers for daily automated snapshots of your assets portfolio.</p>
       </div>
+      <img src="/img/trades.jpg" class=" w-[640px] h-auto" />
     </div>
   </section>
 
   <!-- Key Features & Benefits Section -->
-  <section class="py-20 px-4 bg-gray-100">
+  <section class="py-20 px-4 bg-white">
     <div class="container mx-auto max-w-5xl">
       <h2 class="text-4xl font-bold text-center mb-12">Key Features & Benefits</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="card bg-white shadow-lg p-6 rounded-lg">
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Smart Trade Matching</h3>
           <p class="text-lg">Automatically creates open/closed trades from transactions using FIFO or LIFO. Track realized profits and open positions effortlessly.</p>
         </div>
-        <div class="card bg-white shadow-lg p-6 rounded-lg">
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Tax Calculation</h3>
-          <p class="text-lg">Custom rates for short/long-term gains across stocks, crypto, and options. Accurate computations for better financial planning.</p>
+          <p class="text-lg">Set custom rates for short/long-term gains across stocks, crypto, and options. Accurate computations for better financial planning.</p>
         </div>
-        <div class="card bg-white shadow-lg p-6 rounded-lg">
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Multi-Currency Support</h3>
-          <p class="text-lg">Set a base currency and adjust P&L for exchange rate fluctuations. Real-world ROI reflecting currency impacts.</p>
+          <p class="text-lg">Set a base currency for your portfolio and trade assets in any currencies. Your ROI, P&L and Tax calculations will account for exchange rate fluctuations.<br>Real-world ROI reflecting currency impacts!</p>
         </div>
-        <div class="card bg-white shadow-lg p-6 rounded-lg">
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-4">Stock splits</h3>
+          <p class="text-lg">Automatically adjusts your equity shares and options contracts holdings and cost basis for stock splits, ensuring accurate tracking of your investments.</p>
+        </div>
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Transaction Categories</h3>
           <p class="text-lg">Group trades (e.g., trading vs. HODL) for segmented analysis in separate sheets.</p>
         </div>
-        <div class="card bg-white shadow-lg p-6 rounded-lg">
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-4">Live prices</h3>
+          <p class="text-lg">Get real-time market prices for stocks, crypto<sup>*</sup>, and options<sup>**</sup> directly in your spreadsheet.</p>
+        </div>
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Asset Snapshots</h3>
           <p class="text-lg">Create daily or custom snapshots using Google Sheets triggers for historical tracking.</p>
         </div>
-        <div class="card bg-white shadow-lg p-6 rounded-lg">
+        <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Utility Functions</h3>
           <p class="text-lg">Cell formulas for currency conversions, date-specific rates, and more to enhance your sheets.</p>
         </div>
+      </div>
+      <div class="text-sm text-gray-400 mt-12">
+        <p><sup>*</sup>Requires a <a href="https://coinmarketcap.com/api/" target="_blank" rel="noopener noreferrer">CoinMarketCap API key</a>.</p>
+        <p><sup>**</sup>Requires a <a href="https://polygon.io/options" target="_blank" rel="noopener noreferrer">Polygon.ai "Options Starter" subscription</a>.</p>
       </div>
     </div>
   </section>
 
   <!-- Visual Appeal & User Experience Section -->
-  <section class="py-20 px-4 bg-white">
+  <section class="py-20 px-4 bg-gray-100">
     <div class="container mx-auto max-w-5xl">
       <h2 class="text-4xl font-bold text-center mb-12">Visual Appeal & User Experience</h2>
       <p class="text-lg text-center mb-8">Experience a clean dashboard and intuitive interface. Here are a few screenshots:</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
-          <img src="https://placehold.co/600x400?text=Dashboard+Screenshot" alt="Dashboard Screenshot" class="w-full">
+          <img src="/img/dashboard.jpg" alt="Dashboard Screenshot" class="w-full">
           <div class="p-4">
             <p class="text-center">Beautiful aggregated dashboard</p>
           </div>
         </div>
         <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
-          <img src="https://placehold.co/600x400?text=Trade+Matching+Screenshot" alt="Trade Matching Screenshot" class="w-full">
+          <img src="/img/trades.jpg" alt="Trade Matching Screenshot" class="w-full">
           <div class="p-4">
             <p class="text-center">Trade matching in action</p>
           </div>
         </div>
         <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
-          <img src="https://placehold.co/600x400?text=Tax+Calculation+Screenshot" alt="Tax Calculation Screenshot" class="w-full">
+          <img src="/img/multicurrencies.jpg" alt="Tax Calculation Screenshot" class="w-full">
           <div class="p-4">
             <p class="text-center">Tax and multi-currency features</p>
           </div>
@@ -99,7 +105,7 @@
   <section id="cta" class="py-20 px-4 bg-gray-800 text-white text-center">
     <div class="container mx-auto max-w-5xl">
       <h2 class="text-4xl font-bold mb-4">Ready to Track Smarter?</h2>
-      <p class="text-xl mb-8">Download the template or visit the marketplace to install the add-on today.</p>
+      <p class="text-xl mb-8">Download our template spreadsheet and visit the marketplace to install the add-on today.</p>
       <div class="space-x-4">
         <a href="https://example.com/template" class="btn btn-secondary btn-lg">Download Template</a>
         <a href="https://example.com/marketplace" class="btn btn-primary btn-lg">Install Add-on</a>
