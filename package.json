@@ -22,5 +22,7 @@
     "vite": "^7.1.6",
     "vite-plugin-virtual-mpa": "^1.12.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "photoswipe": "^5.4.4"
+  }
 }
