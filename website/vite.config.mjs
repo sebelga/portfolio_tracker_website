@@ -61,8 +61,10 @@ export default defineConfig({
     tailwindcss({ config: "./tailwind.config.js" }),
   ],
   // Basic config for static site
+  root: "./website",
   build: {
-    outDir: "dist", // Output directory for builds
+    outDir: "../dist", // Output directory for builds
+    emptyOutDir: true,
   },
   server: {
     open: true, // Auto-open browser on dev server start
