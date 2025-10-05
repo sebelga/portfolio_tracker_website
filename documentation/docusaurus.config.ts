@@ -17,9 +17,7 @@ const config: Config = {
 
   // Set the production url of your site here
   url: "https://portfoliotrackergooglesheets.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: "/docs/",
 
   onBrokenLinks: "throw",
 
@@ -82,7 +80,7 @@ const config: Config = {
           items: [
             {
               label: "Tutorial",
-              to: "/docs/intro",
+              to: "/",
             },
           ],
         },
@@ -106,10 +104,10 @@ const config: Config = {
         {
           title: "More",
           items: [
-            {
-              label: "Blog",
-              to: "/blog",
-            },
+            // {
+            //   label: "Blog",
+            //   to: "/blog",
+            // },
             {
               label: "GitHub",
               href: "https://github.com/facebook/docusaurus",
