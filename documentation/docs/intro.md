@@ -1,48 +1,54 @@
 ---
 slug: /
 sidebar_position: 1
+id: intro
+title: Introduction
+description: Welcome to the Portfolio Tracker Add-on documentation. Learn how to track your stock, crypto, and options investments in Google Sheets™.
+tags: [introduction, getting-started, portfolio-tracker, google-sheets]
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the Portfolio Tracker Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
 
-## Getting Started
+The Portfolio Tracker Add-on transforms your Google Sheets™ spreadsheet into a powerful tool for managing your investment portfolio. It automates trade matching, calculates profits and losses (P&L), handles tax computations, fetches live prices, and generates insightful dashboards—all within a single spreadsheet.
 
-Get started by **creating a new site**.
+## Key Concepts
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+Before diving into setup and usage, let's cover the foundational concepts of how the add-on works.
 
-### What you'll need
+### Spreadsheet Template
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+The add-on is designed to work with a specific Google Sheets™ template file. This template provides the pre-structured layout, formulas, and scripts needed for the add-on to function optimally.
 
-## Generate a new site
+- **How to Get Started**: Download the template from our website and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
+- **Why a Template?**: The template includes essential sheets, scripts, and configurations that integrate seamlessly with the add-on. Using it guarantees compatibility and reduces setup errors.
 
-Generate a new Docusaurus site using the **classic template**.
+### User Input Sheets
 
-The classic template will automatically be added to your project after you run the command:
+The spreadsheet is designed for minimal manual input to keep things simple and efficient. Only two sheets require your direct input:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+- **Configuration Sheet**: This is where you set up global settings such as your assets, base currency, tax rates, API keys, and other preferences. The add-on uses these to process your data accurately.
+- **Transactions Sheet**: Here, you log your buy, sell, deposit, withdrawal, and other transaction details. The add-on automatically processes these entries to generate trades, P&L, and reports.
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+All other sheets in the spreadsheet (e.g., Trades, Dashboard, Snapshots) are automatically generated and updated by the add-on based on your inputs in the Configuration and Transactions sheets. Do not edit these generated sheets manually, as the add-on will overwrite them during processing.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+## Getting Started with Minimum Configuration
 
-## Start your site
+To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. We'll cover the minimum required settings below, with more advanced options detailed in dedicated configuration pages later in this documentation.
 
-Run the development server:
+1. **Accounting Method**: Choose FIFO (First-In-First-Out) or LIFO (Last-In-First-Out) for trade matching.
+2. **API Keys (if needed)**: For live prices on crypto or options, add your CoinMarketCap or Polygon.io keys.
+3. **Assets Configuration**: Under the "Assets configuration" section in the Configuration sheet, add a few assets. For each asset, insert their symbol, asset type (equity or crypto), and their currency. Leave the "Take snapshot" and "In Summary" checkboxes ticked. For crypto assets, set the CMC_id value to the CoinMarketCap ID (most of the time the symbol like "BTC" is enough; in case of price error, use the unique ID number).
 
-```bash
-cd my-website
-npm run start
-```
+Once these are set, enter a few sample transactions in the Transactions sheet, and run the add-on to see your dashboard come to life. For step-by-step instructions, proceed to the [Installation and Setup](/installation-setup) page.
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+This documentation is organized into sections for easy navigation:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+- **Setup Guides**: Installation, configuration, and initial setup.
+- **Core Features**: Detailed explanations of trade matching, tax calculations, live prices, and more.
+- **Advanced Topics**: Multi-currency support, snapshots, utility functions, and troubleshooting.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+If you have questions or need support, check our [FAQ](/faq) or contact us via the website.
+
+Happy tracking!
