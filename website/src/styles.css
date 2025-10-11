@@ -1,4 +1,4 @@
-@import "../node_modules/photoswipe/dist/photoswipe.css";
+@import "../../node_modules/photoswipe/dist/photoswipe.css";
 
 @import "tailwindcss";
 @plugin "daisyui" {
@@ -14,4 +14,12 @@
   a:hover {
     @apply underline; /* Applies underline on hover */
   }
+}
+
+iframe {
+  overflow: hidden;
+}
+
+.menu li.active > a {
+  @apply bg-gray-100 text-primary-content; /* Or customize as needed */
 }

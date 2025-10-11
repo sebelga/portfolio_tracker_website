@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .vite/
+.docusaurus/
+documentation/build/
 *.log
 *.github/
 .DS_Store
+_trash

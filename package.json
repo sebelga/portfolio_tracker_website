@@ -4,25 +4,64 @@
   "description": "",
   "main": "index.ejs",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "sh ./scripts/build.sh",
+    "website:dev": "vite serve website",
+    "website:build": "vite build website",
+    "website:previewOld": "vite preview website",
+    "website:preview": "serve -l 1234 ./dist",
+    "docusaurus": "docusaurus",
+    "docs:start": "cd documentation && docusaurus start",
+    "docs:build": "cd documentation && docusaurus build",
+    "docs:swizzle": "cd documentation && docusaurus swizzle",
+    "docs:deploy": "cd documentation && docusaurus deploy",
+    "docs:clear": "cd documentation && docusaurus clear",
+    "docs:serve": "cd documentation && docusaurus serve",
+    "docs:write-translations": "cd documentation && docusaurus write-translations",
+    "docs:write-heading-ids": "cd documentation && docusaurus write-heading-ids",
+    "typecheck": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "dependencies": {
+    "@docusaurus/core": "3.9.1",
+    "@docusaurus/preset-classic": "3.9.1",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "photoswipe": "^5.4.4",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.9.1",
+    "@docusaurus/tsconfig": "3.9.1",
+    "@docusaurus/types": "3.9.1",
     "@tailwindcss/typography": "^0.5.18",
     "@tailwindcss/vite": "^4.1.13",
     "daisyui": "^5.1.13",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
+    "serve": "^14.2.5",
     "tailwindcss": "^4.1.13",
+    "typescript": "~5.9.2",
     "vite": "^7.1.6",
     "vite-plugin-virtual-mpa": "^1.12.1"
   },
-  "dependencies": {
-    "photoswipe": "^5.4.4"
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0"
   }
 }

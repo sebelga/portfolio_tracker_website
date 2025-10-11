@@ -3,12 +3,13 @@
 <%- include('./src/partials/head.ejs', { title: 'Portfolio Tracker', description: 'Track your portfolio in Google Sheets effortlessly.' }) %>
 
 <body>
+  <!-- Header -->
+  <%- include('./src/partials/header.ejs') %>
   <!-- Hero Section -->
   <section class="hero min-h-screen">
     <div class="hero-content flex-col lg:flex-row mx-auto gap-10">
       <img src="/img/hero-image.jpg" class="max-w-xl" />
       <div class="max-w-96">
-        <img src="/img/logo.svg" alt="Portfolio Tracker Logo" class="w-96 max-w-full ml-[-16px]">
         <h1 class="text-4xl font-bold mb-4">Portfolio Tracker in Google Sheets™</h1>
         <p class="text-xl mb-8">Track your stock, crypto, and options investments in Google Sheets™.<br>Follow your trades, manage your taxes, and visualize your performance effortlessly in a single spreadsheet.</p>
         <button class="btn btn-primary mr-2">Install Add-on</button> <button class="btn btn-secondary">Download template</button>
@@ -116,7 +117,6 @@
   </section>
   <!-- Footer -->
   <%- include('./src/partials/footer.ejs') %>
-  <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>
