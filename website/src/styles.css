@@ -19,3 +19,7 @@
 iframe {
   overflow: hidden;
 }
+
+.menu li.active > a {
+  @apply bg-gray-100 text-primary-content; /* Or customize as needed */
+}
