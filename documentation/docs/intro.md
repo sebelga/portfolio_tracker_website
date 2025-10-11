@@ -33,16 +33,6 @@ The spreadsheet is designed for minimal manual input to keep things simple and e
 
 All other sheets in the spreadsheet (e.g., Trades, Dashboard, Snapshots) are automatically generated and updated by the add-on based on your inputs in the Configuration and Transactions sheets. Do not edit these generated sheets manually, as the add-on will overwrite them during processing.
 
-## Getting Started with Minimum Configuration
-
-To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. We'll cover the minimum required settings below, with more advanced options detailed in dedicated configuration pages later in this documentation.
-
-1. **Accounting Method**: Choose FIFO (First-In-First-Out) or LIFO (Last-In-First-Out) for trade matching.
-2. **API Keys (if needed)**: For live prices on crypto or options, add your CoinMarketCap or Polygon.io keys.
-3. **Assets Configuration**: Under the "Assets configuration" section in the Configuration sheet, add a few assets. For each asset, insert their symbol, asset type (equity or crypto), and their currency. Leave the "Take snapshot" and "In Summary" checkboxes ticked. For crypto assets, set the CMC_id value to the CoinMarketCap ID (most of the time the symbol like "BTC" is enough; in case of price error, use the unique ID number).
-
-Once these are set, enter a few sample transactions in the Transactions sheet, and run the add-on to see your dashboard come to life. For step-by-step instructions, proceed to the [Installation and Setup](/installation-setup) page.
-
 This documentation is organized into sections for easy navigation:
 
 - **Setup Guides**: Installation, configuration, and initial setup.

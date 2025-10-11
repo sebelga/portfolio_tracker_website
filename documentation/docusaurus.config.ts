@@ -1,8 +1,18 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import path from "path";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+const isDev = process.env.NODE_ENV === "development";
+const websiteURL = isDev
+  ? "http://localhost:5173"
+  : "https://portfoliotrackergooglesheets.com";
+if (isDev) {
+  console.log(`Docusaurus running in development mode.`);
+}
+const baseUrl = isDev ? "/" : "/documentation/";
 
 const config: Config = {
   title: "Portfolio tracker for Google Sheets",
@@ -16,8 +26,8 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: "https://portfoliotrackergooglesheets.com",
-  baseUrl: "/docs/",
+  url: websiteURL,
+  baseUrl,
 
   onBrokenLinks: "throw",
 
@@ -45,31 +55,52 @@ const config: Config = {
     ],
   ],
 
+  clientModules: [
+    path.resolve(__dirname, "src/theme/clientModules/routeNotifier"),
+  ],
+
+  scripts: [
+    {
+      src: `${baseUrl}js/custom.js`,
+      async: true,
+    },
+  ],
+
   themeConfig: {
-    // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "Portfolio Tracker",
       logo: {
-        alt: "My Site Logo",
+        alt: "Portfolio tracker Google Sheets",
         src: "img/logo.svg",
+        width: 160,
+        height: 59,
+        href: websiteURL,
+        target: "_self",
       },
       items: [
         {
+          position: "left",
+          label: "Home",
+          target: "_self",
+          href: websiteURL,
+        },
+        {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "docs",
           position: "left",
           label: "Documentation",
+          to: "/",
         },
-        // { to: "/blog", label: "Blog", position: "left" },
-        // {
-        //   href: "https://github.com/facebook/docusaurus",
-        //   label: "GitHub",
-        //   position: "right",
-        // },
+        {
+          // type: "docSidebar",
+          position: "left",
+          label: "Contact",
+          href: `${websiteURL}/contact`,
+          target: "_self",
+        },
       ],
     },
     footer: {

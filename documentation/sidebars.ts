@@ -18,14 +18,14 @@ const sidebars: SidebarsConfig = {
 
   // But you can create a sidebar manually
 
-  tutorialSidebar: [
+  docs: [
     "intro",
-    // 'hello',
-    // {
-    //   type: 'category',
-    //   label: 'Tutorial',
-    //   items: ['tutorial-basics/create-a-document'],
-    // },
+    "getting-started",
+    {
+      type: "category",
+      label: "Core features",
+      items: ["core/transactions"],
+    },
   ],
 };
 

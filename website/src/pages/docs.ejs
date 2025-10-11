@@ -2,20 +2,64 @@
 <html lang="en" data-theme="emerald">
 <%- include('./src/partials/head.ejs', { title: 'Privacy Policy: Portfolio Tracker', description: 'Review the privacy policy for Portfolio Tracker.' }) %>
 
-<body class="bg-white pt-25 font-sans text-gray-900 antialiased">
+<body class="bg-white font-sans text-gray-900 antialiased">
   <!-- Header -->
   <%- include('./src/partials/header.ejs') %>
-  <section>
-    <div class="container mx-auto px-4 py-4 md:px-6 md:py-16">
-      <h1 class="font-display text-2xl md:text-5xl mb-3">
-        Documentation
-      </h1>
-      <p>Here we will provide information on how to use the Portfolio Tracker Add-on effectively.</p>
-    </div>
-  </section>
+  <iframe id="docsIframe" src="http://localhost:3000?docusaurus-data-mode=iframe" scrolling="no" style="width:100%; border:none; margin-top: 75px; min-height: calc(100vh - 235px);"></iframe>
 
   <!-- Footer -->
   <%- include('./src/partials/footer.ejs') %>
+
+  <script>
+    const iframe = document.getElementById('docsIframe');
+    const isDev = window.location.hostname === 'localhost' && window.location.port !== '1234';
+    const docsBaseUrl = "/"
+
+    // Helper to update iframe src from parent's URL path
+    function updateIframeFromUrl() {
+      const pathname = window.location.pathname;
+      if (pathname.startsWith('/docs')) {
+        const docusaurusRoute = pathname.slice('/docs/'.length); // e.g., 'transactions'
+        const srcPrefix = isDev ? 'http://localhost:3000' : '/documentation';
+        iframe.src = `${srcPrefix}${docsBaseUrl}${docusaurusRoute}?docusaurus-data-mode=iframe`;
+      }
+    }
+
+    function initIframe() {
+      updateIframeFromUrl();
+      iframe.style.minHeight = '0px'; // Allow shrinking
+      iframe.style.height = '500px'; // Temporary fallback until message arrives
+    }
+
+    // Initial sync on page load/refresh
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateIframeFromUrl);
+    } else {
+      updateIframeFromUrl();
+    }
+
+    // Handle browser back/forward (popstate) to re-sync iframe
+    window.addEventListener('popstate', updateIframeFromUrl);
+
+    window.addEventListener('message', function(event) {
+      const allowedOrigins = isDev ? ['http://localhost:3000'] : ['http://localhost:1234', 'https://portfoliotrackergooglesheets.com'];
+
+      if (!allowedOrigins.includes(event.origin)) return;
+
+      if (event.data.type === 'docusaurusRouteChange') {
+        const route = event.data.route;
+        const height = event.data.height;
+        const newPath = `/docs${route}`;
+
+        // Update browser URL without full reload
+        window.history.pushState({}, document.title, newPath);
+        // Dynamically resize iframe to content height
+        iframe.style.height = `${height}px`;
+
+        // Optional: Update any parent UI (e.g., sidebar) based on newPath
+      }
+    }, false)
+  </script>
 </body>
 
 </html>

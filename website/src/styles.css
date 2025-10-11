@@ -15,3 +15,7 @@
     @apply underline; /* Applies underline on hover */
   }
 }
+
+iframe {
+  overflow: hidden;
+}

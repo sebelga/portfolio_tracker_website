@@ -8,7 +8,7 @@
     "website:dev": "vite serve website",
     "website:build": "vite build website",
     "website:previewOld": "vite preview website",
-    "website:preview": "serve ./dist",
+    "website:preview": "serve -l 1234 ./dist",
     "docusaurus": "docusaurus",
     "docs:start": "cd documentation && docusaurus start",
     "docs:build": "cd documentation && docusaurus build",

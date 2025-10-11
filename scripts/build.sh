@@ -7,7 +7,6 @@ echo "Building docs..."
 yarn docs:build
 
 echo "Moving files..."
-mv ./documentation/build ./dist/docs
-rm -rf ./dist/docs.html
+mv ./documentation/build ./dist/documentation
 
 echo "Build complete!"
