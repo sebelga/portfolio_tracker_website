@@ -1,11 +1,9 @@
 import type { ClientModule } from "@docusaurus/types";
 
 const routeNotifier: ClientModule = {
-  async onRouteDidUpdate({ location }) {
+  onRouteDidUpdate({ location }) {
     // Only run in iframe context
-    if (window.parent === window) {
-      return;
-    }
+    if (window.parent === window) return;
 
     const route = location.pathname.replace("/documentation/", "/");
 
