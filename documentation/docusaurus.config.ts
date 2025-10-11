@@ -72,14 +72,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      logo: {
-        alt: "Portfolio tracker Google Sheets",
-        src: "img/logo.svg",
-        width: 160,
-        height: 59,
-        href: websiteURL,
-        target: "_self",
-      },
+      title: "Portfolio tracker",
       items: [
         {
           position: "left",
@@ -102,51 +95,6 @@ const config: Config = {
           target: "_self",
         },
       ],
-    },
-    footer: {
-      style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            // {
-            //   label: "Blog",
-            //   to: "/blog",
-            // },
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
