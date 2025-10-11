@@ -45,7 +45,7 @@
       const allowedOrigins = isDev ? ['http://localhost:3000'] : ['http://localhost:1234', 'https://portfoliotrackergooglesheets.com'];
 
       const isNetlifyDeployPreview = window.location.hostname.includes('portfoliotrackergooglesheets.netlify.app');
-      if (isNetlifyDeployPreview || !allowedOrigins.includes(event.origin)) return;
+      if (!isNetlifyDeployPreview && !allowedOrigins.includes(event.origin)) return;
 
       if (event.data.type === 'docusaurusRouteChange') {
         const route = event.data.route;
