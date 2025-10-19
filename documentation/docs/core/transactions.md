@@ -53,3 +53,7 @@ The Transactions sheet contains several columns for recording your transaction d
 
   Note that GOOGLEFINANCE may return an #N/A error for weekend dates (Saturday or Sunday). As a workaround, temporarily change the date to the previous Friday to fetch the rate, lock the value, then restore the correct date.
   :::
+
+:::info
+There are two additional hidden columns ("Root symbol" and "isValidOptionSymbol") that are used internally by formulas for processing options data. These columns should not be edited or modified, as they are automatically managed by the add-on.
+:::
