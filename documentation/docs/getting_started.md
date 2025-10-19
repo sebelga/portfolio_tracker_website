@@ -38,11 +38,11 @@ Under the "Assets Configuration" section in the Configuration sheet, add a few a
 
 - **Symbol**: The ticker symbol (e.g., AAPL for Apple stock or BTC for Bitcoin).
 - **Asset Type**: Select "equity" for stocks or "crypto" for cryptocurrencies.
-- **Currency**: The currency in which the asset is denominated (e.g., USD). This will be the asset default currency for your transactions. You will be able to override this value on specific transaction if need be.
+- **Currency**: The currency in which the asset is denominated (e.g., USD). This will be the asset default currency for your transactions. You will be able to overwrite this value on specific transaction if need be.
 
-For the "Current Price" column: leave it blank as the script will automatically set the the current price by adding the `GOOGLEFINANCE` formula (equity) or using your CoinMarketCap API key (crypto).
+For the "Current Price" column: leave it blank as the script will automatically set the the current price.
 
-For the "CMC_id" column (only crypto): set the CMC_id value to either the coin ticker/symbol or the CoinMarketCap ID. While many coins can be identified by a ticker symbol (e.g., BTC for Bitcoin), these can sometimes change or be used for multiple cryptocurrencies. In case of price error, replace the symbol by the unique ID number (UCID).
+For the "CMC_id" column (only crypto): set the CMC_id value to either the coin ticker/symbol or the CoinMarketCap ID. While many coins can be identified by a ticker symbol (e.g., BTC for Bitcoin), these can sometimes change or be used for multiple cryptocurrencies. In case of price error, replace the symbol by the unique ID number ([UCID](https://support.coinmarketcap.com/hc/en-us/articles/20092704479515-Unified-Cryptoasset-ID-UCID)).
 
 Leave the "Take Snapshot" and "In Summary" checkboxes ticked to enable daily snapshots and include the asset in summary views.
 

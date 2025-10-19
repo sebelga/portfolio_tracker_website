@@ -31,7 +31,11 @@ The spreadsheet is designed for minimal manual input to keep things simple and e
 - **Configuration Sheet**: This is where you set up global settings such as your assets, base currency, tax rates, API keys, and other preferences. The add-on uses these to process your data accurately.
 - **Transactions Sheet**: Here, you log your buy, sell, deposit, withdrawal, and other transaction details. The add-on automatically processes these entries to generate trades, P&L, and reports.
 
-All other sheets in the spreadsheet (e.g., Trades, Dashboard, Snapshots) are automatically generated and updated by the add-on based on your inputs in the Configuration and Transactions sheets. Do not edit these generated sheets manually, as the add-on will overwrite them during processing.
+All other sheets in the spreadsheet (e.g., Trades, Dashboard, Snapshots) are automatically generated and updated by the add-on based on your inputs in the Configuration and Transactions sheets.
+
+:::warning
+Do not edit these generated sheets manually, as the add-on will overwrite them during processing.
+:::
 
 This documentation is organized into sections for easy navigation:
 
