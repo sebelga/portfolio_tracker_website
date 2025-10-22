@@ -10,6 +10,10 @@ tags: [getting-started, configuration, setup, portfolio-tracker]
 
 To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. This guide covers the minimum required settings, with more advanced options detailed in dedicated configuration pages later in this documentation.
 
+:::warning
+Make sure that you have a copy of the official template file. For more information, see the [official template](/setup-guides/official-template) guide.
+:::
+
 ## Configuration Sheet
 
 Navigate to the Configuration sheet to set up the basic parameters for the add-on. Below are the minimum configurations needed to get started.

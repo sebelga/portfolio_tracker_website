@@ -2,6 +2,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import path from "path";
+import { templateUrl } from "./src/constants";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -54,6 +55,12 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  // Custom fields are exposed to the site/client code via useDocusaurusContext().
+  // Add a single source of truth for the official template URL so docs can reference it.
+  customFields: {
+    templateUrl,
+  },
 
   clientModules: [
     path.resolve(__dirname, "src/theme/clientModules/routeNotifier"),

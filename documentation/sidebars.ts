@@ -23,6 +23,11 @@ const sidebars: SidebarsConfig = {
     "getting-started",
     {
       type: "category",
+      label: "Setup guides",
+      items: ["setup_guides/official_template"],
+    },
+    {
+      type: "category",
       label: "Core features",
       items: ["core/transactions"],
     },
