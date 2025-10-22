@@ -2,6 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { createMpaPlugin } from "vite-plugin-virtual-mpa";
+import { templateUrl } from "./constants.mjs";
 
 export default defineConfig({
   plugins: [
@@ -22,6 +23,9 @@ export default defineConfig({
           name: "index",
           template: resolve(__dirname, "src/pages/index.ejs"),
           filename: "index.html",
+          data: {
+            templateUrl,
+          },
         },
         {
           name: "contact",
