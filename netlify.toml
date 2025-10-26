@@ -2,6 +2,7 @@
   from = "/docs/*"
   to = "/docs.html"
   status = 200
-from = "/gsheet-template"
+
+  from = "/gsheet-template"
   to = "https://docs.google.com/spreadsheets/d/1EiCDzJKdLMGCyLsaFQS3-zvsjmVSMscdVI3FlNgdp8Y/copy"
   status = 301
