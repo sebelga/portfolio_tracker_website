@@ -1,1 +1,1 @@
-export const templateUrl = "https://bit.ly/4hnspfP";
+export const templateUrl = "/gsheet-template";

@@ -72,6 +72,8 @@ You will have to give the Add-On some permission:
 
 - To make external request. This is _only_ required to be able to fetch live prices (crypto and options). None of your transactions data is stored anywhere.
 
+- To manage scripts and setup triggers for automated snapshots.
+
 ### Update Current Prices
 
 Once you have set your API keys (if needed) we can update the current prices. Under the "Extensions" menu > "Portfolio tracker", click on "Update prices".
