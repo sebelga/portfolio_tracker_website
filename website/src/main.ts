@@ -14,7 +14,6 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
   function initActiveLinks() {
     document.addEventListener("DOMContentLoaded", function () {
       let currentPath = window.location.pathname;
-      console.log("Current path:", currentPath);
 
       // Trim trailing slash for sub-paths (but keep '/' for home intact)
       if (currentPath.endsWith("/") && currentPath !== "/") {

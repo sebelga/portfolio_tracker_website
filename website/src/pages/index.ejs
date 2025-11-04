@@ -6,10 +6,12 @@
   <!-- Header -->
   <%- include('./src/partials/header.ejs') %>
   <!-- Hero Section -->
-  <section class="hero min-h-[75vh]">
-    <div class="hero-content flex-col lg:flex-row mx-auto gap-10">
-      <img src="/img/hero-image.jpg" class="max-w-xl" />
-      <div class="max-w-96">
+  <section class="hero min-h-[75vh] mt-[75px] pb-8">
+    <div class="container flex items-center flex-col mx-auto gap-10 px-4 md:px-16 lg:flex-row">
+      <div class="mt-8 flex-1">
+        <img src="/img/hero-image.jpg" class="w-full max-w-sm sm:max-w-md lg:max-w-2xl" />
+      </div>
+      <div class="flex-1">
         <h1 class="text-4xl font-bold mb-4">Portfolio Tracker in Google Sheets™</h1>
         <p class="text-xl mb-8">Track your stock, crypto, and options investments in Google Sheets™.<br>Follow your trades, manage your taxes, and visualize your performance effortlessly in a single spreadsheet.</p>
         <button class="btn btn-primary mr-2">Install Add-on</button> <a href="<%= templateUrl %>" target="_blank" class="btn btn-secondary">Download template</a>
@@ -19,21 +21,23 @@
 
   <!-- Problem & Solution Section -->
   <section class="py-20 px-4 bg-gray-100">
-    <div class="container mx-auto max-w-5xl flex gap-8">
-      <div>
+    <div class="container mx-auto md:px-16 flex flex-col gap-8">
+      <div class="mb-12">
         <h2 class="text-4xl font-bold mb-4">Our Add-on</h2>
-        <p class="text-lg mb-4">Our Google Sheets™ add-on transforms your transaction ledger into smart trades. It handles FIFO/LIFO matching, computes realized/unrealized P&L, tax calculation, live prices for stock, crypto and options contracts, and generates a dashboard for clear insights.</p>
-        <p class="text-lg">Seamlessly integrate with Google Sheets™ App Script triggers for daily automated snapshots of your assets portfolio.</p>
+        <p class="text-xl mb-4">Our Google Sheets™ add-on and provided template sheet transform your transaction ledger into smart trades. It handles FIFO/LIFO matching, computes realized/unrealized P&L, tax calculation, live prices for stock, crypto and options contracts, and generates a dashboard for clear insights.</p>
+        <p class="text-xl">Seamlessly integrate with Google Sheets™ App Script triggers for daily automated snapshots of your assets portfolio.</p>
       </div>
-      <img src="/img/trades.jpg" class=" w-[640px] h-auto" />
+      <div>
+        <img src="/img/portfolio_tracker.jpg" class="w-full" />
+      </div>
     </div>
   </section>
 
   <!-- Key Features & Benefits Section -->
   <section class="py-20 px-4 bg-white">
-    <div class="container mx-auto max-w-5xl">
+    <div class="container mx-auto md:px-16">
       <h2 class="text-4xl font-bold text-center mb-12">Key Features & Benefits</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Smart Trade Matching</h3>
           <p class="text-lg">Automatically creates open/closed trades from transactions using FIFO or LIFO. Track realized profits and open positions effortlessly.</p>
@@ -75,29 +79,29 @@
   </section>
 
   <!-- Visual Appeal & User Experience Section -->
-  <section class="py-20 px-4 bg-gray-100">
-    <div class="container mx-auto max-w-5xl">
-      <h2 class="text-4xl font-bold text-center mb-12">Visual Appeal & User Experience</h2>
+  <section class="py-20 md:py-30 px-4 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Screenshots</h2>
 
-      <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
         <div class="shadow-lg rounded-lg">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/dashboard.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/dashboard.jpg" alt="" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/dashboard.jpg" alt="Dashboard Screenshot" loading="lazy" />
           </a>
         </div>
         <div class="shadow-lg rounded-lg">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/summary.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/summary.jpg" alt="" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/summary.jpg" alt="Summary Screenshot" loading="lazy" />
           </a>
         </div>
         <div class="shadow-lg rounded-lg">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/transactions.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/transactions.jpg" alt="" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/transactions.jpg" alt="Transactions Screenshot" loading="lazy" />
           </a>
         </div>
         <div class="hidden">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/multi-currencies.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/multi-currencies.jpg" alt="" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/multi-currencies.jpg" alt="Multi-Currencies Screenshot" loading="lazy" />
           </a>
         </div>
       </div>
@@ -106,12 +110,12 @@
 
   <!-- Call to Action Section -->
   <section id="cta" class="py-20 px-4 bg-gray-800 text-white text-center">
-    <div class="container mx-auto max-w-5xl">
+    <div class="container mx-auto">
       <h2 class="text-4xl font-bold mb-4">Ready to Track Smarter?</h2>
       <p class="text-xl mb-8">Download our template spreadsheet and visit the marketplace to install the add-on today.</p>
       <div class="space-x-4">
-        <a href="<%= templateUrl %>" target="_blank" class="btn btn-secondary btn-lg" rel="noopener noreferrer">Download Template</a>
-        <a href="/" class="btn btn-primary btn-lg">Install Add-on</a>
+        <a href="<%= templateUrl %>" target="_blank" class="btn btn-secondary btn-lg mt-4" rel="noopener noreferrer">Download Template</a>
+        <a href="/" class="mt-4 btn btn-primary btn-lg">Install Add-on</a>
       </div>
     </div>
   </section>
