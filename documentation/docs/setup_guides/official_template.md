@@ -3,6 +3,7 @@ title: Official Google Sheets template
 slug: /setup-guides/official-template
 description: How to obtain and prepare the official Google Sheets template for the Portfolio Tracker add-on.
 tags: [template, setup, getting-started]
+sidebar_position: 1
 ---
 
 # Official template

@@ -24,7 +24,10 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Setup guides",
-      items: ["setup_guides/official_template"],
+      items: [
+        "setup_guides/official_template",
+        "setup_guides/install_uninstall",
+      ],
     },
     {
       type: "category",

@@ -1,20 +1,21 @@
 ---
 id: getting-started
 title: Getting Started
-slug: setup-guides/getting-started
+slug: /getting-started
 description: A step-by-step guide to setting up the Portfolio Tracker Add-on with minimum configuration to begin tracking your investments.
 tags: [getting-started, configuration, setup, portfolio-tracker]
+sidebar_position: 2
 ---
 
 # Getting Started
 
-To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. This guide covers the minimum required settings, with more advanced options detailed in dedicated configuration pages later in this documentation.
-
-:::warning
-Make sure that you have a copy of the official template file. For more information, see the [official template](/setup-guides/official-template) guide.
+:::info
+Before following this guide, ensure you've completed the [Official Template](/setup-guides/official-template) and [Install & Uninstall](/setup-guides/install-uninstall) steps.
 :::
 
-## Configuration Sheet
+To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. This guide covers the minimum required settings, with more advanced options detailed in dedicated configuration pages later in this documentation.
+
+## Configure
 
 Navigate to the Configuration sheet to set up the basic parameters for the add-on. Below are the minimum configurations needed to get started.
 
@@ -29,7 +30,7 @@ Select your preferred method in the Configuration sheet under the "General Setti
 
 ### API Keys (If Needed)
 
-For live prices on crypto or options, add your CoinMarketCap or Polygon.io keys. These are required only if you plan to track cryptocurrencies or options contracts with real-time pricing.
+For live prices on crypto or options, add your CoinMarketCap or Polygon.io keys. These are required only if you plan to track cryptocurrencies or options contracts with real-time pricing. You can also decide to provide your own mechanism to fetch crypto and option prices in you app scripts code. In that case simply leave the `cmc_api_key` and `polygon_api_key` values empty.
 
 - **CoinMarketCap API Key**: Obtain a free or paid key from [CoinMarketCap](https://coinmarketcap.com/api/). Enter it in the designated field to enable crypto price fetching.
 - **Polygon.io Key**: For options pricing, subscribe to the "Options Starter" plan at [Polygon.io](https://polygon.io/options) and input your API key.
@@ -63,16 +64,7 @@ We will dig deeper into the other columns in the dedicated [Transactions](/core/
 The template spreadsheet requires numbers to be in the US or UK format (dot for decimals). Read more about the spreadsheet "Locale" in the advanced topics [Locale](/advanced/locale).
 :::
 
-## Install the Add-on
-
-If you haven't already, install the "Portfolio Tracker" Add-on. Go to the market place and click "Install".
-You will have to give the Add-On some permission:
-
-- Access to the current sheet (it only has access to the file you attach it to, none of your other sheets)
-
-- To make external request. This is _only_ required to be able to fetch live prices (crypto and options). None of your transactions data is stored anywhere.
-
-- To manage scripts and setup triggers for automated snapshots.
+## Update Prices and Generate Trades
 
 ### Update Current Prices
 
@@ -86,4 +78,8 @@ Under the "Extensions" menu > "Portfolio tracker", click on "Generate trades". A
 
 Then check the "Summary" sheet. You should see a summary by asset of your trades. You will find for each asset in one row the aggregated value of your trades (number of shares, option contracts (for equities), your cost basis, P&L, ROI, taxes due (if the position were closed)
 
-Finally navigate to the Dashboard sheet. You should have a clear visual of the trades. It might not look perfect just yet, we will dig deeper in the "Dashboard" documentation under Core features
+Finally navigate to the Dashboard sheet. You should have a clear visual of the trades. It might not look perfect just yet, we will dig deeper in the Dashboard documentation under Core Features.
+
+## Next Steps
+
+Now that you've generated your initial trades, explore the [Trades](/core/trades) sheet for detailed breakdowns, the [Summary](/core/open_positions_summary) for overviews, and the [Dashboard](/core/dashboard) for visualizations.
