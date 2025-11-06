@@ -27,6 +27,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "setup_guides/official_template",
         "setup_guides/install_uninstall",
+        "setup_guides/configuration",
       ],
     },
     {
