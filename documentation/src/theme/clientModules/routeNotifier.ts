@@ -5,7 +5,28 @@ const routeNotifier: ClientModule = {
     // Only run in iframe context
     if (window.parent === window) return;
 
+    const isDev =
+      window.location.hostname === "localhost" &&
+      window.location.port !== "1234";
+
+    const scrollToAnchor = (hash: string) => {
+      if (!hash) return;
+      const targetOrigin = isDev
+        ? "http://localhost:5173"
+        : window.location.origin;
+
+      const element = document.getElementById(hash.slice(1));
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        window.parent.postMessage(
+          { type: "anchorPosition", position: rect.top, hash: hash },
+          targetOrigin
+        );
+      }
+    };
+
     const route = location.pathname.replace("/documentation/", "/");
+    const hash = location.hash.split("?")[0];
 
     setTimeout(() => {
       const docRoot: HTMLDivElement | null =
@@ -41,10 +62,13 @@ const routeNotifier: ClientModule = {
         {
           type: "docusaurusRouteChange",
           route,
+          hash,
           height: finalHeight,
         },
         "*"
       );
+
+      scrollToAnchor(hash);
     }, 50); // Slight delay for async renders
   },
 };

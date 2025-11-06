@@ -18,10 +18,11 @@
     // Helper to update iframe src from parent's URL path
     function updateIframeFromUrl() {
       const pathname = window.location.pathname;
+      const hash = window.location.hash;
       if (pathname.startsWith('/docs')) {
-        const docusaurusRoute = pathname.slice('/docs/'.length); // e.g., 'transactions'
+        const docusaurusRoute = pathname.slice('/docs/'.length); // e.g., 'transactions';
         const srcPrefix = isDev ? 'http://localhost:3000' : '/documentation';
-        iframe.src = `${srcPrefix}${docsBaseUrl}${docusaurusRoute}?docusaurus-data-mode=iframe`;
+        iframe.src = `${srcPrefix}${docsBaseUrl}${docusaurusRoute}${hash}?docusaurus-data-mode=iframe`;
       }
     }
 
@@ -50,7 +51,8 @@
       if (event.data.type === 'docusaurusRouteChange') {
         const route = event.data.route;
         const height = event.data.height;
-        const newPath = `/docs${route}`;
+        const hash = event.data.hash || '';
+        const newPath = `/docs${route}${hash}`;
 
         // Update browser URL without full reload
         window.history.pushState({}, document.title, newPath);
@@ -58,6 +60,11 @@
         iframe.style.height = `${height}px`;
 
         // Optional: Update any parent UI (e.g., sidebar) based on newPath
+      } else if (event.data.type === 'anchorPosition') {
+        const position = event.data.position;
+        const iframeRect = iframe.getBoundingClientRect();
+        const scrollTop = Math.max(0, window.pageYOffset + iframeRect.top + position - 75);
+        window.scrollTo(0, scrollTop);
       }
     }, false)
   </script>
