@@ -3,7 +3,6 @@ title: Install & Uninstall
 slug: /setup-guides/install-uninstall
 description: Install and uninstall the Add-On
 tags: [install, uninstall, setup, getting-started]
-sidebar_position: 2
 ---
 
 # Install & Uninstall

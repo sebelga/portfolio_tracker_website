@@ -13,7 +13,7 @@ sidebar_position: 2
 Before following this guide, ensure you've completed the [Official Template](/setup-guides/official-template) and [Install & Uninstall](/setup-guides/install-uninstall) steps.
 :::
 
-To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. This guide covers the minimum required settings, with more advanced options detailed in dedicated configuration pages later in this documentation.
+To quickly set up and begin tracking your portfolio, focus on the essentials in the Configuration sheet. This guide covers the minimum required settings, with more advanced options detailed in the [dedicated configuration page](/setup-guides/configuration) later in this documentation.
 
 ## Configure
 
