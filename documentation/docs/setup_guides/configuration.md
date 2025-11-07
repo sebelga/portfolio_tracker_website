@@ -18,7 +18,7 @@ This section configures the core settings of the add-on. These settings apply gl
 - **cmc_api_key**: Your CoinMarketCap API key for fetching cryptocurrency prices. Obtain it from [CoinMarketCap](https://coinmarketcap.com/api/).  
   _Note_: Required for crypto assets; leave blank if not trading crypto or if you prefer to use your own method to update the prices.
 - **polygon_api_key**: Your Polygon.io API key for fetching stock and options data. Obtain it from [Polygon.io](https://polygon.io/).  
-  _Note_: Required for options; leave blank if not needed or if you prefer to use your own method to update the prices.
+  _Note_: Required for options; leave blank if not needed or if you prefer to use your own method to update the prices. At least an "Options Starter" subscription is needed to fetch live snapshot prices.
 - **dashboard_days_delta_total**: The number of days to look back in snapshots to calculate the percentage change in portfolio value.  
   _Example_: Set to 30 for a monthly delta comparison.
 - **base_currency**: The primary currency for your portfolio (e.g., USD, EUR). Default: USD.  
