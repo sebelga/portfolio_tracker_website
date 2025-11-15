@@ -45,7 +45,7 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Advanced features",
-      items: ["advanced/multi_currencies", "advanced/locale"],
+      items: ["advanced/multi_currencies", "advanced/snapshots"],
     },
     "faq",
     "troubleshooting",
