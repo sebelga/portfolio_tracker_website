@@ -40,6 +40,7 @@ const sidebars: SidebarsConfig = {
         "core/dashboard",
         "core/open_positions_summary",
         "core/closed_positions_summary",
+        "core/cash",
       ],
     },
     {
