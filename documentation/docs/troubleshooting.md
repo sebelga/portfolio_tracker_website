@@ -11,9 +11,17 @@ This page covers common issues you may encounter with the Portfolio Tracker add-
 
 ## `#N/A` returned from currency rate transaction value
 
-The `=CURR_RATE_AT(H<rowNumber>, A<rowNumber>)` formula uses under the hood the `GOOGLEFINANCE` formula. `GOOGLEFINANCE` is unfortunately not always reliable and consistent. It can happen that you see the exchange rate value in the Transaction sheet but when you run "Generate Trades" a `#N/A` value appears under the "Open conv. rate" column.
+The `=CURR_RATE_AT(H<rowNumber>, A<rowNumber>)` formula uses under the hood the `GOOGLEFINANCE` formula. `GOOGLEFINANCE` is unfortunately not always reliable and consistent.
 
-To fix that, once you have fetched the currency conversion rate using the `=CURR_RATE_AT(H<rowNumber>, A<rowNumber>)` formula, lock the value by copying the cell and then "Paste value only" onto the cell. This will replace the formula with the rate value. You can then run "Generate trades" again and the problem should be fixed.
+If `#N/A` is returned by the `=CURR_RATE_AT(H<rowNumber>, A<rowNumber>)` formula:
+
+1. Try refreshing the page to see if the value updates.
+2. Change the date to one day later, wait for the new value, then revert to the correct date—hopefully the value appears.
+3. If neither works, manually enter the conversion rate for that specific date.
+
+It can also happen that the exchange rate value is correctly returned by the formula and appears in the Transaction sheet, but when you run "Generate Trades," a `#N/A` value appears in the "Trades" sheet under the "Open conv. rate" column.
+
+To fix that, once you have fetched the currency conversion rate using the `=CURR_RATE_AT(H<rowNumber>, A<rowNumber>)` formula, lock the value by copying the cell and then "Paste value only" onto the cell. This replaces the formula with the rate value. You can then run "Generate trades" again, and the problem should be fixed.
 
 ## Prices not updating
 
