@@ -41,6 +41,11 @@ const sidebars: SidebarsConfig = {
         "core/closed_positions_summary",
       ],
     },
+    {
+      type: "category",
+      label: "Advanced features",
+      items: ["advanced/multi_currencies"],
+    },
     "faq",
     "troubleshooting",
   ],
