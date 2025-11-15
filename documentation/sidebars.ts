@@ -45,7 +45,11 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Advanced features",
-      items: ["advanced/multi_currencies", "advanced/snapshots"],
+      items: [
+        "advanced/multi_currencies",
+        "advanced/snapshots",
+        "advanced/stock_splits",
+      ],
     },
     "faq",
     "troubleshooting",
