@@ -1,6 +1,7 @@
 ---
 id: multi_currencies
 title: Multi-currencies
+slug: multi-currencies
 description: Guide to handling multi-currency trades in the Portfolio Tracker add-on, including setup, configuration, and examples.
 tags: [multi-currencies, portfolio-tracker, google-sheets]
 ---
