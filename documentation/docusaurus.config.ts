@@ -76,7 +76,9 @@ const config: Config = {
   themeConfig: {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: "light",
+      disableSwitch: true, // Set to true if you want to remove the dark/light mode toggle
+      respectPrefersColorScheme: false, // Set to true if you want to respect the user's system color scheme preference
     },
     navbar: {
       logo: {

@@ -58,10 +58,6 @@ html {
   margin-top: 16px;
 }
 
-.navbar-sidebar__brand .toggle_ki11 {
-  display: none;
-}
-
 .navbar__logo {
   height: auto;
   margin-right: 0;
