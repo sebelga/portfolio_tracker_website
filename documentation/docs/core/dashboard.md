@@ -31,6 +31,14 @@ _Example_: The Portfolio Summary might display a total value of $100,000 with $5
 Visual representations of your portfolio's performance, configurable in the [Configuration sheet](/setup-guides/configuration):
 
 - **Performance Over Time**: A line chart showing portfolio value changes over a specified number of days (e.g., 365 days).
+
+Once you have a few snapshots taken, you may want to adjust the chart steps and min/max values to fit your portfolio value range. To do this:
+
+1. Double-click on the chart.
+2. Go to the "Customize" tab.
+3. Under "Gridlines and ticks," set the "Major step" value to something appropriate (e.g., 1000 for $1,000 steps).
+4. Under "Vertical axis," set the "Min" value to fit your portfolio range (e.g., min: 10000 to hide values below $10,000).
+
 - **Overall performance**: A bar chart highlighting the return on investment for top assets, ordered by your Asset Configuration.
 - **Asset Performance**: A chart comparing asset performance over a set period (e.g., 90 days), focusing on price changes and holdings.
 
