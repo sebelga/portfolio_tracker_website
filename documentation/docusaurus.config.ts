@@ -13,7 +13,7 @@ const websiteURL = isDev
 if (isDev) {
   console.log(`Docusaurus running in development mode.`);
 }
-const baseUrl = isDev ? "/" : "/documentation/";
+const baseUrl = isDev ? "/" : "/docs/";
 
 const config: Config = {
   title: "Portfolio tracker for Google Sheets",

@@ -57,7 +57,7 @@ _Note_: These will appear as options when entering transactions.
 
 ## Trades Categories
 
-Define categories for classifying trades. Refer to the [Trades Categories documentation](/advanced/trades_categories) for detailed guidance.
+Define categories for classifying trades. Refer to the [Trades Categories documentation](/advanced/trades-categories) for detailed guidance.
 
 _Example_:
 
