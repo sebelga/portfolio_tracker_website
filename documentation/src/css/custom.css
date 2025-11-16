@@ -73,6 +73,7 @@ html {
   padding: 0.5rem;
   min-height: 4rem;
   justify-content: flex-start;
+  line-height: 1.5;
 }
 
 .navbar__inner .navbar_start {
@@ -80,6 +81,65 @@ html {
   align-items: center;
   width: 50%;
   justify-content: flex-start;
+}
+
+.navbar__inner .navbar-end {
+  align-items: center;
+  width: 50%;
+  justify-content: flex-end;
+  margin-top: -9px;
+}
+
+.menu {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: calc(0.25rem * 2);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.menu {
+  :where(li) {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+}
+
+.menu {
+  :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)),
+  :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+    display: grid;
+    grid-auto-flow: column;
+    align-content: flex-start;
+    align-items: center;
+    gap: calc(0.25rem * 2);
+    border-radius: 0.5rem;
+    padding-inline: calc(0.25rem * 3);
+    padding-block: calc(0.25rem * 1.5);
+    text-align: start;
+    transition-property: color, background-color, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    grid-auto-columns: minmax(auto, max-content) auto max-content;
+    text-wrap: balance;
+    user-select: none;
+  }
+}
+
+.menu li.active > a {
+  background-color: oklch(96.7% 0.003 264.542);
+  color: oklch(33.387% 0.04 162.24);
+}
+
+.menu-horizontal {
+  display: inline-flex;
+  flex-direction: row;
 }
 
 footer.pageFooter * {
@@ -103,6 +163,14 @@ footer.pageFooter a {
 .mx-auto {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.gap-x-1 {
+  column-gap: 0.25rem;
+}
+
+.px-2 {
+  padding-inline: 0.5rem !important;
 }
 
 .px-4 {
@@ -188,6 +256,11 @@ footer.pageFooter a {
     @media (width >= 80rem) {
       max-width: 80rem;
     }
+  }
+}
+.lg\:flex {
+  @media (width >= 64rem) {
+    display: flex;
   }
 }
 

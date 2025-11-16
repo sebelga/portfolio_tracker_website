@@ -66,12 +66,30 @@ function NavbarContentLayout({
       <div
         className={clsx(
           ThemeClassNames.layout.navbar.containerRight,
-          "navbar__items navbar__items--right"
+          // "navbar__items--right", // SEB COMMENTED THIS
+          "navbar-end hidden lg:flex" // SEB ADDED
         )}
       >
         {right}
       </div>
     </div>
+  );
+}
+
+function WebsiteMainMenu() {
+  return (
+    <ul className="menu menu-horizontal px-2 gap-x-1">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li className="active">
+        <a href="/docs"> Documentation </a>
+      </li>
+
+      <li>
+        <a href="/contact"> Contact </a>
+      </li>
+    </ul>
   );
 }
 
@@ -99,7 +117,8 @@ export default function NavbarContent(): ReactNode {
         // TODO stop hardcoding items?
         // Ask the user to add the respective navbar items => more flexible
         <>
-          <NavbarItems items={rightItems} />
+          {/* <NavbarItems items={rightItems} /> SEB COMMENTED THIS */}
+          <WebsiteMainMenu />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>
