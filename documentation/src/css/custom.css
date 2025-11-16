@@ -33,10 +33,80 @@ html[data-mode="iframe"] {
   --ifm-navbar-height: 0px;
 }
 
-html[data-mode="iframe"] .navbar {
+footer.pageFooter * {
+  /* color: rgba(0.551, 0.027, 264.364); */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0 solid;
+}
+
+footer.pageFooter a {
+  color: inherit;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+}
+
+.hidden {
   display: none;
 }
 
-html[data-mode="iframe"] .footer {
-  display: none;
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.py-6 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.mt-6 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: calc(1 / 0.75);
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-gray-500 {
+  color: #6a7282;
+}
+
+.bg-gray-100 {
+  background-color: #f7f7f7;
+}
+
+@media (min-width: 768px) {
+  .md\:inline {
+    display: inline;
+  }
+  .md\:hidden {
+    display: none;
+  }
 }
