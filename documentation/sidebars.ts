@@ -51,6 +51,8 @@ const sidebars: SidebarsConfig = {
         "advanced/snapshots",
         "advanced/stock_splits",
         "advanced/trades_categories",
+        "advanced/custom_functions",
+        "advanced/named_ranges",
       ],
     },
     "faq",
