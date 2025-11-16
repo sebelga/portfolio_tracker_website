@@ -30,7 +30,7 @@ Select your preferred method in the Configuration sheet under the "General Setti
 
 ### API Keys (If Needed)
 
-For live prices on crypto or options, add your CoinMarketCap or Polygon.io keys. These are required only if you plan to track cryptocurrencies or options contracts with real-time pricing. You can also decide to provide your own mechanism to fetch crypto and option prices in you app scripts code. In that case simply leave the `cmc_api_key` and `polygon_api_key` values empty.
+For live prices on crypto or options, add your CoinMarketCap or Polygon.io keys. These are required only if you plan to track cryptocurrencies or options contracts with real-time pricing. You can also decide to provide your own mechanism to fetch crypto and option prices in your app scripts code. In that case simply leave the `cmc_api_key` and `polygon_api_key` values empty.
 
 - **CoinMarketCap API Key**: Obtain a free or paid key from [CoinMarketCap](https://coinmarketcap.com/api/). Enter it in the designated field to enable crypto price fetching.
 - **Polygon.io Key**: For options pricing, subscribe to the "Options Starter" plan at [Polygon.io](https://polygon.io/options) and input your API key.

@@ -24,7 +24,7 @@ Do not change the locale to unsupported regions, as it could break the sheet's f
 ### Decimal Delimiter
 
 - The template requires the decimal separator to be a dot (`.`), as used in US and UK formats (e.g., 123.45).
-- Formulas like `=SUMIFS(...)` rely on commas (`,`) as parameter separators. If the locale uses comas (`,`) for separators (common in European locales), these formulas will fail.
+- Formulas like `=SUMIFS(...)` rely on commas (`,`) as parameter separators. If the locale uses commas (`,`) for separators (common in European locales), these formulas will fail.
 - Always ensure numbers use a dot for decimals to avoid calculation errors.
 
 _Example_: In a US/UK locale, enter prices as "123.45". In a European locale (e.g., Germany), it might be "123,45", which would break the template.
