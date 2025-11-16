@@ -1,7 +1,7 @@
 ---
 id: transactions
 title: Transactions
-slug: core/transactions
+slug: transactions
 description: Learn how to enter and manage your trading transactions (equity, crypto, and options) in the Portfolio Tracker Add-on.
 tags: [transactions, portfolio-tracker, google-sheets]
 ---

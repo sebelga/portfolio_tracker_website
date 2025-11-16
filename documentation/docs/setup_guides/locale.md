@@ -1,6 +1,7 @@
 ---
 id: locale
 title: Spreadsheet Locale
+slug: /setup-guides/locale
 description: Guide to understanding and managing the locale settings in your Portfolio Tracker Google Sheets template.
 tags: [locale, portfolio-tracker, google-sheets]
 ---

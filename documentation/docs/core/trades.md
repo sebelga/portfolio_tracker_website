@@ -1,7 +1,7 @@
 ---
 id: trades
 title: Trades sheet
-slug: core/trades
+slug: trades
 description: Learn about the Trades sheet, the master table of all your investment trades in the Portfolio Tracker Add-on.
 tags: [trades, portfolio-tracker, google-sheets]
 ---

@@ -1,7 +1,7 @@
 ---
 id: open_positions_summary
 title: Open positions summary sheet
-slug: core/open-positions-summary
+slug: open-positions-summary
 description: Learn about the Open Positions Summary sheet, which aggregates data for all your open investment positions in the Portfolio Tracker Add-on.
 tags: [open positions, summary, portfolio-tracker, google-sheets]
 ---
