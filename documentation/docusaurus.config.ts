@@ -13,13 +13,13 @@ const websiteURL = isDev
 if (isDev) {
   console.log(`Docusaurus running in development mode.`);
 }
-const baseUrl = isDev ? "/" : "/documentation/";
+const baseUrl = isDev ? "/" : "/docs/";
 
 const config: Config = {
   title: "Portfolio tracker for Google Sheets",
   tagline:
     "Track your stock, crypto, and options investments with Google Sheets effortlessly",
-  favicon: "img/favicon.ico",
+  favicon: "img/favicon.png",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -76,16 +76,21 @@ const config: Config = {
   themeConfig: {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: "light",
+      disableSwitch: true, // Set to true if you want to remove the dark/light mode toggle
+      respectPrefersColorScheme: false, // Set to true if you want to respect the user's system color scheme preference
     },
     navbar: {
-      title: "Portfolio tracker",
+      logo: {
+        alt: "Portfolio tracker logo",
+        src: "img/logo.svg",
+      },
       items: [
         {
           position: "left",
           label: "Home",
           target: "_self",
-          href: websiteURL,
+          to: websiteURL,
         },
         {
           type: "docSidebar",
@@ -98,7 +103,7 @@ const config: Config = {
           // type: "docSidebar",
           position: "left",
           label: "Contact",
-          href: `${websiteURL}/contact`,
+          to: `${websiteURL}/contact`,
           target: "_self",
         },
       ],

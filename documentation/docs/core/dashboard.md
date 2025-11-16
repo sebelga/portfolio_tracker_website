@@ -1,7 +1,7 @@
 ---
 id: dashboard
 title: Dashboard sheet
-slug: dashboard-sheet
+slug: dashboard
 description: Overview of the Dashboard sheet, the visual interface for monitoring your portfolio's performance and status.
 tags: [dashboard, portfolio-tracker, google-sheets]
 ---

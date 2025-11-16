@@ -61,7 +61,7 @@ To quickly get started, the required columns to fill are: "Date", "Asset type", 
 We will dig deeper into the other columns in the dedicated [Transactions](/core/transactions) documentation under Core Features.
 
 :::warning
-The template spreadsheet requires numbers to be in the US or UK format (dot for decimals). Read more about the spreadsheet "Locale" in the advanced topics [Locale](/advanced/locale).
+The template spreadsheet requires numbers to be in the US or UK format (dot for decimals). Read more about the spreadsheet "Locale" in the advanced topics [Locale](/setup-guides/locale).
 :::
 
 ## Update Prices and Generate Trades
@@ -82,4 +82,4 @@ Finally navigate to the Dashboard sheet. You should have a clear visual of the t
 
 ## Next Steps
 
-Now that you've generated your initial trades, explore the [Trades](/core/trades) sheet for detailed breakdowns, the [Summary](/core/open_positions_summary) for overviews, and the [Dashboard](/core/dashboard) for visualizations.
+Now that you've generated your initial trades, explore the [Trades](/core/trades) sheet for detailed breakdowns, the [Summary](/core/open-positions-summary) for overviews, and the [Dashboard](/core/dashboard) for visualizations.
