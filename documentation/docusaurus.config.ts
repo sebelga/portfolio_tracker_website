@@ -79,13 +79,16 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "Portfolio tracker",
+      logo: {
+        alt: "Portfolio tracker logo",
+        src: "img/logo.svg",
+      },
       items: [
         {
           position: "left",
           label: "Home",
           target: "_self",
-          href: websiteURL,
+          to: websiteURL,
         },
         {
           type: "docSidebar",
@@ -98,7 +101,7 @@ const config: Config = {
           // type: "docSidebar",
           position: "left",
           label: "Contact",
-          href: `${websiteURL}/contact`,
+          to: `${websiteURL}/contact`,
           target: "_self",
         },
       ],

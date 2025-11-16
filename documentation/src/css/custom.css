@@ -29,8 +29,61 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-html[data-mode="iframe"] {
-  --ifm-navbar-height: 0px;
+html {
+  --ifm-navbar-height: 75px;
+}
+
+.navbar {
+  height: 75px;
+  width: 100%;
+  padding: 0;
+}
+
+.navbar__brand {
+  margin-top: 4px;
+  @media (width >= 64rem) {
+    margin-left: -6px;
+  }
+}
+
+.navbar__toggle {
+  margin-right: 0;
+  padding-right: 0.5rem;
+  width: 28px;
+  margin-top: -10px;
+}
+
+.navbar-sidebar__brand .navbar__brand {
+  margin-left: 0;
+  margin-top: 16px;
+}
+
+.navbar-sidebar__brand .toggle_ki11 {
+  display: none;
+}
+
+.navbar__logo {
+  height: auto;
+  margin-right: 0;
+}
+
+.navbar__logo img {
+  width: 160px;
+  height: 59px;
+}
+
+.navbar__inner {
+  align-items: center;
+  padding: 0.5rem;
+  min-height: 4rem;
+  justify-content: flex-start;
+}
+
+.navbar__inner .navbar_start {
+  display: inline-flex;
+  align-items: center;
+  width: 50%;
+  justify-content: flex-start;
 }
 
 footer.pageFooter * {
@@ -56,6 +109,14 @@ footer.pageFooter a {
   margin-right: auto !important;
 }
 
+.px-4 {
+  padding-inline: 1rem !important;
+}
+
+.py-2 {
+  padding-block: 0.5rem !important;
+}
+
 .py-6 {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
@@ -63,6 +124,10 @@ footer.pageFooter a {
 
 .mt-6 {
   margin-top: 1.5rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem !important;
 }
 
 .mb-2 {
@@ -102,11 +167,36 @@ footer.pageFooter a {
   background-color: #f7f7f7;
 }
 
-@media (min-width: 768px) {
-  .md\:inline {
+.md\:inline {
+  @media (min-width: 768px) {
     display: inline;
   }
-  .md\:hidden {
+}
+
+.md\:hidden {
+  @media (min-width: 768px) {
     display: none;
+  }
+}
+
+.lg\:container {
+  @media (width >= 64rem) {
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+  }
+}
+
+.lg\:container {
+  @media (width >= 64rem) {
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+  }
+}
+
+.lg\:mx-auto {
+  @media (width >= 64rem) {
+    margin-inline: auto;
   }
 }
