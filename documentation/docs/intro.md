@@ -7,6 +7,8 @@ description: Welcome to the Portfolio Tracker Add-on documentation. Learn how to
 tags: [introduction, getting-started, portfolio-tracker, google-sheets]
 ---
 
+import TemplateLink from '@site/src/components/TemplateLink';
+
 # Introduction
 
 Welcome to the Portfolio Tracker Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
@@ -21,15 +23,15 @@ Before diving into setup and usage, let's cover the foundational concepts of how
 
 The add-on is designed to work with a specific Google Sheets™ template file. This template provides the pre-structured layout, formulas, and scripts needed for the add-on to function optimally.
 
-- **How to Get Started**: Download the template from our website and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
-- **Why a Template?**: The template includes essential sheets, scripts, and configurations that integrate seamlessly with the add-on. Using it guarantees compatibility and reduces setup errors.
+- **How to Get Started**: <TemplateLink>Download the template</TemplateLink> from our website and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
+- **Why a Template?**: The Add-on has been designed around a specific spreadsheet template which includes sheets, scripts, and configurations that integrate seamlessly with the add-on. Therefore, using the template is mandatory to access the add-on's functionalities.
 
 ### User Input Sheets
 
 The spreadsheet is designed for minimal manual input to keep things simple and efficient. Only two sheets require your direct input:
 
 - **Configuration Sheet**: This is where you set up global settings such as your assets, base currency, tax rates, API keys, and other preferences. The add-on uses these to process your data accurately.
-- **Transactions Sheet**: Here, you log your buy, sell, deposit, withdrawal, and other transaction details. The add-on automatically processes these entries to generate trades, P&L, and reports.
+- **Transactions Sheet**: Here, you log your buy, sell, and other transaction details. The add-on automatically processes these entries to generate trades, P&L, and reports.
 
 All other sheets in the spreadsheet (e.g., Trades, Dashboard, Snapshots) are automatically generated and updated by the add-on based on your inputs in the Configuration and Transactions sheets.
 
@@ -43,6 +45,6 @@ This documentation is organized into sections for easy navigation:
 - **Core Features**: Detailed explanations of trade matching, tax calculations, live prices, and more.
 - **Advanced Topics**: Multi-currency support, snapshots, utility functions, and troubleshooting.
 
-If you have questions or need support, check our [FAQ](/faq) or contact us via the website.
+If you have questions or need support, check our [FAQ](/faq) or [send us a message](../contact).
 
 Happy tracking!
