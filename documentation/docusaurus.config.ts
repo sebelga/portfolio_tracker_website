@@ -19,7 +19,7 @@ const config: Config = {
   title: "Portfolio tracker for Google Sheets",
   tagline:
     "Track your stock, crypto, and options investments with Google Sheets effortlessly",
-  favicon: "img/favicon.ico",
+  favicon: "img/favicon.png",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
