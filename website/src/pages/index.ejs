@@ -1,8 +1,25 @@
 <!doctype html>
 <html lang="en" data-theme="emerald">
-<%- include('./src/partials/head.ejs', { title: 'Portfolio Tracker', description: 'Track your portfolio in Google Sheets effortlessly.' }) %>
+<%- include('./src/partials/head.ejs', { title: 'Portfolio Tracker for Google Sheets - Track Investments Easily', description: 'Effortlessly track stocks, crypto, and options in Google Sheets. Manage taxes, visualize performance, and automate snapshots with our add-on.' }) %>
 
 <body>
+  <!-- Schema markup for SoftwareApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Portfolio Tracker",
+      "description": "Track your stock, crypto, and options investments in Google Sheets with automated trade matching, tax calculations, and performance dashboards.",
+      "url": "https://portfoliotrackergooglesheets.com",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
@@ -13,7 +30,7 @@
   <section class="hero min-h-[75vh] md:mt-[90px] pb-8">
     <div class="container flex items-center flex-col mx-auto gap-10 px-4 md:px-16 lg:flex-row">
       <div class="mt-8 flex-1">
-        <img src="/img/hero-image.jpg" class="w-full max-w-sm sm:max-w-md lg:max-w-2xl" />
+        <img src="/img/hero-image.jpg" class="w-full max-w-sm sm:max-w-md lg:max-w-2xl" alt="Portfolio Tracker interface showing investment tracking features in Google Sheets" />
       </div>
       <div class="flex-1">
         <h1 class="text-4xl font-bold mb-4">Portfolio Tracker in Google Sheets™ <span class="badge badge-warning">Beta</span></h1>
@@ -27,12 +44,12 @@
   <section class="py-20 px-4 bg-gray-100">
     <div class="container mx-auto md:px-16 flex flex-col gap-8">
       <div class="mb-12">
-        <h2 class="text-4xl font-bold mb-4">Our Add-on</h2>
+        <h2 class="text-4xl font-bold mb-4">Portfolio Tracker Add-on for Google Sheets</h2>
         <p class="text-xl mb-4">Our Google Sheets™ add-on and provided template sheet transform your transaction ledger into smart trades. It handles FIFO/LIFO matching, computes realized/unrealized P&L, tax calculation, live prices for stock, crypto and options contracts, and generates a dashboard for clear insights.</p>
         <p class="text-xl">Seamlessly integrate with Google Sheets™ App Script triggers for daily automated snapshots of your assets portfolio.</p>
       </div>
       <div>
-        <img src="/img/portfolio_tracker.jpg" class="w-full" />
+        <img src="/img/portfolio_tracker.jpg" class="w-full" alt="Overview of Portfolio Tracker add-on dashboard with charts and data visualization" />
       </div>
     </div>
   </section>
@@ -40,7 +57,7 @@
   <!-- Key Features & Benefits Section -->
   <section class="py-20 px-4 bg-white">
     <div class="container mx-auto md:px-16">
-      <h2 class="text-4xl font-bold text-center mb-12">Key Features & Benefits</h2>
+      <h2 class="text-4xl font-bold text-center mb-12">Key Features for Portfolio Tracking in Google Sheets</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card bg-gray-100 shadow-lg p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Smart Trade Matching</h3>
@@ -85,27 +102,27 @@
   <!-- Visual Appeal & User Experience Section -->
   <section class="py-20 md:py-30 px-4 bg-gray-100">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-12">Screenshots</h2>
+      <h2 class="text-4xl font-bold text-center mb-12">Portfolio Tracker Screenshots</h2>
 
       <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
         <div class="shadow-lg rounded-lg">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/dashboard.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/dashboard.jpg" alt="Dashboard Screenshot" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/dashboard.jpg" alt="Portfolio Tracker dashboard displaying performance charts and investment metrics in Google Sheets" loading="lazy" />
           </a>
         </div>
         <div class="shadow-lg rounded-lg">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/summary.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/summary.jpg" alt="Summary Screenshot" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/summary.jpg" alt="Portfolio Tracker summary view showing open positions and trade details in Google Sheets" loading="lazy" />
           </a>
         </div>
         <div class="shadow-lg rounded-lg">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/transactions.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/transactions.jpg" alt="Transactions Screenshot" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/transactions.jpg" alt="Portfolio Tracker transactions sheet with buy and sell entries for stocks, options and crypto in Google Sheets" loading="lazy" />
           </a>
         </div>
         <div class="hidden">
           <a class="h-full w-full overflow-hidden" href="/img/screenshots/multi-currencies.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/multi-currencies.jpg" alt="Multi-Currencies Screenshot" loading="lazy" />
+            <img class="gallery-thumb h-auto w-full rounded-lg object-cover" src="/img/screenshots/524/multi-currencies.jpg" alt="Portfolio Tracker multi-currency view showing exchange rates and international investments in Google Sheets" loading="lazy" />
           </a>
         </div>
       </div>
@@ -115,7 +132,7 @@
   <!-- Call to Action Section -->
   <section id="cta" class="py-20 px-4 bg-gray-800 text-white text-center">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-bold mb-4">Interested in Our Beta?</h2>
+      <h2 class="text-4xl font-bold mb-4">Join Our Beta for Portfolio Tracking</h2>
       <p class="text-xl mb-8">We're in beta release. Contact us to get early access and try it out.</p>
       <a href="/contact" class="btn btn-primary btn-lg">Contact Us</a>
     </div>
