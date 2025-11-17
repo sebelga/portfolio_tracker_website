@@ -88,4 +88,4 @@ _Note_: Regularly back up your sheet.
 
 ## How do I report bugs or request features?
 
-Contact support via the add-on's help menu. For bugs, provide your temporary user key, which you can find through the menu "Troubleshooting / Show temporary user key", along with as many details as possible of what you were doing and the error messages.
+Contact support via the add-on's help menu. For bugs, provide your temporary user key, which you can find through the menu "Troubleshooting / Show App information", along with as many details as possible of what you were doing and the error messages.

@@ -91,6 +91,6 @@ The snapshot hour is set in GMT. Adjust for your timezone (e.g., 16:00 in New Yo
 
 - **Backups**: Regularly export your sheet to avoid data loss.
 - **Updates**: Ensure the add-on is up-to-date via the Google Workspace Marketplace.
-- **Support**: For unresolved issues, provide your temporary user key and details when contacting support.
+- **Support**: For unresolved issues, provide your temporary user key (which you can find through the menu "Troubleshooting / Show App information") and details when contacting support.
 
 If these steps don't help, refer to the [FAQ](/faq).
