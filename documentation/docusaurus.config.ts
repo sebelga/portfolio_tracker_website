@@ -76,6 +76,29 @@ const config: Config = {
     },
   ],
 
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: websiteURL,
+      },
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org/",
+        "@type": "Organization",
+        name: "Portfolio Tracker for Google Sheets",
+        url: websiteURL,
+        logo: `${websiteURL}/img/logo.svg`,
+      }),
+    },
+  ],
+
   themeConfig: {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
@@ -83,6 +106,14 @@ const config: Config = {
       disableSwitch: true, // Set to true if you want to remove the dark/light mode toggle
       respectPrefersColorScheme: false, // Set to true if you want to respect the user's system color scheme preference
     },
+    metadata: [
+      {
+        name: "keywords",
+        content:
+          "portfolio tracker, google sheets, investment tracking, financial management, stock portfolio, crypto portfolio, options portfolio, asset management",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
     navbar: {
       logo: {
         alt: "Portfolio tracker logo",
