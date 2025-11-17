@@ -21,6 +21,10 @@ Snapshots capture a point-in-time view of your portfolio, including total value,
 
 _Note_: Untick "Take Snapshot" for assets you don't want included to reduce data volume.
 
+_Note 2_: If you have created snapshot data for an asset and you decide to untick the "Take Snapshot", the values from the last snapshot will be copied over into the new snapshots.
+
+_Tip_: Make sure to make backups of your Google Sheet to avoid losing historical snapshot data of your portfolio.
+
 :::info
 Charts assume one snapshot per day for accurate performance calculations. If you take multiple snapshots daily, adjust the "Num days" in Chart Configuration accordingly.
 :::
