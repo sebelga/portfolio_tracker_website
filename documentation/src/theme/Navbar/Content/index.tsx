@@ -78,7 +78,7 @@ function NavbarContentLayout({
 
 function WebsiteMainMenu() {
   return (
-    <ul className="menu menu-horizontal px-2 gap-x-1">
+    <ul className="desktopMenu menu menu-horizontal px-2 gap-x-1">
       <li>
         <a href="/">Home</a>
       </li>

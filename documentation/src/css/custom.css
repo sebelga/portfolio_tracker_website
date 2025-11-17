@@ -90,7 +90,7 @@ html {
   margin-top: -9px;
 }
 
-.menu {
+.desktopMenu.menu {
   display: flex;
   width: fit-content;
   flex-direction: column;
@@ -100,7 +100,7 @@ html {
   margin: 0;
 }
 
-.menu {
+.desktopMenu.menu {
   :where(li) {
     position: relative;
     display: flex;
@@ -111,7 +111,7 @@ html {
   }
 }
 
-.menu {
+.desktopMenu.menu {
   :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)),
   :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
     display: grid;
@@ -132,12 +132,12 @@ html {
   }
 }
 
-.menu li.active > a {
+.desktopMenu.menu li.active > a {
   background-color: oklch(96.7% 0.003 264.542);
   color: oklch(33.387% 0.04 162.24);
 }
 
-.menu-horizontal {
+.desktopMenu.menu-horizontal {
   display: inline-flex;
   flex-direction: row;
 }
