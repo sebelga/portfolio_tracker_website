@@ -5,69 +5,15 @@
 <body class="bg-white font-sans text-gray-900 antialiased">
   <!-- Header -->
   <%- include('./src/partials/header.ejs') %>
-  <iframe id="docsIframe" src="" scrolling="no" style="width:100%; border:none; margin-top: 75px; min-height: calc(100vh - 235px);"></iframe>
+
+  <div class="container mx-auto px-4 md:px-16 py-24">
+    <h2 class="text-3xl font-bold mt-24 mb-8">Documentation</h2>
+    <p class="mb-8">This page is a place holder for the Docusaurus documentation. Will only appear after building the website and previewing.</p>
+  </div>
 
   <!-- Footer -->
   <%- include('./src/partials/footer.ejs') %>
 
-  <script>
-    const iframe = document.getElementById('docsIframe');
-    const isDev = window.location.hostname === 'localhost' && window.location.port !== '1234';
-    const docsBaseUrl = "/"
-
-    // Helper to update iframe src from parent's URL path
-    function updateIframeFromUrl() {
-      const pathname = window.location.pathname;
-      const hash = window.location.hash;
-      if (pathname.startsWith('/docs')) {
-        const docusaurusRoute = pathname.slice('/docs/'.length); // e.g., 'transactions';
-        const srcPrefix = isDev ? 'http://localhost:3000' : '/documentation';
-        iframe.src = `${srcPrefix}${docsBaseUrl}${docusaurusRoute}${hash}?docusaurus-data-mode=iframe`;
-      }
-    }
-
-    function initIframe() {
-      updateIframeFromUrl();
-      iframe.style.minHeight = '0px'; // Allow shrinking
-      iframe.style.height = '500px'; // Temporary fallback until message arrives
-    }
-
-    // Initial sync on page load/refresh
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateIframeFromUrl);
-    } else {
-      updateIframeFromUrl();
-    }
-
-    // Handle browser back/forward (popstate) to re-sync iframe
-    window.addEventListener('popstate', updateIframeFromUrl);
-
-    window.addEventListener('message', function(event) {
-      const allowedOrigins = isDev ? ['http://localhost:3000'] : ['http://localhost:1234', 'https://portfoliotrackergooglesheets.com'];
-
-      const isNetlifyDeployPreview = window.location.hostname.includes('portfoliotrackergooglesheets.netlify.app');
-      if (!isNetlifyDeployPreview && !allowedOrigins.includes(event.origin)) return;
-
-      if (event.data.type === 'docusaurusRouteChange') {
-        const route = event.data.route;
-        const height = event.data.height;
-        const hash = event.data.hash || '';
-        const newPath = `/docs${route}${hash}`;
-
-        // Update browser URL without full reload
-        window.history.pushState({}, document.title, newPath);
-        // Dynamically resize iframe to content height
-        iframe.style.height = `${height}px`;
-
-        // Optional: Update any parent UI (e.g., sidebar) based on newPath
-      } else if (event.data.type === 'anchorPosition') {
-        const position = event.data.position;
-        const iframeRect = iframe.getBoundingClientRect();
-        const scrollTop = Math.max(0, window.pageYOffset + iframeRect.top + position - 75);
-        window.scrollTo(0, scrollTop);
-      }
-    }, false)
-  </script>
 </body>
 
 </html>
