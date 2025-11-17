@@ -22,9 +22,17 @@
   <title><%= title %></title>
   <meta name="description" content="<%= description %>" />
   <meta name="keywords" content="Portfolio Tracker, Google Sheets, Investment Tracking, Financial Management, Stock Portfolio, Crypto Portfolio, Options Portfolio, Asset Management" />
-  <meta property="og:title" content="Portfolio Tracker - Track your portfolio in Google Sheets" />
-  <meta property="og:image" content="/img/logo.svg" />
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:image" content="https://portfoliotrackergooglesheets.com/img/hero-image.jpg" />
+  <meta property="og:type" content="website" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= title %>">
+  <meta name="twitter:description" content="<%= description %>">
+  <meta name="twitter:image" content="https://portfoliotrackergooglesheets.com/img/hero-image.jpg">
+  <!-- Canonical URL to avoid duplicate content -->
+  <link rel="canonical" href="https://portfoliotrackergooglesheets.com<%= typeof slug !== 'undefined' ? slug : '' %>">
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="icon" href="/img/favicon.png" type="image/png" sizes="256x256" />
-  <link rel="canonical" href="https://portfoliotrackergooglesheets.com/" />
 </head>
