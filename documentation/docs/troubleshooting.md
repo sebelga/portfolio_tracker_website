@@ -28,7 +28,7 @@ To fix that, once you have fetched the currency conversion rate using the `=CURR
 - **Symptoms**: Current prices remain blank or outdated after running "Update prices."
 - **Causes**: Incorrect API keys, invalid symbols, or API limits.
 - **Solutions**:
-  1. Verify API keys in the Configuration sheet (e.g., CoinMarketCap for crypto, Polygon.io for options). For options, ensure you have at least an "Options Starter" subscription (or superior) from Polygon.io to fetch live snapshot prices.
+  1. Verify API keys in the Configuration sheet (e.g., CoinMarketCap for crypto, Massive.com for options). For options, ensure you have at least an "Options Starter" subscription (or superior) from Massive.com to fetch live snapshot prices.
   2. Check asset symbols for accuracy (e.g., "BTC" for Bitcoin).
   3. Run "Update prices" manually and wait for completion.
   4. For equities, refresh the page to get the latest `GOOGLEFINANCE` value. `GOOGLEFINANCE` updates prices approximately every minute. You can also set your spreadsheet setting "recalculation" to "On change and every minute".
@@ -40,10 +40,10 @@ To fix that, once you have fetched the currency conversion rate using the `=CURR
 - **Symptoms**: Error messages like "API key invalid" or "Rate limit exceeded."
 - **Causes**: Expired keys, incorrect setup, or high usage.
 - **Solutions**:
-  1. Regenerate API keys from the provider (CoinMarketCap or Polygon.io).
+  1. Regenerate API keys from the provider (CoinMarketCap or Massive.com).
   2. Update keys in the Configuration sheet and save.
   3. Reduce update frequency or upgrade to paid API plans for higher limits.
-- **Example**: If Polygon.io returns a rate limit error, wait a few minutes or switch to a higher limit subscription.
+- **Example**: If Massive.com returns a rate limit error, wait a few minutes or switch to a higher limit subscription.
 - **Prevention**: Monitor usage on provider dashboards and refresh prices at reasonable intervals.
 
 ## Calculation errors in trades

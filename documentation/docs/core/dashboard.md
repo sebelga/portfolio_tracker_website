@@ -48,7 +48,7 @@ _Note_: Adjust chart parameters like "Num days" or "Num assets" in the Configura
 
 - **Primary Source**: Data is derived from the Trades sheet, where transactions are logged, and snapshots, which capture daily portfolio states.
 - **Update Process**: Run "Generate trades" to refresh calculations, or "Update prices" to pull latest market data.
-- **Dependencies**: Ensure your API keys (e.g., for CoinMarketCap or Polygon) are set in the Configuration sheet for accurate pricing.
+- **Dependencies**: Ensure your API keys (e.g., for CoinMarketCap or Massive) are set in the Configuration sheet for accurate pricing.
 
 ## Tips for Use
 

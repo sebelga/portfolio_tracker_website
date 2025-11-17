@@ -19,7 +19,7 @@ You can then apply the same light yellow background to the new named range area.
 
 1. Obtain the official Google Sheets template from the [setup guide](/setup-guides/official-template).
 2. Install the Portfolio Tracker add-on from the Google Workspace Marketplace.
-3. Configure your API keys (CoinMarketCap for crypto, Polygon.io for options) in the Configuration sheet.
+3. Configure your API keys (CoinMarketCap for crypto, Massive.com for options) in the Configuration sheet.
 4. Add your assets, accounts, and tax rates in the respective sections of the Configuration sheet.
 5. Enter your initial trades in the Transactions sheet and run "Generate trades" to populate calculations.
 
@@ -48,7 +48,7 @@ _Note_: Consult a tax professional, as rates vary by location and may change ann
 
 - **Equity**: By adding the `GOOGLEFINANCE` formula.
 - **Crypto**: Using your CoinMarketCap API key.
-- **Options**: Using your Polygon.io API key.
+- **Options**: Using your Massive.com API key.
 
 ## How do I update GOOGLEFINANCE prices automatically?
 
