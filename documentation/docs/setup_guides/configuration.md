@@ -101,7 +101,7 @@ Record stock splits for equities (or root symbols for options-only assets).
 
 - **Ticker**: The equity ticker (e.g., TSLA).
 - **Date**: The split date (e.g., 2022-08-25).
-- **Split amount**: The split ratio (e.g., "10" for a 10:1 split).
+- **Split amount**: The split ratio (e.g., "10" for a 10/1 split or "0.1" for a 1/10 reverse split).
 
 _Example_: For a 2-for-1 split of AAPL on 2020-08-31, enter Ticker: AAPL, Date: 2020-08-31, Split amount: 2.
 
