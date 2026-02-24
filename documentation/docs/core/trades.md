@@ -2,68 +2,72 @@
 id: trades
 title: Trades sheet
 slug: trades
-description: Learn about the Trades sheet, the master table of all your investment trades in the Portfolio Tracker Add-on.
+description: Learn about the Trades sheet, the master table of all your investment trades in the Portfolio Tracker.
 tags: [trades, portfolio-tracker, google-sheets]
 ---
 
 # Trades Sheet
 
-The Trades sheet is the master table of all your investment trades in the Portfolio Tracker Add-on. It aggregates and displays detailed data for every buy/sell transaction across equities, cryptocurrencies, and options, including metrics like profit/loss, ROI, and taxes. This sheet is automatically generated from your Transactions sheet and serves as the core data source for summaries, dashboards, and analysis.
+The Trades sheet is the master table of all your investment trades. It aggregates detailed data for every transaction across equities, cryptocurrencies, and options. This sheet serves as the core data engine for your portfolio, calculating performance metrics like P&L and ROI while accounting for both asset price movements and foreign exchange (FX) impacts.
 
 ## Purpose and How It Works
 
-- **Master Data Source**: It contains comprehensive details for each trade, such as volumes, prices, dates, currencies, fees, and calculated values like P&L and ROI.
-- **Filtering and Analysis**: Use Google Sheets' filter feature on the headers to slice data by asset, type, date, or other criteria for in-depth analysis.
-- **Automatic Regeneration**: Every time you click "Generate trades" in the Portfolio Tracker menu, the sheet is cleared and repopulated with fresh data. Do not make manual changes, as they will be overwritten.
-- **Utility Function**: A helper function `TT()` ("T" for Trades column) allows easy access to column ranges in formulas. Pass a column ID prefixed with `c_`, e.g., `TT(c_ticker)`, `TT(c_open_date)`, `TT(c_pnl)`. This is useful for advanced Google Sheets users creating custom analyses.
-- **Data Flow**: Pulled from the Transactions sheet, with calculations based on your accounting method (FIFO/LIFO) and API/live prices.
+- **Master Data Source**: Contains comprehensive details for each trade, including entry/exit prices, fees, and multi-currency conversions.
+- **Automatic Regeneration**: This sheet is repopulated whenever you run "Generate trades." Manual changes will be overwritten.
+- **Utility Function**: Use the `TT()` helper function to access column ranges dynamically in your custom formulas (e.g., `TT(c_ticker)` or `TT(c_pl)`).
+- **Realized Logic**: Tracks positions based on whether they are "Realized" (fully closed for tax/accounting purposes) or still active.
 
 ## Key Columns
 
-The sheet includes columns for detailed trade information. Below is a table describing each key column:
+The sheet includes 37 columns for exhaustive trade analysis.
 
-| Column                  | Description                                                                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Asset                   | The name or identifier of the asset.                                                                                                          |
-| Type                    | The asset type: "equity", "crypto", or "options".                                                                                             |
-| Ticker                  | The symbol of the asset (e.g., AAPL for Apple stock).                                                                                         |
-| Root symbol             | For options, the underlying asset symbol (e.g., AAPL for an AAPL option).                                                                     |
-| Option type             | For options, the type: "call" or "put".                                                                                                       |
-| Strike                  | For options, the strike price.                                                                                                                |
-| Exp. date               | For options, the expiration date.                                                                                                             |
-| Status                  | The trade status: "open" or "closed".                                                                                                         |
-| Dir.                    | The direction: "long" (buy) or "short" (sell).                                                                                                |
-| Volume                  | The number of shares, coins, or contracts traded.                                                                                             |
-| Open date               | The date the trade was opened.                                                                                                                |
-| Open price              | The price per unit at opening.                                                                                                                |
-| Open currency           | The currency of the open price.                                                                                                               |
-| Open fees               | Fees associated with opening the trade.                                                                                                       |
-| Open conv. rate         | Exchange rate for the open transaction (if multi-currency).                                                                                   |
-| Open amount             | Total amount for the open trade in its currency.                                                                                              |
-| Open amount (b. curr.)  | Total amount for the open trade converted to your base currency.                                                                              |
-| Close date              | The date the trade was closed (if applicable).                                                                                                |
-| Close/curr. price       | The closing or current price per unit.                                                                                                        |
-| Close currency          | The currency of the close/current price.                                                                                                      |
-| Close fees              | Fees associated with closing the trade.                                                                                                       |
-| Close conv. rate        | Exchange rate for the close transaction (if multi-currency).                                                                                  |
-| Close/curr. amount      | Total amount for the close/current trade in its currency.                                                                                     |
-| Close amount (b. curr.) | Total amount for the close/current trade converted to your base currency.                                                                     |
-| Year close              | The year the trade was closed.                                                                                                                |
-| Term                    | The duration the trade was open (long or short).                                                                                              |
-| P&L                     | Profit or loss for the trade.                                                                                                                 |
-| ROI                     | Return on investment percentage.                                                                                                              |
-| Account                 | The account associated with the trade.                                                                                                        |
-| Tax rate                | The applicable tax rate.                                                                                                                      |
-| Tax value               | The calculated tax amount.                                                                                                                    |
-| Reentry if closed       | Indicates the price at which you can re-enter the position without realizing a loss, after accounting for taxes due (only for "long" trades). |
+| Column                      | Description                                                                                    |
+| :-------------------------- | :--------------------------------------------------------------------------------------------- |
+| **Asset type**              | The category: "equity", "crypto", or "option".                                                 |
+| **Ticker**                  | The unique symbol of the asset.                                                                |
+| **Root symbol**             | The underlying asset for options contracts.                                                    |
+| **Option type**             | "Call" or "Put".                                                                               |
+| **Strike**                  | The strike price of the option contract.                                                       |
+| **Exp. date**               | The expiration date for options.                                                               |
+| **Option status**           | Current state of the contract (e.g., Open, Closed, Expired).                                   |
+| **Dir.**                    | Trade direction: "long" (buy) or "short" (sell).                                               |
+| **Account**                 | The brokerage or wallet account used for the trade.                                            |
+| **Realized**                | Boolean (TRUE/FALSE) indicating if the position is closed and the gain/loss is realized.       |
+| **Open date**               | The date the position was established.                                                         |
+| **Close date**              | The date the position was closed or the current date if open.                                  |
+| **Year close**              | The calendar year in which the trade was realized.                                             |
+| **Term**                    | Holding period classification (e.g., Short-term or Long-term).                                 |
+| **Volume**                  | Number of units traded. Note: Sales/Shorts are represented as negative values.                 |
+| **O. price**                | Opening price per unit in the native asset currency.                                           |
+| **O. fees**                 | Fees paid at the time of opening the trade.                                                    |
+| **Cost Basis**              | Total native currency cost to open the position (Price × Volume + Fees).                       |
+| **O. currency**             | The native currency of the asset (e.g., USD, EUR).                                             |
+| **O. conv. rate**           | FX rate to base currency (e.g. EUR) at the time of opening.                                    |
+| **C. price**                | The closing price or the current live market price.                                            |
+| **C. fees**                 | Estimated or actual fees for closing the position.                                             |
+| **Net Proceeds**            | Total native currency received upon closing (Price × Volume - Fees).                           |
+| **C. currency**             | The currency of the closing/live price.                                                        |
+| **C. conv. rate**           | FX rate to base currency (e.g. EUR) at the time of closing/current.                            |
+| **Cost Basis (base curr.)** | Opening cost converted to the base currency, including wash sale adjustments where applicable. |
+| **Proceeds (base curr.)**   | Closing/current value converted to the base currency at the current or exit FX rate.           |
+| **Total Fees (base curr.)** | Sum of open and close fees converted to base currency.                                         |
+| **Asset P&L**               | Profit/Loss generated strictly by the asset's price move (ignoring FX changes).                |
+| **Asset ROI**               | Return on investment based solely on asset price performance.                                  |
+| **FX Impact**               | The portion of P&L attributed to changes in the exchange rate between entry and exit.          |
+| **FX Return**               | Percentage return generated by currency fluctuations.                                          |
+| **Net P&L**                 | Total Profit/Loss in the base currency.                                                        |
+| **Net ROI**                 | Total return percentage including both asset move and FX impact.                               |
+| **Tax rate**                | The applicable tax percentage for this trade.                                                  |
+| **Tax value**               | Calculated tax liability based on Net P&L.                                                     |
+| **Reentry if closed**       | The price required to re-establish the position without a net loss after taxes.                |
 
 ## Tips and Best Practices
 
-- **Data Integrity**: Since the sheet regenerates, rely on the Transactions sheet for inputs. Use filters to explore subsets without editing.
-- **Advanced Analysis**: Leverage `TT()` for custom formulas, e.g., summing P&L by asset: `SUMIF(TT(c_ticker), "AAPL", TT(c_pnl))`.
-- **Performance Monitoring**: Sort by P&L or ROI to identify top performers. For options, filter by expiration or strike.
-- **Currency Handling**: Base currency columns ensure consistency; hide them if not needed.
-- **Troubleshooting**: If data seems incorrect, verify Transactions entries and rerun "Generate trades".
-- **Integration**: This sheet feeds into Summary and Dashboard sheets for overviews.
+- **Isolating Performance**: Use the **Asset P&L** vs. **FX Impact** columns to see if your profits are coming from your investment pick or simply from currency swings.
+- **Advanced Custom Formulas**: Leverage the `TT()` function for personalized summaries. For example: `=SUMIF(TT(c_realized), FALSE, TT(c_pl))` sums all unrealized P&L.
+- **Filtering**: Use the Filter icon on the **Realized** column to quickly toggle between your active portfolio and your historical trade log.
+- **Wash Sales**: Note that **Cost Basis (EUR)** is the definitive field for tax tracking as it incorporates necessary adjustments that native currency columns may not show.
 
-This sheet is essential for detailed trade analysis—use it to track performance and inform decisions.
+:::warning
+Because this sheet is automatically generated, do not manually edit cells. Any changes will be lost the next time you click **Generate trades**.
+:::
