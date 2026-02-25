@@ -14,7 +14,7 @@ The Closed Positions Summary sheet provides a high-level, strategic overview of 
 
 - **Root Symbol Aggregation**: The sheet groups all trades sharing the same Root Symbol. This means your performance for a ticker like "TSLA" includes the P&L from physical shares and all associated options contracts (Calls/Puts).
 - **Yearly Filtering**: A dropdown menu allows you to filter the summary by the calendar year the positions were realized.
-- **The "Tax Truth" Engine**: This sheet utilizes the `is_realized = TRUE` logic to ensure that only finalized trades are displayed. Importantly, the financial columns account for **Wash Sale adjustments**, providing an accurate "Accounting Truth" for tax preparation.
+- **The "Tax Truth" Engine**: This sheet utilizes the `is_realized = TRUE` logic to ensure that only finalized trades are displayed.
 - **Dual-Engine Logic**:
   - **Inventory Metrics**: (Volume, Avg Prices) focus strictly on physical Spot holdings (Equity/Crypto) to match your broker records.
   - **Financial Metrics**: (P&L, Cost, FX, Tax) include all strategic activity, including options premiums and currency impacts.
@@ -31,7 +31,7 @@ The summary is organized into 12 specialized columns designed for performance an
 | **Avg Open Price**         | The volume-weighted average price (VWAP) paid to open the physical positions realized this year (in Asset Currency).                              |
 | **Avg Close Price**        | The volume-weighted average price (VWAP) received to close the physical positions (in Asset Currency).                                            |
 | **Asset P&L**              | The raw performance of the asset campaign in its native currency. This includes both share price moves and all option premiums collected or paid. |
-| **Total Cost (b.curr.)**   | The total opening cost in base currency. This reflects the "Tax Basis" and incorporates deferred losses from any Wash Sales.                      |
+| **Total Cost (b.curr.)**   | The total opening cost in base currency. This reflects the "Tax Basis".                                                                           |
 | **Total Proc. (b. curr.)** | The total proceeds received upon closing the positions, converted to base currency at the time of the trade.                                      |
 | **FX Impact**              | The portion of your profit or loss specifically attributed to fluctuations in the exchange rate between your entry and exit.                      |
 | **Net P&L**                | Your final "Bottom Line" in base currency (`Total Proceeds - Total Cost`).                                                                        |
@@ -41,7 +41,6 @@ The summary is organized into 12 specialized columns designed for performance an
 ## Tips and Best Practices
 
 - **Strategic Campaign Analysis**: Use the **Asset P&L** (native currency) vs. **Net P&L** (base currency) to determine if your gains were driven by your trading skill or simply by favorable currency movements.
-- **Handling Wash Sales**: If your **Total Cost (EUR)** appears higher than your simple "Buy Price," it is likely due to a Wash Sale. The sheet automatically carries over deferred losses to ensure your tax reporting is compliant.
 - **Inventory Reconciliation**: The **Total Volume** column is designed to match your brokerage's 1099-B or annual statement. If you only traded options on a ticker but never owned the stock, this volume will correctly show as zero while your P&L remains accurate.
 - **Self-Healing Sheets**: This sheet is generated automatically. If you accidentally modify a formula, use the **"Generate trades"** or **"Repair Sheet"** function in the Add-on menu to restore the master logic clusters.
 
