@@ -42,9 +42,10 @@ The sheet utilizes 15 columns to bridge the gap between asset-native values and 
 | **Cost basis**           | The "Truth" average cost per share, factoring in both equity costs and option premiums.      |
 | **Total Cost**           | The total principal currently invested in the asset's native currency.                       |
 | **Total Value**          | The current market value of your position in the asset's native currency.                    |
+| **Asset P&L**            | The raw profit or loss in the asset's native currency (Total Value - Total Cost).            |
 | **Total cost b. curr.**  | The total cost converted to your base currency, including historical FX rates.               |
 | **Total value b. curr.** | The current value of your position converted to your base currency at the latest FX rate.    |
-| **P&L**                  | The unrealized profit or loss in your base currency.                                         |
+| **P&L**                  | The total unrealized profit or loss in your base currency, including market and FX impact.   |
 | **ROI**                  | The percentage return on the capital invested for this specific position.                    |
 | **Estimated Tax**        | The projected tax liability based on current P&L.                                            |
 | **Trades**               | An audit count of the total number of open "legs" contributing to this summary row.          |
