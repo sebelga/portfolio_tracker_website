@@ -49,6 +49,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "advanced/multi_currencies",
         "advanced/snapshots",
+        "advanced/performance_caching",
         "advanced/stock_splits",
         "advanced/trades_categories",
         "advanced/custom_functions",
