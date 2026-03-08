@@ -43,7 +43,7 @@ This documentation is organized into sections for easy navigation:
 
 - **Setup Guides**: Installation, configuration, and initial setup.
 - **Core Features**: Detailed explanations of trade matching, tax calculations, live prices, and more.
-- **Advanced Topics**: Multi-currency support, snapshots, utility functions, and troubleshooting.
+- **Advanced Topics**: Multi-currency support, snapshots, caching, utility functions, and troubleshooting.
 
 If you have questions or need support, check our [FAQ](/faq) or <a href="https://portfoliotrackergooglesheets.com/contact" target="_self">send us a message</a>.
 

@@ -19,8 +19,8 @@ This section configures the core settings of the add-on. These settings apply gl
   _Note_: Required for crypto assets; leave blank if not trading crypto or if you prefer to use your own method to update the prices.
 - **massive_api_key**: Your Massive.com API key for fetching stock and options data. Obtain it from [Massive.com](https://massive.com/).  
   _Note_: Required for options; leave blank if not needed or if you prefer to use your own method to update the prices. At least an "Options Starter" subscription is needed to fetch live snapshot prices.
-- **fx_rate_api_key**: Your ExchangeRate-API key for fetching historical currency exchange rates. Obtain it from [ExchangeRate-API](https://www.exchangerate-api.com/).
-  _Note_: This key is recommended (not required) to use the automated **Update selected FX rate** menu tool. Using a key allows for hourly data updates instead of the standard 24h refresh. However, a **paid subscription** is strictly required if you need to retrieve historical exchange data for past transactions.
+- **fx_rate_api_key**: Your ExchangeRate-API key for fetching historical currency exchange rates. Obtain it from [ExchangeRate-API](https://www.exchangerate-api.com/).  
+  _Note_: This key is recommended (not required) to use the automated **Update selected FX rate** menu tool. While the key allows for hourly data updates, a **paid subscription** is required if you need to retrieve historical exchange data for past transactions.
 - **dashboard_days_delta_total**: The number of days to look back in snapshots to calculate the percentage change in portfolio value.  
   _Example_: Set to 30 for a monthly delta comparison.
 - **base_currency**: The primary currency for your portfolio (e.g., USD, EUR). Default: USD.  
@@ -29,7 +29,7 @@ This section configures the core settings of the add-on. These settings apply gl
   _Example_: Set to 9 for 9 AM snapshots.
 - **tsx_cache_enabled**: Enables the incremental caching engine for trade generation. When active, the script only processes new transaction rows since the last scan, significantly improving performance for large datasets. See the [Performance and Caching documentation](/advanced/performance-caching) for more information.  
   _Note_: If you edit, delete, or insert **any** historical transaction rows, you must manually clear the trades cache via the menu to ensure data integrity.
-- **config_cache_enabled**: Caches all settings from the Configuration sheet in memory to eliminate redundant spreadsheet "read" calls during script execution.  
+- **config_cache_enabled**: Caches all settings from the Configuration sheet in memory to eliminate redundant spreadsheet "read" calls.  
   _Note_: Enable this only after finalizing your settings. If you make **any** changes to the Configuration sheet, you must manually clear the configuration cache for the changes to take effect.
 
 ## Asset Configuration
@@ -119,7 +119,7 @@ Add custom key-value pairs to save in daily snapshots for analysis. See [Snapsho
 
 _Example_:
 
-- Key: usdeur, Value: =GOOGLEFINANCE("USDEUR") (stores USD/EUR exchange rate).
+- Key: usdeur, Value: `=GOOGLEFINANCE("USDEUR")` (stores USD/EUR exchange rate).
 
 _Note_: Use Google Sheets formulas for dynamic values.
 

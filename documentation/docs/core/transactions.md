@@ -74,8 +74,8 @@ You can automatically fetch the historical FX rate based on the asset's trading 
 2.  Navigate to the top menu: **Portfolio Tracker** > **Update selected FX rate**.
 3.  The script will identify the asset's currency (e.g., USD for TSLA) and fetch the rate relative to your base currency for that specific transaction date.
 
-:::info API Requirement
-To use the automated menu update for historical rates, you must provide a paid [ExchangeRate-API](https://www.exchangerate-api.com/) key in the **General Configuration** section next to the `fx_rate_api_key` setting.
+:::info API and Subscription Requirement
+The **Update selected FX rate** tool works best with an API key from [ExchangeRate-API](https://www.exchangerate-api.com/), which enables hourly updates. Please note that to fetch rates for **historical (past) transaction dates**, a paid subscription to the service is required.
 :::
 
 ### 2. Google Finance Formula

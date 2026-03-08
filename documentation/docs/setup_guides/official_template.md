@@ -14,3 +14,16 @@ import TemplateLink from '@site/src/components/TemplateLink';
 - Get the official template <TemplateLink>here</TemplateLink>.
 
 Make a copy of the template in your Google Drive and install the add-on on your copied file. Do not use the original template directly, as the add-on will write data and the copy keeps the original unchanged.
+
+## Enabling the Extension
+
+After you have successfully made a copy of the template and installed the add-on, you must manually enable the extension within your specific spreadsheet. This step ensures that the add-on has the necessary permissions to interact with your data.
+
+1. Open your copy of the official template.
+2. Navigate to the top menu: **Extensions** > **Portfolio tracker**.
+3. Initially, you will see a single option: **Enable extension**.
+4. **Click "Enable extension"** to activate the add-on features for this sheet.
+
+:::important
+For your security, the extension will only have access to the specific spreadsheet where it has been explicitly enabled. **You must click "Enable extension" on every new copy you make**, or the automated menus and price updates will not appear.
+:::
