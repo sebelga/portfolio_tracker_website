@@ -49,7 +49,7 @@ For the "Current Price" column: leave it blank as the script will automatically 
 
 For the "CMC_id" column (only crypto): set the CMC_id value to either the coin ticker/symbol or the CoinMarketCap ID. While many coins can be identified by a ticker symbol (e.g., BTC for Bitcoin), these can sometimes change or be used for multiple cryptocurrencies. In case of price error, replace the symbol by the unique ID number ([UCID](https://support.coinmarketcap.com/hc/en-us/articles/20092704479515-Unified-Cryptoasset-ID-UCID)).
 
-Leave the "Take Snapshot" and "In Summary" checkboxes ticked to enable daily snapshots and include the asset in summary views.
+Leave the "Take Snapshot" checkbox ticked to enable daily snapshots.
 
 ## Transactions Sheet
 
@@ -76,7 +76,7 @@ This will populate the `GOOGLEFINANCE` formulas for your equities and fetch the 
 Once you have the asset current prices, and you have added some transactions, it is time to generate your trades.
 Under the "Extensions" menu > "Portfolio tracker", click on "Generate trades". After a few seconds you will have all your trades inside the "Trades" sheet. Use filters to narrow down on certain assets, asset type or any other metrics you want to analyze.
 
-Then check the "Summary" sheet. You should see a summary by asset of your trades. You will find for each asset in one row the aggregated value of your trades (number of shares, option contracts (for equities), your cost basis, P&L, ROI, taxes due (if the position were closed)
+Then check the "Summary" sheet. You should see a summary by asset of your trades. You will find for each asset in one row the aggregated value of your trades (number of shares, your cost basis, P&L, ROI, taxes due (if the position were closed)
 
 Finally navigate to the Dashboard sheet. You should have a clear visual of the trades. It might not look perfect just yet, we will dig deeper in the Dashboard documentation under Core Features.
 
