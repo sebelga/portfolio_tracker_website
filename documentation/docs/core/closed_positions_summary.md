@@ -14,7 +14,6 @@ The Closed Positions Summary sheet provides a high-level, strategic overview of 
 
 - **Root Symbol Aggregation**: The sheet groups all trades sharing the same Root Symbol. This means your performance for a ticker like "TSLA" includes the P&L from physical shares and all associated options contracts (Calls/Puts).
 - **Yearly Filtering**: A dropdown menu allows you to filter the summary by the calendar year the positions were realized.
-- **The "Tax Truth" Engine**: This sheet utilizes the `is_realized = TRUE` logic to ensure that only finalized trades are displayed.
 - **Dual-Engine Logic**:
   - **Inventory Metrics**: (Volume, Avg Prices) focus strictly on physical Spot holdings (Equity/Crypto) to match your broker records.
   - **Financial Metrics**: (P&L, Cost, FX, Tax) include all strategic activity, including options premiums and currency impacts.
@@ -42,7 +41,6 @@ The summary is organized into 12 specialized columns designed for performance an
 
 - **Strategic Campaign Analysis**: Use the **Asset P&L** (native currency) vs. **Net P&L** (base currency) to determine if your gains were driven by your trading skill or simply by favorable currency movements.
 - **Inventory Reconciliation**: The **Total Volume** column is designed to match your brokerage's 1099-B or annual statement. If you only traded options on a ticker but never owned the stock, this volume will correctly show as zero while your P&L remains accurate.
-- **Self-Healing Sheets**: This sheet is generated automatically. If you accidentally modify a formula, use the **"Generate trades"** or **"Repair Sheet"** function in the Add-on menu to restore the master logic clusters.
 
 :::tip
 To see the individual trades that make up a summary row, refer to the **Trades** sheet and filter by the **Ticker** and **Year close** columns.

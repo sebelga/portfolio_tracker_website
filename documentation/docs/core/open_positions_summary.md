@@ -12,7 +12,7 @@ The Open Positions Summary sheet provides a consolidated, aggregated overview of
 
 ## Purpose and How It Works
 
-- **Aggregation**: The sheet summarizes data only for assets with active, unrealized positions (`is_realized = FALSE`).
+- **Aggregation**: The sheet summarizes data only for assets with active, unrealized positions.
 - **Units vs. Value Exposure**: It distinguishes between your physical inventory (**Spot Qty**), your share-equivalent risk (**Net Units**), and the actual monetary weight of that risk (**Net Exposure**). This is essential for managing portfolios with leverage or complex option strategies.
 - **Real-Time Risk Monitoring**: The sheet calculates your "Leverage Ratio" in the header, providing an immediate pulse on how much market risk you are carrying relative to your actual equity.
 
