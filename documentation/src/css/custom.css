@@ -38,17 +38,11 @@ html {
 }
 
 body {
-  font-family:
-    "IBM Plex Mono", ui-monospace, "SFMono-Regular", "Menlo", "Monaco",
-    "Consolas", "Liberation Mono", "Courier New", monospace;
+  font-family: "Mona Sans", sans-serif;
 }
 
 .theme-doc-markdown {
   padding: 0 24px;
-}
-
-.theme-doc-sidebar-menu {
-  font-size: 0.9rem;
 }
 
 .markdown > h2 {
