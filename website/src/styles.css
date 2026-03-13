@@ -35,3 +35,29 @@ iframe {
 .menu li.active > a {
   @apply bg-gray-100 text-primary-content; /* Or customize as needed */
 }
+
+.pswp__button--close {
+  border-radius: 4px;
+  background-color: #33333366;
+}
+
+.pswp__button--close:focus,
+.pswp__button--close:hover {
+  background-color: #33333399;
+}
+
+.pswp__button--arrow {
+  background-color: #33333366;
+  border-radius: 100%;
+  height: 75px;
+}
+.pswp__button--arrow:hover {
+  background-color: #33333399;
+}
+
+.pswp__button--arrow--next .pswp__icn {
+  transform: scale(-1, 1) translateX(3px);
+}
+.pswp__button--arrow--prev .pswp__icn {
+  transform: translateX(5px);
+}
