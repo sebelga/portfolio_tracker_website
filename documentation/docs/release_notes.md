@@ -49,5 +49,5 @@ This version introduces significant structural updates to the **Transactions** a
 ---
 
 :::tip Migration Notice
-If you are using a version older than **v0.5**, some features of the add-on may not display correctly. We recommend downloading the latest version from the [Introduction](/intro#spreadsheet-template) page and migrating your data from your **Configuration** and **Transactions** sheets.
+If you are using a version older than **v0.5.0**, some features of the add-on may not display correctly. We recommend downloading the latest version from the [official template](/setup-guides/official-template) page and migrating your data from your **Configuration** and **Transactions** sheets.
 :::
