@@ -21,6 +21,9 @@ This version introduces significant structural updates to the **Transactions** a
 
 ### New Features & Improvements
 
+- **New Analysis Sheet**: An interactive dashboard for deep-dive performance reviews.
+  - **Dynamic Filtering**: Filter trades by Asset (ticker or root symbol), Realization Status (Open/Closed), Year, or Custom Date Ranges.
+  - **Header Vital Signs**: Real-time calculation of Success Rate, ROI, P&L, Estimated Tax, and FX Impact for any filtered subset.
 - **Automated Options Handling**: The template now automatically handles option exercises and assignments. When an option is exercised/assigned, the template will automatically generate the corresponding buy or sell transactions for the underlying shares.
 - **Enhanced Trade Analytics**: We’ve added several new columns to the **Trades** sheet to give you a deeper look at your performance:
   - **Realized P&L**: Track locked-in profits separately.
