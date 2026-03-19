@@ -34,7 +34,7 @@ Gets values from a category sheet column. Use exposed named ranges like `c_ticke
 
 ### COLINDEX_OPEN_SUMMARY(columnId)
 
-Returns the column index for a specific "Open Positions Summary" column. Available IDs: "ticker", "livePrice", "shares", "trades", "costBasis", "cost", "costBcurr", "currValue", "currValueBcurr", "contracts", "tradesOptions", "costBcurrOptions", "currValueBcurrOptions", "totalCostBcurr", "totalValueBcurr", "pl", "roi", "tax".  
+Returns the column index for a specific "Open Positions Summary" column. Available IDs: "ticker", "livePrice", "spotQty", "optionsQty", "netUnits", "netExposure", "costBasis", "totalCost", "totalValue", "assetPl", "totalCostBcurr", "totalValueBcurr", "pl", "roi", "tax", "trades".  
 **Example**: `=COLINDEX_OPEN_SUMMARY("totalValueBcurr")` returns the index (e.g., 15) for "Total value b. curr."
 
 ### CONFIG(id, defaultValue)
@@ -56,6 +56,16 @@ Gets the exchange rate for a specific date.
 
 Returns the option contract price from Asset Configuration. Run "Update prices" first.  
 **Example**: `=OPTION_PRICE("NVDA250117C00300000")` returns the price for that option.
+
+### OPTION_TYPE(ticker)
+
+Returns the option contract type, "Call" or "Put" from Asset Configuration.  
+**Example**: `=OPTION_TYPE("NVDA250117C00300000")` returns "Call".
+
+### OPTION_DELTA(ticker)
+
+Returns the option contract delta from Asset Configuration. Run "Update prices" first.  
+**Example**: `=OPTION_DELTA("NVDA250117C00300000")` returns the delta for that option.
 
 ### SNAP_COL_LETTER(ticker, column)
 
