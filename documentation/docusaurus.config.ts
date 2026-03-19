@@ -140,29 +140,10 @@ const config: Config = {
       logo: {
         alt: "Portfolio tracker logo",
         src: "img/logo.svg",
+        href: "/",
       },
-      items: [
-        {
-          position: "left",
-          label: "Home",
-          target: "_self",
-          to: websiteURL,
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "docs",
-          position: "left",
-          label: "Documentation",
-          to: "/",
-        },
-        {
-          // type: "docSidebar",
-          position: "left",
-          label: "Contact",
-          to: `${websiteURL}/contact`,
-          target: "_self",
-        },
-      ],
+      // Items are added in the src/theme/Navbar/Content/index.tsx file to allow for a custom layout
+      items: [],
     },
     prism: {
       theme: prismThemes.github,
