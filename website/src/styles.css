@@ -1,6 +1,9 @@
 @import "../../node_modules/photoswipe/dist/photoswipe.css";
 
 @import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
 @plugin "daisyui" {
   themes:
     emerald --default,
