@@ -1,7 +1,7 @@
 ---
-slug: /release-notes
+slug: /release-notes-template
 sidebar_position: 10
-id: release-notes
+id: release-notes-template
 title: Template Release Notes
 description: Stay up to date with the latest improvements, bug fixes, and structural changes to the Portfolio Tracker spreadsheet template.
 tags: [updates, release-notes, changelog, template]

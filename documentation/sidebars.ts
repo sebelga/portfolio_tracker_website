@@ -59,7 +59,7 @@ const sidebars: SidebarsConfig = {
     },
     "faq",
     "troubleshooting",
-    "release-notes",
+    "release-notes-template",
   ],
 };
 
