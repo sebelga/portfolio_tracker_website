@@ -140,7 +140,8 @@ const config: Config = {
       logo: {
         alt: "Portfolio tracker logo",
         src: "img/logo.svg",
-        href: "/",
+        href: websiteURL,
+        target: "_self",
       },
       // Items are added in the src/theme/Navbar/Content/index.tsx file to allow for a custom layout
       items: [],
