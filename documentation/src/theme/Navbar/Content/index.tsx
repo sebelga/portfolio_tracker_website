@@ -34,7 +34,7 @@ function NavbarItems({ items }: { items: NavbarItemConfig[] }): ReactNode {
               `A theme navbar item failed to render.
 Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
 ${JSON.stringify(item, null, 2)}`,
-              { cause: error }
+              { cause: error },
             )
           }
         >
@@ -57,7 +57,7 @@ function NavbarContentLayout({
       <div
         className={clsx(
           ThemeClassNames.layout.navbar.containerLeft,
-          "navbar_start" // SEB ADDED
+          "navbar_start", // SEB ADDED
           // "navbar__items"
         )}
       >
@@ -67,7 +67,7 @@ function NavbarContentLayout({
         className={clsx(
           ThemeClassNames.layout.navbar.containerRight,
           // "navbar__items--right", // SEB COMMENTED THIS
-          "navbar-end hidden lg:flex" // SEB ADDED
+          "navbar-end hidden lg:flex", // SEB ADDED
         )}
       >
         {right}
@@ -85,7 +85,9 @@ function WebsiteMainMenu() {
       <li className="active">
         <a href="/docs"> Documentation </a>
       </li>
-
+      <li>
+        <a href="/about"> About </a>
+      </li>
       <li>
         <a href="/contact"> Contact </a>
       </li>

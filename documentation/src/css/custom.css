@@ -66,7 +66,7 @@ body {
 }
 
 .navbar__brand {
-  margin-top: 4px;
+  margin-top: 13px;
   @media (width >= 64rem) {
     margin-left: -6px;
   }
@@ -90,8 +90,8 @@ body {
 }
 
 .navbar__logo img {
-  width: 160px;
-  height: 59px;
+  width: 280px;
+  height: 41.48px;
 }
 
 .navbar__inner {
@@ -113,7 +113,7 @@ body {
   align-items: center;
   width: 50%;
   justify-content: flex-end;
-  margin-top: -9px;
+  margin-top: 0px;
 }
 
 .desktopMenu.menu {
@@ -157,10 +157,18 @@ body {
     user-select: none;
   }
 }
+.desktopMenu.menu a {
+  color: inherit;
+  font-weight: 400;
+}
 
 .desktopMenu.menu li.active > a {
   background-color: oklch(96.7% 0.003 264.542);
   color: oklch(33.387% 0.04 162.24);
+}
+
+.desktopMenu.menu li > a:hover {
+  background-color: color-mix(in oklab, #333c4d 10%, transparent);
 }
 
 .desktopMenu.menu-horizontal {
