@@ -28,6 +28,11 @@ export default defineConfig({
           },
         },
         {
+          name: "about",
+          template: resolve(__dirname, "src/pages/about.ejs"),
+          filename: "about.html",
+        },
+        {
           name: "contact",
           template: resolve(__dirname, "src/pages/contact.ejs"),
           filename: "contact.html",
