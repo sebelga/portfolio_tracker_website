@@ -6,6 +6,7 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
       gallery: "#gallery",
       children: "a",
       pswpModule: () => import("photoswipe"),
+      zoom: false,
     });
 
     lightbox.init();

@@ -19,12 +19,18 @@ This section configures the core settings of the add-on. These settings apply gl
   _Note_: Required for crypto assets; leave blank if not trading crypto or if you prefer to use your own method to update the prices.
 - **massive_api_key**: Your Massive.com API key for fetching stock and options data. Obtain it from [Massive.com](https://massive.com/).  
   _Note_: Required for options; leave blank if not needed or if you prefer to use your own method to update the prices. At least an "Options Starter" subscription is needed to fetch live snapshot prices.
+- **fx_rate_api_key**: Your ExchangeRate-API key for fetching historical currency exchange rates. Obtain it from [ExchangeRate-API](https://www.exchangerate-api.com/).  
+  _Note_: This key is recommended (not required) to use the automated **Update selected FX rate** menu tool. While the key allows for hourly data updates, a **paid subscription** is required if you need to retrieve historical exchange data for past transactions.
 - **dashboard_days_delta_total**: The number of days to look back in snapshots to calculate the percentage change in portfolio value.  
   _Example_: Set to 30 for a monthly delta comparison.
 - **base_currency**: The primary currency for your portfolio (e.g., USD, EUR). Default: USD.  
   _Note_: All values will be converted to this currency under the columns with "b. curr.".
 - **daily_snapshot_hour**: The hour (in 24-hour format) when daily snapshots are taken.  
   _Example_: Set to 9 for 9 AM snapshots.
+- **tsx_cache_enabled**: Enables the incremental caching engine for trade generation. When active, the script only processes new transaction rows since the last scan, significantly improving performance for large datasets. See the [Performance and Caching documentation](/advanced/performance-caching) for more information.  
+  _Note_: If you edit, delete, or insert **any** historical transaction rows, you must manually clear the trades cache via the menu to ensure data integrity.
+- **config_cache_enabled**: Caches all settings from the Configuration sheet in memory to eliminate redundant spreadsheet "read" calls.  
+  _Note_: Enable this only after finalizing your settings. If you make **any** changes to the Configuration sheet, you must manually clear the configuration cache for the changes to take effect.
 
 ## Asset Configuration
 
@@ -37,7 +43,6 @@ For each asset, configure the following columns:
 - **Currency**: The asset's trading currency (e.g., USD).
 - **CMC_id**: The CoinMarketCap UUID for crypto assets (leave blank for equities). Only required if the Symbol is not returning the correct coin's price.
 - **Take snapshot**: Checkbox to include the asset in daily snapshots.
-- **In Summary**: Checkbox to include the asset in summary tables.
 - **Current price**: Leave blank; it updates automatically via "Update prices".
 
 _Example_: For Bitcoin, set Symbol to "BTC", Asset type to "crypto", Currency to "USD", CMC_id: leave blank as there is only one BTC, and check both checkboxes.
@@ -68,16 +73,17 @@ _Note_: Custom categories help in analyzing matching trades within a specific ca
 
 ## Option Contracts
 
-Configure options contracts you trade. Enter only the Ticker (e.g., "NVDA271217C00090000"), and other fields auto-populate if you copy/paste the dummy row provided in the template.
+Configure options contracts you trade. Enter only the Ticker (e.g., "NVDA271217C00090000"), and other fields auto-populate if you copy/paste the example row provided in the template.
 
 - **Ticker**: The full options ticker.
 - **Current price**: Updates via "Update prices".
+- **Current delta**: The option Delta greek. It updates via "Update prices".
 - **Root symbol**: Auto-filled using `=PT_EXTRACT_OPTION_ROOT_SYMBOL(Q<rowNumber>)`.
 - **Exp. date**: Auto-filled using `=PT_EXTRACT_OPTION_EXPIRY_DATE(Q<rowNumber>)`.
 - **Days to exp.**: Auto-calculated with `=IF(TODAY() > DATEVALUE(T<rowNumber>), 0, DAYS(T<rowNumber>, TODAY()))`.
 - **Has open trades**: Set to "yes" or "no" after running "Generate trades". Remove contracts with "no".
 
-_Example_: Enter "AAPL240315C00150000" for an Apple call option expiring March 15, 2024.
+_Example_: Enter "AAPL270315C00150000" for an Apple call option expiring March 15, 2027.
 
 _Note_: Ensure the ticker format is correct for auto-extraction.
 
@@ -101,7 +107,7 @@ Record stock splits for equities (or root symbols for options-only assets).
 
 - **Ticker**: The equity ticker (e.g., TSLA).
 - **Date**: The split date (e.g., 2022-08-25).
-- **Split amount**: The split ratio (e.g., "10" for a 10:1 split).
+- **Split amount**: The split ratio (e.g., "10" for a 10/1 split or "0.1" for a 1/10 reverse split).
 
 _Example_: For a 2-for-1 split of AAPL on 2020-08-31, enter Ticker: AAPL, Date: 2020-08-31, Split amount: 2.
 
@@ -113,7 +119,7 @@ Add custom key-value pairs to save in daily snapshots for analysis. See [Snapsho
 
 _Example_:
 
-- Key: usdeur, Value: =GOOGLEFINANCE("USDEUR") (stores USD/EUR exchange rate).
+- Key: usdeur, Value: `=GOOGLEFINANCE("USDEUR")` (stores USD/EUR exchange rate).
 
 _Note_: Use Google Sheets formulas for dynamic values.
 

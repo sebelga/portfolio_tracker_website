@@ -20,13 +20,13 @@ const sidebars: SidebarsConfig = {
 
   docs: [
     "intro",
-    "getting-started",
     {
       type: "category",
       label: "Setup guides",
       items: [
-        "setup_guides/official_template",
         "setup_guides/install_uninstall",
+        "setup_guides/official_template",
+        "setup_guides/getting-started",
         "setup_guides/configuration",
         "setup_guides/locale",
       ],
@@ -40,6 +40,7 @@ const sidebars: SidebarsConfig = {
         "core/dashboard",
         "core/open_positions_summary",
         "core/closed_positions_summary",
+        "core/analysis",
         "core/cash",
       ],
     },
@@ -49,6 +50,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "advanced/multi_currencies",
         "advanced/snapshots",
+        "advanced/performance_caching",
         "advanced/stock_splits",
         "advanced/trades_categories",
         "advanced/custom_functions",
@@ -57,6 +59,7 @@ const sidebars: SidebarsConfig = {
     },
     "faq",
     "troubleshooting",
+    "release-notes",
   ],
 };
 

@@ -3,11 +3,7 @@
 <%- include('./src/partials/head.ejs', { title: 'Privacy Policy: Portfolio Tracker for Investment Tracking', description: 'Review the privacy policy for Portfolio Tracker, your secure investment tracker add-on for Google Sheets.', slug: '/privacy-policy' }) %>
 
 <body class="bg-white pt-25 font-sans text-gray-900 antialiased">
-  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-  <!-- Breadcrumb structured data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,17 +24,16 @@
     }
   </script>
 
-  <!-- Header -->
   <%- include('./src/partials/header.ejs') %>
   <main>
     <section>
-      <div class="container mx-auto px-4 py-4 md:px-6 md:py-16">
-        <div class="mx-auto prose">
+      <div class="container mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-16">
+        <div class="prose max-w-none">
           <h1 class="font-display text-2xl md:text-5xl mb-3">
-            Privacy Policy – Portfolio Tracker
+            Privacy Policy - Portfolio Tracker
           </h1>
 
-          <p class="mb-3"><strong>Effective Date: September 21, 2025</strong></p>
+          <p class="mb-3"><strong>Effective Date: March 19, 2026</strong></p>
 
           <p>Welcome to the Portfolio Tracker Add-on (the "Add-on") for Google Sheets™. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Add-on. By using the Add-on, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use the Add-on.</p>
 
@@ -47,8 +42,16 @@
           <ul>
             <li><strong>Email Address:</strong> We collect and store your email address to handle licensing, password resets, and communications related to your account. We do not share your email with any third parties, and we do not send marketing communications.</li>
           </ul>
+
           <p><strong>Transaction Data:</strong> We do not collect or store any transaction data from your Google Sheets™. All transaction data (such as stock, crypto, and options investments) is read into memory, parsed, and rendered directly into your attached Google Sheet. No data is stored externally or retained after processing.</p>
-          <p>The Add-on may require access to your Google Sheets™ to function, but this access is limited to processing within Google's ecosystem.</p>
+
+          <p><strong>External Data Requests (Live Data Fetching):</strong> To provide real-time investment tracking, the Add-on makes authorized external requests to fetch current market data. These requests are limited exclusively to the following services approved by Google:</p>
+          <ul>
+            <li><strong>CoinMarketCap (https://pro-api.coinmarketcap.com):</strong> Used for fetching live crypto asset prices.</li>
+            <li><strong>Massive (https://api.massive.com):</strong> Used for fetching live option contract data.</li>
+            <li><strong>ExchangeRate-API (https://v6.exchangerate-api.com) and Open Exchange Rates (https://open.er-api.com):</strong> Used for fetching real-time FX rates.</li>
+          </ul>
+          <p>No personal information or specific portfolio quantities are transmitted to these external APIs; we only send the ticker symbols or currency codes required to retrieve current pricing information.</p>
 
           <h2 class="text-3xl mt-6 mb-3">2. How We Use Your Information</h2>
           <p>We use the collected information solely for the following purposes:</p>
@@ -78,7 +81,7 @@
           <p>The Add-on is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it.</p>
 
           <h2 class="text-3xl mt-6 mb-3">7. International Users</h2>
-          <p>The Add-on operates entirely within Google's ecosystem, so your data (including transaction processing in Google Sheets™) is handled, stored, and processed on Google servers, which may be located outside your country (e.g., in the US or EU). We do not transfer, store, or process any data on servers in Andorra or elsewhere outside of Google.</p>
+          <p>The Add-on operates primarily within Google's ecosystem, and your core account data is handled on Google servers. While we use the specific external APIs listed in Section 1 to fetch live market data, we do not transfer, store, or process any of your personal data on servers in Andorra or elsewhere outside of Google.</p>
           <p>For contact form submissions (e.g., support requests), your email and message are stored in a Google Sheet on Google's servers. By using the Add-on and submitting forms, you consent to this processing by Google under their privacy terms. For details, review Google's Privacy Policy.</p>
 
           <h2 class="text-3xl mt-6 mb-3">8. Changes to This Privacy Policy</h2>
@@ -89,12 +92,10 @@
 
           <p class="mt-8">Thank you for using the Portfolio Tracker Add-on!</p>
 
-
         </div>
       </div>
     </section>
   </main>
-  <!-- Footer -->
   <%- include('./src/partials/footer.ejs') %>
 </body>
 

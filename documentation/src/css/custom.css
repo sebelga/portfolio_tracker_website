@@ -15,6 +15,10 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-heading-font-family:
+    "IBM Plex Mono", ui-monospace, "SFMono-Regular", "Menlo", "Monaco",
+    "Consolas", "Liberation Mono", "Courier New", monospace;
+  --ifm-h2-font-size: 1.5rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -33,6 +37,28 @@ html {
   --ifm-navbar-height: 75px;
 }
 
+body {
+  font-family: "Mona Sans", sans-serif;
+}
+
+.theme-doc-markdown {
+  padding: 0 24px;
+}
+
+.markdown > h2 {
+  --ifm-h2-font-size: 1.5rem;
+}
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2.5rem;
+}
+
+/* Set smaller chevron arrow */
+.theme-doc-sidebar-item-category {
+  a:after {
+    background-size: 1.5rem 1.5rem;
+  }
+}
+
 .navbar {
   height: 75px;
   width: 100%;
@@ -40,7 +66,7 @@ html {
 }
 
 .navbar__brand {
-  margin-top: 4px;
+  margin-top: 13px;
   @media (width >= 64rem) {
     margin-left: -6px;
   }
@@ -64,8 +90,8 @@ html {
 }
 
 .navbar__logo img {
-  width: 160px;
-  height: 59px;
+  width: 280px;
+  height: 41.48px;
 }
 
 .navbar__inner {
@@ -87,7 +113,7 @@ html {
   align-items: center;
   width: 50%;
   justify-content: flex-end;
-  margin-top: -9px;
+  margin-top: 0px;
 }
 
 .desktopMenu.menu {
@@ -131,10 +157,18 @@ html {
     user-select: none;
   }
 }
+.desktopMenu.menu a {
+  color: inherit;
+  font-weight: 400;
+}
 
 .desktopMenu.menu li.active > a {
   background-color: oklch(96.7% 0.003 264.542);
   color: oklch(33.387% 0.04 162.24);
+}
+
+.desktopMenu.menu li > a:hover {
+  background-color: color-mix(in oklab, #333c4d 10%, transparent);
 }
 
 .desktopMenu.menu-horizontal {

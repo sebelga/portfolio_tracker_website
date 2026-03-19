@@ -3,11 +3,7 @@
 <%- include('./src/partials/head.ejs', { title: 'Terms and Services: Portfolio Tracker', description: 'Review the terms and conditions for Portfolio Tracker.', slug: '/terms-and-services' }) %>
 
 <body class="bg-white pt-25 font-sans text-gray-900 antialiased">
-  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-  <!-- Breadcrumb structured data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,17 +24,16 @@
     }
   </script>
 
-  <!-- Header -->
   <%- include('./src/partials/header.ejs') %>
   <main>
     <section>
-      <div class="container mx-auto px-4 py-4 md:px-6 md:py-16">
-        <div class="mx-auto prose">
+      <div class="container mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-16">
+        <div class="prose max-w-none">
           <h1 class="font-display text-2xl md:text-5xl mb-3">
-            Terms and Services – Portfolio Tracker
+            Terms and Services - Portfolio Tracker
           </h1>
 
-          <p class="mb-3"><strong>Effective Date: September 21, 2025</strong></p>
+          <p class="mb-3"><strong>Effective Date: March 19, 2026</strong></p>
 
           <p>Welcome to the Portfolio Tracker Add-on (the "Add-on") for Google Sheets™. This Add-on is designed to help users track their stock, crypto, and options investments by parsing transactions, matching trades, generating dashboards, summaries, and trade sheets, and handling tax implications and currency conversions. By using the Add-on, you agree to these Terms of Service ("Terms"). If you do not agree, please do not use the Add-on.</p>
 
@@ -46,8 +41,9 @@
           <p>These Terms govern your access to and use of the Add-on. By installing, accessing, or using the Add-on, you confirm that you have read, understood, and agree to be bound by these Terms. We may update these Terms from time to time, and your continued use constitutes acceptance of any changes.</p>
 
           <h2 class="text-3xl mt-6 mb-3">2. Description of Service</h2>
-          <p>The Add-on allows you to input investment transactions into a Google Sheets™ template. It processes these transactions to identify matching trades (e.g., pairing buys and sells), calculate open and closed positions, generate visual dashboards and summaries, and perform currency conversions and basic tax-related calculations (such as cost basis tracking). The Add-on operates within your Google Sheets™ environment and does not store your data externally unless explicitly stated.</p>
-          <p><strong>Important Note:</strong> The Add-on is a tool for personal use and organization. It is not a financial advisory service, tax preparation software, or investment platform. All calculations are based on user-provided data and may not account for all variables, regulations, or market changes.</p>
+          <p>The Add-on allows you to input investment transactions into a Google Sheets™ template. It processes these transactions to identify matching trades (e.g., pairing buys and sells), calculate open and closed positions, and generate visual dashboards. </p>
+          <p>To provide real-time accuracy, the Add-on fetches live market data—including crypto asset prices, option contract data, and foreign exchange (FX) rates—from authorized external providers. The Add-on operates within your Google Sheets™ environment and does not store your data externally unless explicitly stated.</p>
+          <p><strong>Important Note:</strong> The Add-on is a tool for personal use and organization. It is not a financial advisory service, tax preparation software, or investment platform. All calculations are based on user-provided data and external market feeds, which may not account for all variables, regulations, or market changes.</p>
 
           <h2 class="text-3xl mt-6 mb-3">3. User Responsibilities</h2>
           <p>You are responsible for:</p>
@@ -65,8 +61,8 @@
           </ul>
 
           <h2 class="text-3xl mt-6 mb-3">4. Data and Privacy</h2>
-          <p>The Add-on processes data within your Google Sheets™ file. It requires access to your Google Sheets™ functionality. We do not collect, store, or share your personal or financial data outside of Google's ecosystem. For more details, please review our <a href="/privacy-policy">Privacy policy</a>.</p>
-          <p>By using the Add-on, you grant us permission to access and process your data as needed to provide the service.</p>
+          <p>The Add-on processes data within your Google Sheets™ file. To provide real-time tracking, it makes authorized external requests to fetch current market data as described in our <a href="/privacy-policy">Privacy Policy</a>. We do not collect, store, or share your personal or financial data with these external providers or any third parties outside of Google's ecosystem.</p>
+          <p>By using the Add-on, you grant us permission to access and process your data as needed to provide the service, including the necessary external requests for market data.</p>
 
           <h2 class="text-3xl mt-6 mb-3">5. Intellectual Property</h2>
           <p>The Add-on, including its code, design, and generated outputs (e.g., dashboards), is owned by Sébastien Loix and protected by intellectual property laws. You are granted a limited, non-exclusive license to use the Add-on for personal purposes. You may not copy, modify, or distribute any part of the Add-on without written permission.</p>
@@ -76,9 +72,9 @@
           <ul>
             <li>Calculations (e.g., trade matching, tax estimates, currency conversions) will be error-free or compliant with all laws.</li>
             <li>The Add-on will meet your specific requirements or be uninterrupted.</li>
-            <li>Market data or external integrations (if any) will be accurate or up-to-date.</li>
+            <li>Market data or external integrations (such as data from CoinMarketCap, Massive, or ExchangeRate-API) will be accurate, complete, or up-to-date.</li>
           </ul>
-          <p><strong>Financial Disclaimer:</strong> The Add-on is not intended to provide financial, tax, or investment advice. Consult a qualified professional for personalized advice. We are not liable for any losses, taxes, or decisions based on the Add-on's outputs.</p>
+          <p><strong>Financial Disclaimer:</strong> The Add-on is not intended to provide financial, tax, or investment advice. Consult a qualified professional for personalized advice. We are not liable for any losses, taxes, or decisions based on the Add-on's outputs or the external market data it retrieves.</p>
 
           <h2 class="text-3xl mt-6 mb-3">7. Limitation of Liability</h2>
           <p>To the fullest extent permitted by law, Sébastien Loix shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Add-on, even if advised of the possibility of such damages. Our total liability shall not exceed the amount you paid for the Add-on (if any).</p>
@@ -96,8 +92,7 @@
           <p>We may modify these Terms at any time. Changes will be posted here, and your continued use signifies acceptance. Check this page periodically for updates.</p>
 
           <h2 class="text-3xl mt-6 mb-3">12. Contact Us</h2>
-          <p>If you have questions about these Terms, contact us using the form <a href="/contact">on this page</a>.
-          </p>
+          <p>If you have questions about these Terms, contact us using the form <a href="/contact">on this page</a>.</p>
 
           <p class="mt-8">Thank you for using the Portfolio Tracker Add-on!</p>
 
@@ -105,7 +100,6 @@
       </div>
     </section>
   </main>
-  <!-- Footer -->
   <%- include('./src/partials/footer.ejs') %>
 </body>
 
