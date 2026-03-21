@@ -46,4 +46,9 @@
   </style>
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="icon" href="/img/favicon.png" type="image/png" sizes="256x256" />
+  <% if (typeof extraStyles !== 'undefined') { %>
+  <% extraStyles.forEach(style => { %>
+  <link rel="stylesheet" href="<%= style %>">
+  <% }) %>
+  <% } %>
 </head>

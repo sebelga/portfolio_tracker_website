@@ -1,148 +1,136 @@
-<!doctype html>
-<html lang="en" data-theme="emerald">
-<%- include('./src/partials/head.ejs', { 
+<%- include('./src/partials/layout_top.ejs', { 
   title: 'Automated Portfolio Tracker for Google Sheets | Stocks, Crypto & Options', 
-  description: 'Your data, our logic. Professional investment tracking for Google Sheets™. Automate LIFO/FIFO matching, FX impact analysis, and tax calculations for stocks, crypto, and options.' 
+  description: 'Your data, our logic. Professional investment tracking for Google Sheets™. Automate LIFO/FIFO matching, FX impact analysis, and tax calculations for stocks, crypto, and options.',
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Portfolio Tracker",
+    "description": "Professional-grade portfolio tracking in Google Sheets. Automates trade matching, tax calculations, and FX impact analysis for a unified view of stocks, crypto, and options.",
+    "url": "https://portfoliotrackergooglesheets.com",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
 }) %>
 
-<body>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Portfolio Tracker",
-      "description": "Professional-grade portfolio tracking in Google Sheets. Automates trade matching, tax calculations, and FX impact analysis for a unified view of stocks, crypto, and options.",
-      "url": "https://portfoliotrackergooglesheets.com",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-  </script>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <%- include('./src/partials/header.ejs') %>
-  <main>
-    <section class="hero min-h-[75vh] md:mt-[90px] pb-8">
-      <div class="hero-content text-center">
-        <div class="max-w-4xl">
-          <p class="text-primary font-semibold uppercase tracking-widest mb-2">Your Data. Your Sheet. Professional Insights.</p>
-          <h1 class="text-5xl md:text-7xl font-bold mb-6">Automated Investment Tracking
-            <br />in Google Sheets™
-          </h1>
-          <p class="text-xl mb-8 text-gray-600">Stop the manual math. Simply log your transactions and let our engine automate the complex LIFO/FIFO matching, FX conversions, and tax calculations for your entire portfolio.</p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#how-it-works" class="btn btn-primary btn-lg text-white">Get Started for Free</a>
-            <a href="#features" class="btn btn-outline btn-lg">View Features</a>
-          </div>
+<section class="hero min-h-[75vh] md:mt-[90px] pb-8">
+  <div class="hero-content text-center">
+    <div class="max-w-4xl">
+      <p class="text-primary font-semibold uppercase tracking-widest mb-2">Your Data. Your Sheet. Professional Insights.</p>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">Automated Investment Tracking
+        <br />in Google Sheets™
+      </h1>
+      <p class="text-xl mb-8 text-gray-600">Stop the manual math. Simply log your transactions and let our engine automate the complex LIFO/FIFO matching, FX conversions, and tax calculations for your entire portfolio.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#how-it-works" class="btn btn-primary btn-lg text-white">Get Started for Free</a>
+        <a href="#features" class="btn btn-outline btn-lg">View Features</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="py-16 bg-neutral-100">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Simplified Workflow</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="card bg-base-100 shadow-xl text-center p-8">
+        <div class="text-primary font-bold text-2xl mb-4">01. Setup</div>
+        <h3 class="font-bold text-xl mb-2">Install & Copy</h3>
+        <p class="text-sm">Install the add-on and make a private copy of our professional template.</p>
+      </div>
+      <div class="card bg-base-100 shadow-xl text-center p-8 border-2 border-primary/20">
+        <div class="text-primary font-bold text-2xl mb-4">02. Input</div>
+        <h3 class="font-bold text-xl mb-2">Log Transactions</h3>
+        <p class="text-sm">Enter your buy/sell orders. No need to worry about the math or exchange rates.</p>
+      </div>
+      <div class="card bg-base-100 shadow-xl text-center p-8">
+        <div class="text-primary font-bold text-2xl mb-4">03. Analyze</div>
+        <h3 class="font-bold text-xl mb-2">Instant Reports</h3>
+        <p class="text-sm">Click "Generate Trades" to see your automated P&L, tax reports, and dashboards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="py-20 px-4">
+  <div class="container mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 class="text-4xl font-bold mb-4">Built for Serious Investors</h2>
+      <p class="text-gray-600">The spreadsheet power you love,<br />with the institutional logic you need.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
+        <div class=""><img src="/img/icon_asset.png" alt="Unified Asset Management" /></div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">Unified Asset Management</h3>
+          <p class="text-gray-600">A single source of truth for <span class="font-bold">Equities, Options, and Crypto</span>. Track everything from simple stock buys to complex option assignments in one sheet.</p>
         </div>
       </div>
-    </section>
-
-    <section id="how-it-works" class="py-16 bg-neutral-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Simplified Workflow</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="card bg-base-100 shadow-xl text-center p-8">
-            <div class="text-primary font-bold text-2xl mb-4">01. Setup</div>
-            <h3 class="font-bold text-xl mb-2">Install & Copy</h3>
-            <p class="text-sm">Install the add-on and make a private copy of our professional template.</p>
-          </div>
-          <div class="card bg-base-100 shadow-xl text-center p-8 border-2 border-primary/20">
-            <div class="text-primary font-bold text-2xl mb-4">02. Input</div>
-            <h3 class="font-bold text-xl mb-2">Log Transactions</h3>
-            <p class="text-sm">Enter your buy/sell orders. No need to worry about the math or exchange rates.</p>
-          </div>
-          <div class="card bg-base-100 shadow-xl text-center p-8">
-            <div class="text-primary font-bold text-2xl mb-4">03. Analyze</div>
-            <h3 class="font-bold text-xl mb-2">Instant Reports</h3>
-            <p class="text-sm">Click "Generate Trades" to see your automated P&L, tax reports, and dashboards.</p>
-          </div>
+      <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
+        <div class="">
+          <div class=""><img src="/img/icon_matching.png" alt="Unified Asset Management" /></div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">Advanced Trade Matching</h3>
+          <p class="text-gray-600">Automated <span class="font-bold">LIFO and FIFO</span> matching logic. See exactly which "buy" matches which "sell" without manual spreadsheets or errors.</p>
         </div>
       </div>
-    </section>
-
-    <section id="features" class="py-20 px-4">
-      <div class="container mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-4xl font-bold mb-4">Built for Serious Investors</h2>
-          <p class="text-gray-600">The spreadsheet power you love,<br />with the institutional logic you need.</p>
+      <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
+        <div class="">
+          <div class=""><img src="/img/icon_fx.png" alt="Real-Time FX Impact" /></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
-            <div class=""><img src="/img/icon_asset.png" alt="Unified Asset Management" /></div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Unified Asset Management</h3>
-              <p class="text-gray-600">A single source of truth for <span class="font-bold">Equities, Options, and Crypto</span>. Track everything from simple stock buys to complex option assignments in one sheet.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
-            <div class="">
-              <div class=""><img src="/img/icon_matching.png" alt="Unified Asset Management" /></div>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Advanced Trade Matching</h3>
-              <p class="text-gray-600">Automated <span class="font-bold">LIFO and FIFO</span> matching logic. See exactly which "buy" matches which "sell" without manual spreadsheets or errors.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
-            <div class="">
-              <div class=""><img src="/img/icon_fx.png" alt="Real-Time FX Impact" /></div>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Real-Time FX Impact</h3>
-              <p class="text-gray-600">Full <span class="font-bold">multi-currency support</span>. Automatically fetch historical exchange rates and visualize how FX fluctuations impact your actual P&L.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
-            <div class=""><img src="/img/icon_tax.png" alt="Tax-Ready Reporting" /></div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Tax-Ready Reporting</h3>
-              <p class="text-gray-600">Take the stress out of tax season. Automatically calculate <span class="font-bold">capital gains and estimated liabilities</span> based on your local tax rates and matching methods.</p>
-            </div>
-          </div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">Real-Time FX Impact</h3>
+          <p class="text-gray-600">Full <span class="font-bold">multi-currency support</span>. Automatically fetch historical exchange rates and visualize how FX fluctuations impact your actual P&L.</p>
         </div>
       </div>
-    </section>
-
-    <section id="screenshots" class="py-20 bg-neutral-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">Professional-Grade Visualization</h2>
-        <div id="gallery" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div class="pswp-gallery">
-            <a href="/img/screenshots/dashboard.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-              <img class="rounded-xl shadow-2xl w-full border border-base-300" src="/img/screenshots/524/dashboard.jpg" alt="Portfolio Tracker Dashboard in Google Sheets showing asset allocation and performance" loading="lazy" />
-            </a>
-            <p class="text-center mt-4 font-medium italic">Comprehensive Performance Dashboard</p>
-          </div>
-          <div class="pswp-gallery">
-            <a href="/img/screenshots/transactions.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
-              <img class="rounded-xl shadow-2xl w-full border border-base-300" src="/img/screenshots/524/transactions.jpg" alt="Transactions entry sheet for unified stock, crypto and options tracking" loading="lazy" />
-            </a>
-            <p class="text-center mt-4 font-medium italic">Unified Transaction Ledger</p>
-          </div>
-          <div class="pswp-gallery hidden">
-            <a href="/img/screenshots/analysis.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000"></a>
-          </div>
-          <div class="pswp-gallery hidden">
-            <a href="/img/screenshots/summary.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000"></a>
-          </div>
+      <div class="flex gap-4 p-8 rounded-2xl bg-base-100 shadow-md border-1 border-primary/20">
+        <div class=""><img src="/img/icon_tax.png" alt="Tax-Ready Reporting" /></div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">Tax-Ready Reporting</h3>
+          <p class="text-gray-600">Take the stress out of tax season. Automatically calculate <span class="font-bold">capital gains and estimated liabilities</span> based on your local tax rates and matching methods.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="cta" class="py-24 px-4 bg-gray-900 text-white text-center">
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-5xl font-bold mb-6">Ready to Take Control?</h2>
-        <p class="text-xl mb-10 text-gray-400">Join our beta program and experience the most powerful investment tracker available for Google Sheets™.</p>
-        <a href="/contact" class="btn btn-primary btn-lg px-12">Get Beta Access</a>
+<section id="screenshots" class="py-20 bg-neutral-100">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12">Professional-Grade Visualization</h2>
+    <div id="gallery" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div class="pswp-gallery">
+        <a href="/img/screenshots/dashboard.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
+          <img class="rounded-xl shadow-2xl w-full border border-base-300" src="/img/screenshots/524/dashboard.jpg" alt="Portfolio Tracker Dashboard in Google Sheets showing asset allocation and performance" loading="lazy" />
+        </a>
+        <p class="text-center mt-4 font-medium italic">Comprehensive Performance Dashboard</p>
       </div>
-    </section>
-  </main>
+      <div class="pswp-gallery">
+        <a href="/img/screenshots/transactions.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000">
+          <img class="rounded-xl shadow-2xl w-full border border-base-300" src="/img/screenshots/524/transactions.jpg" alt="Transactions entry sheet for unified stock, crypto and options tracking" loading="lazy" />
+        </a>
+        <p class="text-center mt-4 font-medium italic">Unified Transaction Ledger</p>
+      </div>
+      <div class="pswp-gallery hidden">
+        <a href="/img/screenshots/analysis.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000"></a>
+      </div>
+      <div class="pswp-gallery hidden">
+        <a href="/img/screenshots/summary.jpg" target="_blank" data-pswp-width="1800" data-pswp-height="1000"></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <%- include('./src/partials/footer.ejs') %>
-</body>
+<section id="cta" class="py-24 px-4 bg-gray-900 text-white text-center">
+  <div class="container mx-auto max-w-3xl">
+    <h2 class="text-5xl font-bold mb-6">Ready to Take Control?</h2>
+    <p class="text-xl mb-10 text-gray-400">Join our beta program and experience the most powerful investment tracker available for Google Sheets™.</p>
+    <a href="/contact" class="btn btn-primary btn-lg px-12">Get Beta Access</a>
+  </div>
+</section>
 
-</html>
+<%- include('./src/partials/layout_bottom.ejs') %>

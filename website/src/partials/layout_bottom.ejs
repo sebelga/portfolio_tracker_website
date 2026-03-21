@@ -1,0 +1,14 @@
+</main>
+
+<%- include('footer.ejs') %>
+
+<script type="module" src="/src/main.ts"></script>
+
+<% if (typeof extraScripts !== 'undefined') { %>
+<% extraScripts.forEach(script => { %>
+<script type="module" src="<%= script %>"></script>
+<% }) %>
+<% } %>
+</body>
+
+</html>

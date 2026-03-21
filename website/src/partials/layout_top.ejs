@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" data-theme="emerald">
+<%- include('head.ejs', { title: title, description: description }) %>
+
+<body>
+  <% if (typeof jsonLd !== 'undefined') { %>
+  <script type="application/ld+json">
+    <%- JSON.stringify(jsonLd, null, 2) %>
+  </script>
+  <% } %>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <%- include('header.ejs') %>
+
+  <main>

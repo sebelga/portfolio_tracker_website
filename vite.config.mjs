@@ -29,19 +29,16 @@ export default defineConfig({
           data: {
             templateUrl,
           },
-          entry: "/src/main.ts",
         },
         {
           name: "about",
           template: resolve(pagesDir, "about.ejs"),
           filename: "about.html",
-          entry: "/src/main.ts",
         },
         {
           name: "contact",
           template: resolve(pagesDir, "contact.ejs"),
           filename: "contact.html",
-          entry: "/src/main.ts",
         },
         {
           name: "docs",
@@ -52,13 +49,11 @@ export default defineConfig({
           name: "terms-and-services",
           template: resolve(pagesDir, "terms-and-services.ejs"),
           filename: "terms-and-services.html",
-          entry: "/src/main.ts",
         },
         {
           name: "privacy-policy",
           template: resolve(pagesDir, "privacy-policy.ejs"),
           filename: "privacy-policy.html",
-          entry: "/src/main.ts",
         },
       ],
       htmlMinify: true,
