@@ -45,24 +45,28 @@ export const handler: Handler = async (event) => {
     const licenseKey = doc.id;
     const licenseData = doc.data();
 
-    // 1. Rate Limiting Check
-    const lastRecoveryEmailSentAt =
-      licenseData.metadata?.lastRecoveryEmailSentAt;
+    // 1. Rate Limiting Check (Max 4 per day + 15 min cooldown)
+    let rawTimestamps: any[] =
+      licenseData.metadata?.recoveryEmailTimestamps || [];
 
-    if (lastRecoveryEmailSentAt) {
-      // Parse timestamp since it could be a JS timestamp or Firestore Timestamp object
-      const lastSentMs =
-        typeof lastRecoveryEmailSentAt === "number"
-          ? lastRecoveryEmailSentAt
-          : lastRecoveryEmailSentAt.toMillis();
-      const timeSinceLastEmailMs = Date.now() - lastSentMs;
+    const now = Date.now();
+    const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+    const COOLDOWN_MS = 15 * 60 * 1000;
 
-      const COOLDOWN_MINUTES = 15;
-      const cooldownMs = COOLDOWN_MINUTES * 60 * 1000;
+    // Parse and filter timestamps within the last 24 hours
+    let recentTimestamps: number[] = rawTimestamps
+      .map((ts) => (typeof ts === "number" ? ts : ts.toMillis()))
+      .filter((ms) => now - ms < ONE_DAY_MS);
 
-      if (timeSinceLastEmailMs < cooldownMs) {
+    // Sort descending (latest first)
+    recentTimestamps.sort((a, b) => b - a);
+
+    if (recentTimestamps.length > 0) {
+      const timeSinceLastEmailMs = now - recentTimestamps[0];
+
+      if (timeSinceLastEmailMs < COOLDOWN_MS) {
         const minutesLeft = Math.ceil(
-          (cooldownMs - timeSinceLastEmailMs) / 60000,
+          (COOLDOWN_MS - timeSinceLastEmailMs) / 60000,
         );
         return {
           statusCode: 429,
@@ -73,10 +77,22 @@ export const handler: Handler = async (event) => {
       }
     }
 
-    // 2. Mark the timestamp before sending to lock the record
+    if (recentTimestamps.length >= 4) {
+      return {
+        statusCode: 429,
+        body: JSON.stringify({
+          error:
+            "Limit reached: You can only request a license recovery 4 times per 24 hours.",
+        }),
+      };
+    }
+
+    // Add current timestamp to the array
+    recentTimestamps.push(now);
+
+    // 2. Mark the timestamps before sending to lock the record
     await licensesRef.doc(licenseKey).update({
-      "metadata.lastRecoveryEmailSentAt":
-        admin.firestore.FieldValue.serverTimestamp(),
+      "metadata.recoveryEmailTimestamps": recentTimestamps,
     });
 
     // Send the email via Resend
