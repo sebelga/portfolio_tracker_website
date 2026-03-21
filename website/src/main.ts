@@ -2,6 +2,10 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 
 (function init() {
   function gallery() {
+    if (!document.getElementById("gallery")) {
+      return;
+    }
+
     const lightbox = new PhotoSwipeLightbox({
       gallery: "#gallery",
       children: "a",
