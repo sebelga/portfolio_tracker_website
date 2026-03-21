@@ -8,17 +8,17 @@
           </svg>
         </div>
         <ul tabindex="0" class="dropdown-content menu z-1 mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
-          <li>
+          <li class="<%= typeof slug === 'undefined' || slug === '/' ? 'active' : '' %>">
             <a href="/">Home</a>
           </li>
-          <li>
-            <a href="/docs"> Documentation </a>
+          <li class="<%= typeof slug !== 'undefined' && slug.startsWith('/docs') ? 'active' : '' %>">
+            <a href="/docs">Documentation</a>
           </li>
-          <li>
-            <a href="/about"> About </a>
+          <li class="<%= typeof slug !== 'undefined' && slug === '/about' ? 'active' : '' %>">
+            <a href="/about">About</a>
           </li>
-          <li>
-            <a href="/contact"> Contact </a>
+          <li class="<%= typeof slug !== 'undefined' && slug === '/contact' ? 'active' : '' %>">
+            <a href="/contact">Contact</a>
           </li>
         </ul>
       </div>
@@ -30,19 +30,18 @@
 
     <div class="navbar-end hidden lg:flex">
       <ul class="menu menu-horizontal px-2 gap-x-1">
-        <li>
+        <li class="<%= typeof slug === 'undefined' || slug === '/' ? 'active' : '' %>">
           <a href="/">Home</a>
         </li>
-        <li>
-          <a href="/docs"> Documentation </a>
+        <li class="<%= typeof slug !== 'undefined' && slug.startsWith('/docs') ? 'active' : '' %>">
+          <a href="/docs">Documentation</a>
         </li>
-        <li>
-          <a href="/about"> About </a>
+        <li class="<%= typeof slug !== 'undefined' && slug === '/about' ? 'active' : '' %>">
+          <a href="/about">About</a>
         </li>
-        <li>
-          <a href="/contact"> Contact </a>
+        <li class="<%= typeof slug !== 'undefined' && slug === '/contact' ? 'active' : '' %>">
+          <a href="/contact">Contact</a>
         </li>
-
       </ul>
     </div>
 
