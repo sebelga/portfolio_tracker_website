@@ -4,7 +4,6 @@ dist/
 .docusaurus/
 documentation/build/
 *.log
-*.github/
 .DS_Store
 _trash
 todo.txt
