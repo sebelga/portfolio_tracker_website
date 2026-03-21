@@ -59,7 +59,19 @@ entry: '/src/main.ts'
 - **Client-side:** Keep logic in `/website/src/main.ts`. Use TypeScript strictly.
 - **Server-side:** All backend logic (API calls, data fetching, crypto price lookups) must reside in `/netlify/functions`.
 
-### 4. Build Process
+### 4. SEO & Schema Rules
+
+- **JSON-LD:** Always pass schema data via the `jsonLd` variable.
+- **Multiple Schemas:** If a page requires more than one schema (e.g., Breadcrumbs + SoftwareApplication), pass them as an **Array of Objects**.
+- **Layout Logic:** The `layout_top.ejs` is configured to automatically wrap arrays in a Schema.org `@graph` for better SEO.
+
+### 5. Body Styling
+
+- **Custom Classes:** You can pass a `bodyClass` string to `layout_top.ejs` to add classes to the <body> tag.
+- **Example:** `bodyClass: 'bg-base-200 overflow-x-hidden'`
+- **Default:** If no `bodyClass` is provided, the <body> has the `font-sans text-gray-900 antialiased` classes.
+
+### 6. Build Process
 
 - All changes to the build flow must be reflected in `./scripts/build.sh`.
 
