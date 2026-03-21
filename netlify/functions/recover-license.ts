@@ -1,5 +1,6 @@
 import { Handler } from "@netlify/functions";
 import { Resend } from "resend";
+import * as admin from "firebase-admin";
 import { initFirebase } from "../lib/firebase";
 
 if (process.env.NODE_ENV === "development") {
@@ -42,6 +43,41 @@ export const handler: Handler = async (event) => {
     // Get the first matching license
     const doc = snapshot.docs[0];
     const licenseKey = doc.id;
+    const licenseData = doc.data();
+
+    // 1. Rate Limiting Check
+    const lastRecoveryEmailSentAt =
+      licenseData.metadata?.lastRecoveryEmailSentAt;
+
+    if (lastRecoveryEmailSentAt) {
+      // Parse timestamp since it could be a JS timestamp or Firestore Timestamp object
+      const lastSentMs =
+        typeof lastRecoveryEmailSentAt === "number"
+          ? lastRecoveryEmailSentAt
+          : lastRecoveryEmailSentAt.toMillis();
+      const timeSinceLastEmailMs = Date.now() - lastSentMs;
+
+      const COOLDOWN_MINUTES = 15;
+      const cooldownMs = COOLDOWN_MINUTES * 60 * 1000;
+
+      if (timeSinceLastEmailMs < cooldownMs) {
+        const minutesLeft = Math.ceil(
+          (cooldownMs - timeSinceLastEmailMs) / 60000,
+        );
+        return {
+          statusCode: 429,
+          body: JSON.stringify({
+            error: `Please wait ${minutesLeft} minute(s) before requesting another recovery email.`,
+          }),
+        };
+      }
+    }
+
+    // 2. Mark the timestamp before sending to lock the record
+    await licensesRef.doc(licenseKey).update({
+      "metadata.lastRecoveryEmailSentAt":
+        admin.firestore.FieldValue.serverTimestamp(),
+    });
 
     // Send the email via Resend
     if (RESEND_API_KEY) {
