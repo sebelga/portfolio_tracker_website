@@ -7,3 +7,4 @@ documentation/build/
 .DS_Store
 _trash
 todo.txt
+.env.*
