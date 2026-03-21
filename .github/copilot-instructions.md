@@ -10,6 +10,7 @@ You are an expert web developer assisting with the "Portfolio Tracker" project. 
 - **Styling:** Tailwind CSS v4 + Daisy UI 5
 - **Docs:** Docusaurus (located in `/documentation`)
 - **Hosting:** Netlify (using Netlify Functions for backend logic)
+- **Dependencies:** All dependencies are managed via `package.json` at the root level and installed using the `yarn` package manager.
 
 ## 📂 Project Structure
 
