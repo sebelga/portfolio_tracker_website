@@ -71,7 +71,14 @@ entry: '/src/main.ts'
 - **Example:** `bodyClass: 'bg-base-200 overflow-x-hidden'`
 - **Default:** If no `bodyClass` is provided, the <body> has the `font-sans text-gray-900 antialiased` classes.
 
-### 6. Build Process
+### 6. Navigation & Active States
+
+- **Priority:** Handle "active" navigation states in `header.ejs` using the `slug` variable.
+- **Implementation:** Use a ternary operator to check the `slug` and apply the `.active` class.
+- **Consistency:** Ensure the `slug` passed in the page template matches the `href` in the header (e.g., `slug: '/contact'` for the Contact page).
+- **SEO Sync:** This same `slug` is used for Canonical and Social Meta tags in `head.ejs`.
+
+### 7. Build Process
 
 - All changes to the build flow must be reflected in `./scripts/build.sh`.
 
