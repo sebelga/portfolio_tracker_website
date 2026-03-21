@@ -17,15 +17,8 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
   }
 
   function initActiveLinks() {
-    let currentPath = window.location.pathname;
-
-    // Trim trailing slash for sub-paths (but keep '/' for home intact)
-    if (currentPath.endsWith("/") && currentPath !== "/") {
-      currentPath = currentPath.slice(0, -1);
-    }
-
-    // Select all <li> in menu lists (covers both mobile and desktop)
-    const menuItems = document.querySelectorAll(".menu li");
+    const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    const menuItems = document.querySelectorAll(".navbar .menu li");
 
     const pathConditions: Record<string, (path: string) => boolean> = {
       "/": (path) => path === "/",
@@ -34,15 +27,11 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
       "/about": (path) => path === "/about",
     };
 
-    menuItems.forEach(function (li) {
+    menuItems.forEach((li) => {
       const a = li.querySelector("a");
-      if (!a) return; // Skip if no <a> found
+      const linkPath = a?.getAttribute("href");
 
-      const linkPath = a.getAttribute("href");
-      if (linkPath === null) return; // Skip if no href
-
-      const condition = pathConditions[linkPath];
-      if (condition && condition(currentPath)) {
+      if (linkPath && pathConditions[linkPath]?.(currentPath)) {
         li.classList.add("active");
       }
     });
