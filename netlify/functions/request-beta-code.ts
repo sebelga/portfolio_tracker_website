@@ -1,6 +1,7 @@
 import { Handler } from "@netlify/functions";
 import { Resend } from "resend";
 import jwt from "jsonwebtoken";
+import { initFirebase } from "../lib/firebase";
 
 // Safely load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -40,6 +41,22 @@ export const handler: Handler = async (event) => {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: "Email is required" }),
+      };
+    }
+
+    // Initialize Firebase
+    const db = initFirebase();
+
+    // Check if the email already has a license
+    const licensesRef = db.collection("licenses");
+    const snapshot = await licensesRef.where("email", "==", email).get();
+
+    if (!snapshot.empty) {
+      return {
+        statusCode: 409,
+        body: JSON.stringify({
+          error: "A license has already been generated for this email address.",
+        }),
       };
     }
 

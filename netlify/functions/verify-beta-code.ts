@@ -2,6 +2,7 @@ import { Handler } from "@netlify/functions";
 import jwt from "jsonwebtoken";
 import * as admin from "firebase-admin";
 import { Resend } from "resend";
+import { initFirebase } from "../lib/firebase";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -22,45 +23,6 @@ const EMAIL_FROM = process.env.EMAIL_FROM;
 
 // Initialize Resend
 const resend = new Resend(RESEND_API_KEY);
-
-// Utility function to initialize Firebase reliably in a Serverless environment
-function initFirebase() {
-  if (!admin.apps.length) {
-    try {
-      if (process.env.FIREBASE_SERVICE_ACCOUNT) {
-        let accountString = process.env.FIREBASE_SERVICE_ACCOUNT;
-
-        // Strip out surrounding single quotes if dotenv added them
-        if (accountString.startsWith("'") && accountString.endsWith("'")) {
-          console.log(
-            "Stripping single quotes from FIREBASE_SERVICE_ACCOUNT env var",
-          );
-          accountString = accountString.slice(1, -1);
-        }
-
-        const serviceAccount = JSON.parse(accountString);
-        console.log("PARSED!", serviceAccount.project_id); // Debug log to confirm parsing
-
-        // Note: Sometimes gRPC errors occur if the implicitly extracted DB
-        // string format isn't perfectly mapped. It's safer to pass the projectId
-        // explicitly here when using the admin SDK outside of GCP environments.
-        admin.initializeApp({
-          credential: admin.credential.cert(serviceAccount),
-        });
-      } else {
-        // Fallback for local emulator or default ADC
-        admin.initializeApp();
-      }
-    } catch (error) {
-      console.error("Firebase Initialization Error:", error);
-      throw new Error("Could not initialize Firebase Admin SDK");
-    }
-  }
-
-  const db = admin.firestore();
-  db.settings({ databaseId: "default", ignoreUndefinedProperties: true });
-  return db;
-}
 
 /**
  * Generates securely random license key matching XXXX-XXXX-XXXX
