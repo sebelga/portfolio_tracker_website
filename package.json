@@ -6,6 +6,7 @@
   "scripts": {
     "build": "sh ./scripts/build.sh",
     "website:dev": "vite serve",
+    "netlify:dev": "netlify dev",
     "website:build": "vite build",
     "website:preview": "serve -l 1234 ./dist",
     "docusaurus": "docusaurus",

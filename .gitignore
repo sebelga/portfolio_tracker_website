@@ -8,3 +8,5 @@ documentation/build/
 _trash
 todo.txt
 .env.*
+# Local Netlify folder
+.netlify

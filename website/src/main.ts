@@ -22,6 +22,12 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 
     purchaseBtn.addEventListener("click", async () => {
       try {
+        const productId = purchaseBtn.getAttribute("data-product-id");
+        if (!productId) {
+          console.error("Product ID not found on the button");
+          return;
+        }
+
         const originalText = purchaseBtn.textContent;
         purchaseBtn.innerHTML =
           '<span class="loading loading-spinner loading-sm"></span> Loading...';
@@ -33,8 +39,7 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            // Note: replace 'prod_XXXXX' with the actual your Creem product ID later
-            productId: "prod_12345",
+            productId,
           }),
         });
 
