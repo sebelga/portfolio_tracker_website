@@ -16,25 +16,43 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     lightbox.init();
   }
 
+  // write a handler with a <R> return type that receives a string and return
+  // the Type or null reading the document.getElementById
+  const getElement = <R extends HTMLElement>(id: string): R | null => {
+    const element = document.getElementById(id);
+    return element as R | null;
+  };
+
+  const showToastError = (message: string) => {
+    const toast = document.createElement("div");
+    toast.className = "toast toast-top toast-center z-[9999]";
+    toast.innerHTML = `
+      <div class="alert alert-error text-error-content shadow-lg max-w-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span class="text-sm">${message}</span>
+      </div>
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.classList.add("opacity-0", "transition-opacity", "duration-500");
+      setTimeout(() => toast.remove(), 500);
+    }, 4000);
+  };
+
   function initBetaLicenseFlow() {
-    const emailForm = document.getElementById("email-form") as HTMLFormElement;
-    const codeForm = document.getElementById("code-form") as HTMLFormElement;
-    const step1Email = document.getElementById("step-1-email");
-    const step2Code = document.getElementById("step-2-code");
-    const step3Success = document.getElementById("step-3-success");
-    const displayEmail = document.getElementById("display-email");
-    const sendCodeBtn = document.getElementById(
-      "send-code-btn",
-    ) as HTMLButtonElement;
-    const verifyCodeBtn = document.getElementById(
-      "verify-code-btn",
-    ) as HTMLButtonElement;
-    const backToEmailBtn = document.getElementById("back-to-email-btn");
-    const copyLicenseBtn = document.getElementById("copy-license-btn");
-    const newLicenseKeyText = document.getElementById("new-license-key");
-    const betaModal = document.getElementById(
-      "beta_license_modal",
-    ) as HTMLDialogElement;
+    const emailForm = getElement<HTMLFormElement>("email-form");
+    const codeForm = getElement<HTMLFormElement>("code-form");
+    const step1Email = getElement<HTMLElement>("step-1-email");
+    const step2Code = getElement<HTMLElement>("step-2-code");
+    const step3Success = getElement<HTMLElement>("step-3-success");
+    const displayEmail = getElement<HTMLElement>("display-email");
+    const sendCodeBtn = getElement<HTMLButtonElement>("send-code-btn");
+    const verifyCodeBtn = getElement<HTMLButtonElement>("verify-code-btn");
+    const backToEmailBtn = getElement<HTMLButtonElement>("back-to-email-btn");
+    const copyLicenseBtn = getElement<HTMLButtonElement>("copy-license-btn");
+    const newLicenseKeyText = getElement<HTMLElement>("new-license-key");
+    const betaModal = getElement<HTMLDialogElement>("beta_license_modal");
 
     if (!emailForm || !codeForm || !betaModal) return;
 
@@ -46,9 +64,9 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 
       const emailInput = document.getElementById(
         "user-email",
-      ) as HTMLInputElement;
-      const email = emailInput.value.trim();
-      if (!email) return;
+      ) as HTMLInputElement | null;
+      const email = emailInput?.value.trim();
+      if (!email || !sendCodeBtn) return;
 
       const originalBtnText = sendCodeBtn.textContent;
       sendCodeBtn.innerHTML =
@@ -56,22 +74,19 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
       sendCodeBtn.disabled = true;
 
       try {
-        // Prepare to call the actual Netlify function to be built
-        /*
         const response = await fetch("/.netlify/functions/request-beta-code", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
         });
-        
-        if (!response.ok) throw new Error("Failed to send code");
-        const data = await response.json();
-        currentJwtToken = data.token;
-        */
 
-        // MOCK: Simulate network request for now
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        currentJwtToken = "mock_jwt_token_123";
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to send code");
+        }
+
+        currentJwtToken = data.token;
 
         // Update UI
         if (displayEmail) displayEmail.textContent = email;
@@ -80,9 +95,12 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 
         // Auto-focus code input
         document.getElementById("verification-code")?.focus();
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error sending code:", error);
-        alert("Could not send the confirmation code. Please try again.");
+        showToastError(
+          error.message ||
+            "Could not send the confirmation code. Please try again.",
+        );
       } finally {
         if (sendCodeBtn) {
           sendCodeBtn.textContent = originalBtnText;
@@ -97,9 +115,9 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 
       const codeInput = document.getElementById(
         "verification-code",
-      ) as HTMLInputElement;
-      const code = codeInput.value.trim();
-      if (!code || code.length !== 6) return;
+      ) as HTMLInputElement | null;
+      const code = codeInput?.value.trim();
+      if (!code || code.length !== 6 || !verifyCodeBtn) return;
 
       const originalBtnText = verifyCodeBtn.textContent;
       verifyCodeBtn.innerHTML =
@@ -107,31 +125,29 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
       verifyCodeBtn.disabled = true;
 
       try {
-        // Prepare to call the actual Netlify function to be built
-        /*
         const response = await fetch("/.netlify/functions/verify-beta-code", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ token: currentJwtToken, code }),
         });
-        
-        if (!response.ok) throw new Error("Invalid code");
-        const data = await response.json();
-        const licenseKey = data.licenseKey;
-        */
 
-        // MOCK: Simulate network request for now
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        const licenseKey =
-          "PT-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Invalid code");
+        }
+
+        const licenseKey = data.licenseKey;
 
         // Update UI
         if (newLicenseKeyText) newLicenseKeyText.textContent = licenseKey;
         step2Code?.classList.add("hidden");
         step3Success?.classList.remove("hidden");
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error verifying code:", error);
-        alert("Invalid or expired code. Please try again.");
+        showToastError(
+          error.message || "Invalid or expired code. Please try again.",
+        );
       } finally {
         if (verifyCodeBtn) {
           verifyCodeBtn.textContent = originalBtnText;
@@ -144,8 +160,10 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     backToEmailBtn?.addEventListener("click", () => {
       step2Code?.classList.add("hidden");
       step1Email?.classList.remove("hidden");
-      (document.getElementById("verification-code") as HTMLInputElement).value =
-        "";
+      const verificationCodeInput = document.getElementById(
+        "verification-code",
+      ) as HTMLInputElement | null;
+      if (verificationCodeInput) verificationCodeInput.value = "";
     });
 
     // Copy License to clipboard
