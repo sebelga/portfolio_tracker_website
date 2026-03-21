@@ -35,10 +35,11 @@
   </div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 gap-8 items-start">
-
+    <!-- Reapply style when free tier is back: grid md:grid-cols-2 gap-8 items-start -->
+    <div class="">
       <!-- Free Tier Card -->
-      <div class="card bg-base-100 shadow-xl p-8 border border-base-300">
+      <!-- Hidden for now as the premium is free during beta. -->
+      <div class="hidden card bg-base-100 shadow-xl p-8 border border-base-300">
         <h2 class="text-2xl font-bold text-base-content mb-4 w-full text-center">Free Quota</h2>
         <div class="flex justify-center items-center h-24 mb-6">
           <span class="text-5xl font-extrabold">$0</span>
@@ -73,20 +74,20 @@
       </div>
 
       <!-- Paid Tier Card -->
-      <div class="card bg-primary/20 text-primary-content shadow-2xl p-8 border-2 border-primary-content/20 relative">
+      <div class="card bg-primary/20 text-primary-content shadow-2xl p-8 border-2 border-primary-content/20 relative max-w-xl mx-auto">
         <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
-          <span class="badge badge-accent badge-lg shadow-sm animate-bounce">Launch Special!</span>
+          <span class="badge badge-accent badge-lg shadow-sm animate-bounce">Beta Special!</span>
         </div>
         <h2 class="text-2xl font-bold mb-4 w-full text-center">Premium License</h2>
         <div class="flex flex-col justify-center items-center h-24 mb-6 relative">
           <div class="flex items-center">
-            <span class="text-5xl font-extrabold">$14</span>
-            <span class="text-xl text-primary-content/80 ml-2"> / year</span>
+            <span class="text-5xl font-extrabold">$0</span>
+            <span class="text-xl text-primary-content/80 ml-2"> / 1st year</span>
           </div>
           <p class="text-sm line-through text-primary-content/70 mt-1">Normal price: $29/year</p>
         </div>
         <p class="text-primary-content/90 mb-6 text-center">
-          Unlock unlimited transactions. The launch price will be kept forever on every renewal.
+          During our public Beta phase, get 1 year of Premium for free! Normal price applies after the first year.
         </p>
         <ul class="text-left space-y-4 mb-8 grow">
           <li class="flex items-start">
@@ -99,17 +100,17 @@
             <svg class="h-6 w-6 text-primary-content mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            Price guaranteed for all future renewals
+            All premium features included
           </li>
           <li class="flex items-start">
             <svg class="h-6 w-6 text-primary-content mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            Priority support & all new features
+            Priority support access
           </li>
         </ul>
         <div class="text-center mt-auto">
-          <button id="purchase-license-btn" data-product-id="prod_5tn9qvQZk6PvytXGuL8FR8" class="btn btn-accent btn-block text-lg border-none hover:brightness-110">Purchase license</button>
+          <button id="purchase-license-btn" data-product-id="prod_5tn9qvQZk6PvytXGuL8FR8" class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Get Premium for Free</button>
         </div>
       </div>
 
