@@ -11,6 +11,9 @@
           <li class="<%= typeof slug === 'undefined' || slug === '/' ? 'active' : '' %>">
             <a href="/">Home</a>
           </li>
+          <li class="<%= typeof slug !== 'undefined' && slug === '/pricing' ? 'active' : '' %>">
+            <a href="/pricing">Pricing</a>
+          </li>
           <li class="<%= typeof slug !== 'undefined' && slug.startsWith('/docs') ? 'active' : '' %>">
             <a href="/docs">Documentation</a>
           </li>
@@ -32,6 +35,9 @@
       <ul class="menu menu-horizontal px-2 gap-x-1">
         <li class="<%= typeof slug === 'undefined' || slug === '/' ? 'active' : '' %>">
           <a href="/">Home</a>
+        </li>
+        <li class="<%= typeof slug !== 'undefined' && slug === '/pricing' ? 'active' : '' %>">
+          <a href="/pricing">Pricing</a>
         </li>
         <li class="<%= typeof slug !== 'undefined' && slug.startsWith('/docs') ? 'active' : '' %>">
           <a href="/docs">Documentation</a>

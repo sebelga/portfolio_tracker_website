@@ -41,6 +41,11 @@ export default defineConfig({
           filename: "contact.html",
         },
         {
+          name: "pricing",
+          template: resolve(pagesDir, "pricing.ejs"),
+          filename: "pricing.html",
+        },
+        {
           name: "docs",
           template: resolve(pagesDir, "docs.ejs"),
           filename: "docs.html",

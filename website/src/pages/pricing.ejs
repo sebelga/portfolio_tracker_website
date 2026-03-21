@@ -1,0 +1,120 @@
+<%- include('./src/partials/layout_top.ejs', { 
+  title: 'Pricing - Portfolio Tracker for Google Sheets', 
+  description: 'Simple and transparent pricing for the Portfolio Tracker Google Sheets Add-on. Try for free, special launch price available.',
+  slug: '/pricing',
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "name": "Pricing - Portfolio Tracker",
+    "description": "Pricing for Portfolio Tracker.",
+    "url": "https://portfoliotrackergooglesheets.com/pricing",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://portfoliotrackergooglesheets.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Pricing",
+        "item": "https://portfoliotrackergooglesheets.com/pricing"
+      }
+    ]
+  }
+}) %>
+
+<section class="py-12 md:py-24">
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-base-content mb-4 drop-shadow-sm font-sans">
+      Simple, Transparent Pricing
+    </h1>
+    <p class="text-xl md:text-2xl text-base-content/80 max-w-2xl mx-auto font-light leading-relaxed">
+      Choose the plan that fits you best. You can test the Add-on to see if it meets your needs before committing.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+
+      <!-- Free Tier Card -->
+      <div class="card bg-base-100 shadow-xl p-8 border border-base-300">
+        <h2 class="text-2xl font-bold text-base-content mb-4 w-full text-center">Free Quota</h2>
+        <div class="flex justify-center items-center h-24 mb-6">
+          <span class="text-5xl font-extrabold">$0</span>
+          <span class="text-xl text-base-content/60 ml-2"> / forever</span>
+        </div>
+        <p class="text-base-content/70 mb-6 text-center">
+          Perfect for trying out the Portfolio Tracker and making sure it fits your needs.
+        </p>
+        <ul class="text-left space-y-4 mb-8 grow">
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Up to 30 transactions in your sheet
+          </li>
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Track your portfolio with no license required
+          </li>
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Fully explore features before buying
+          </li>
+        </ul>
+        <div class="text-center mt-auto">
+          <a href="#" class="btn btn-outline btn-secondary btn-block text-lg">Try for Free</a>
+        </div>
+      </div>
+
+      <!-- Paid Tier Card -->
+      <div class="card bg-primary/20 text-primary-content shadow-2xl p-8 border-2 border-primary-content/20 relative">
+        <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
+          <span class="badge badge-accent badge-lg shadow-sm animate-bounce">Launch Special!</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 w-full text-center">Premium License</h2>
+        <div class="flex flex-col justify-center items-center h-24 mb-6 relative">
+          <div class="flex items-center">
+            <span class="text-5xl font-extrabold">$14</span>
+            <span class="text-xl text-primary-content/80 ml-2"> / year</span>
+          </div>
+          <p class="text-sm line-through text-primary-content/70 mt-1">Normal price: $29/year</p>
+        </div>
+        <p class="text-primary-content/90 mb-6 text-center">
+          Unlock unlimited transactions. The launch price will be kept forever on every renewal.
+        </p>
+        <ul class="text-left space-y-4 mb-8 grow">
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary-content mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Unlimited transactions
+          </li>
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary-content mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Price guaranteed for all future renewals
+          </li>
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary-content mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Priority support & all new features
+          </li>
+        </ul>
+        <div class="text-center mt-auto">
+          <button class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Purchase license</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%- include('./src/partials/layout_bottom.ejs') %>
