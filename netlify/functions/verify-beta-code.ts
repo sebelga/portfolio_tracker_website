@@ -89,11 +89,11 @@ async function sendLicenseEmail(email: string, licenseKey: string) {
           <code style="font-size: 24px; font-weight: bold; color: #000;">${licenseKey}</code>
         </div>
         <p><strong>How to use it:</strong></p>
-        <ol>
-          <li>Open Portfolio Tracker in Google Sheets.</li>
-          <li>Go to the Sidebar menu > Settings > License.</li>
-          <li>Paste this key and click Validate.</li>
-        </ol>
+        <ul>
+          <li>Open your Portfolio Tracker sheet.</li>
+          <li>Navigate to the "Configuration" sheet.</li>
+          <li>Paste your key next to "license_key" in the General configuration section.</li>
+        </ul>
         <p style="color: #666; font-size: 14px; margin-top: 30px;">Keep this email safe. Your license is valid for the duration of the entire Beta phase plus 1 full year after launch.</p>
       </div>
     `,
