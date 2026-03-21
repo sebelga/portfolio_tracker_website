@@ -1,11 +1,21 @@
 <!doctype html>
 <html lang="en" data-theme="emerald">
-<%- include('head.ejs', { title: title, description: description }) %>
+<%- include('head.ejs', { 
+  title: title, 
+  description: description, 
+  slug: typeof slug !== 'undefined' ? slug : '' 
+}) %>
 
-<body>
+<body class="font-sans text-gray-900 antialiased <%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
   <% if (typeof jsonLd !== 'undefined') { %>
   <script type="application/ld+json">
+    <% if (Array.isArray(jsonLd)) { %> {
+      "@context": "https://schema.org",
+      "@graph": <%- JSON.stringify(jsonLd) %>
+    }
+    <% } else { %>
     <%- JSON.stringify(jsonLd, null, 2) %>
+    <% } %>
   </script>
   <% } %>
   <noscript>
