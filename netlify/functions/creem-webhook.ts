@@ -30,6 +30,13 @@ export const handler: Handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
+  if (!event.body) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Request body is required" }),
+    };
+  }
+
   const webhookSecret = process.env.CREEM_WEBHOOK_SECRET;
   if (!webhookSecret) {
     console.error("Missing webhook secret");
