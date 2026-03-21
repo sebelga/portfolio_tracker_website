@@ -193,9 +193,89 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     });
   }
 
+  function initRecoverLicenseFlow() {
+    const recoverForm = getElement<HTMLFormElement>("recover-form");
+    const recoverStep1 = getElement<HTMLElement>("recover-step-1");
+    const recoverStep2 = getElement<HTMLElement>("recover-step-2");
+    const recoverBtn = getElement<HTMLButtonElement>("recover-btn");
+    const recoverCopyBtn = getElement<HTMLButtonElement>("recover-copy-btn");
+    const recoveredLicenseKeyText = getElement<HTMLElement>("recovered-license-key");
+    const recoverModal = getElement<HTMLDialogElement>("recover_license_modal");
+
+    if (!recoverForm || !recoverModal) return;
+
+    recoverForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailInput = document.getElementById(
+        "recover-email",
+      ) as HTMLInputElement | null;
+      const email = emailInput?.value.trim();
+      if (!email || !recoverBtn) return;
+
+      const originalBtnText = recoverBtn.textContent;
+      recoverBtn.innerHTML =
+        '<span class="loading loading-spinner loading-sm"></span> Finding...';
+      recoverBtn.disabled = true;
+
+      try {
+        const response = await fetch("/.netlify/functions/recover-license", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to recover license");
+        }
+
+        // Update UI
+        if (recoveredLicenseKeyText) recoveredLicenseKeyText.textContent = data.licenseKey;
+        recoverStep1?.classList.add("hidden");
+        recoverStep2?.classList.remove("hidden");
+      } catch (error: any) {
+        console.error("Error recovering license:", error);
+        showToastError(
+          error.message || "Could not recover your license. Please check the email.",
+        );
+      } finally {
+        if (recoverBtn) {
+          recoverBtn.textContent = originalBtnText;
+          recoverBtn.disabled = false;
+        }
+      }
+    });
+
+    // Copy License to clipboard
+    recoverCopyBtn?.addEventListener("click", () => {
+      if (!recoveredLicenseKeyText?.textContent) return;
+      navigator.clipboard.writeText(recoveredLicenseKeyText.textContent).then(() => {
+        const icon = recoverCopyBtn.innerHTML;
+        recoverCopyBtn.textContent = "Copied!";
+        recoverCopyBtn.classList.add("text-success");
+        setTimeout(() => {
+          recoverCopyBtn.innerHTML = icon;
+          recoverCopyBtn.classList.remove("text-success");
+        }, 2000);
+      });
+    });
+
+    // Reset modal when closed
+    recoverModal?.addEventListener("close", () => {
+      setTimeout(() => {
+        recoverStep1?.classList.remove("hidden");
+        recoverStep2?.classList.add("hidden");
+        recoverForm.reset();
+      }, 300);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     gallery();
     initBetaLicenseFlow();
+    initRecoverLicenseFlow();
   });
 
   console.log("Welcome to Portfolio Tracker!");
