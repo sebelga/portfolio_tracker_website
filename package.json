@@ -5,9 +5,8 @@
   "main": "index.ejs",
   "scripts": {
     "build": "sh ./scripts/build.sh",
-    "website:dev": "vite serve website",
-    "website:build": "vite build website",
-    "website:previewOld": "vite preview website",
+    "website:dev": "vite serve",
+    "website:build": "vite build",
     "website:preview": "serve -l 1234 ./dist",
     "docusaurus": "docusaurus",
     "docs:start": "cd documentation && docusaurus start",

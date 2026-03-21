@@ -2,7 +2,10 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { createMpaPlugin } from "vite-plugin-virtual-mpa";
-import { templateUrl } from "./constants.mjs";
+import { templateUrl } from "./website/constants.mjs";
+
+const projectRoot = resolve(__dirname, "website");
+const pagesDir = resolve(projectRoot, "src/pages");
 
 export default defineConfig({
   plugins: [
@@ -21,36 +24,41 @@ export default defineConfig({
       pages: [
         {
           name: "index",
-          template: resolve(__dirname, "src/pages/index.ejs"),
+          template: resolve(pagesDir, "index.ejs"),
           filename: "index.html",
           data: {
             templateUrl,
           },
+          entry: "/src/main.ts",
         },
         {
           name: "about",
-          template: resolve(__dirname, "src/pages/about.ejs"),
+          template: resolve(pagesDir, "about.ejs"),
           filename: "about.html",
+          entry: "/src/main.ts",
         },
         {
           name: "contact",
-          template: resolve(__dirname, "src/pages/contact.ejs"),
+          template: resolve(pagesDir, "contact.ejs"),
           filename: "contact.html",
+          entry: "/src/main.ts",
         },
         {
           name: "docs",
-          template: resolve(__dirname, "src/pages/docs.ejs"),
+          template: resolve(pagesDir, "docs.ejs"),
           filename: "docs.html",
         },
         {
           name: "terms-and-services",
-          template: resolve(__dirname, "src/pages/terms-and-services.ejs"),
+          template: resolve(pagesDir, "terms-and-services.ejs"),
           filename: "terms-and-services.html",
+          entry: "/src/main.ts",
         },
         {
           name: "privacy-policy",
-          template: resolve(__dirname, "src/pages/privacy-policy.ejs"),
+          template: resolve(pagesDir, "privacy-policy.ejs"),
           filename: "privacy-policy.html",
+          entry: "/src/main.ts",
         },
       ],
       htmlMinify: true,
