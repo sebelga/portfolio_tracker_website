@@ -1,10 +1,8 @@
-import { createRequire } from "node:module";
 import { Resend } from "resend";
 import jwt from "jsonwebtoken";
 import { initFirebase } from "../lib/firebase";
-
-const require = createRequire(import.meta.url);
-const disposableDomains: string[] = require("disposable-email-domains");
+// @ts-ignore — JSON import attribute handled by esbuild bundler
+import disposableDomains from "disposable-email-domains/index.json" with { type: "json" };
 
 // Safely load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
