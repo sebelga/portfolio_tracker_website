@@ -264,10 +264,74 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     });
   }
 
+  function initRequestTemplateFlow() {
+    const templateForm = getElement<HTMLFormElement>("template-form");
+    const templateStep1 = getElement<HTMLElement>("template-step-1");
+    const templateStep2 = getElement<HTMLElement>("template-step-2");
+    const templateBtn = getElement<HTMLButtonElement>("template-btn");
+    const templateModal = getElement<HTMLDialogElement>(
+      "request_template_modal",
+    );
+
+    if (!templateForm || !templateModal) return;
+
+    templateForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const keyInput = document.getElementById(
+        "template-license-key",
+      ) as HTMLInputElement | null;
+      const licenseKey = keyInput?.value.trim();
+      if (!licenseKey || !templateBtn) return;
+
+      const originalBtnText = templateBtn.textContent;
+      templateBtn.innerHTML =
+        '<span class="loading loading-spinner loading-sm"></span> Sending...';
+      templateBtn.disabled = true;
+
+      try {
+        const response = await fetch("/.netlify/functions/request-template", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ licenseKey }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to send template link");
+        }
+
+        templateStep1?.classList.add("hidden");
+        templateStep2?.classList.remove("hidden");
+      } catch (error: any) {
+        console.error("Error requesting template:", error);
+        showToastError(
+          error.message ||
+            "Could not send the template link. Please try again.",
+        );
+      } finally {
+        if (templateBtn) {
+          templateBtn.textContent = originalBtnText;
+          templateBtn.disabled = false;
+        }
+      }
+    });
+
+    templateModal?.addEventListener("close", () => {
+      setTimeout(() => {
+        templateStep1?.classList.remove("hidden");
+        templateStep2?.classList.add("hidden");
+        templateForm.reset();
+      }, 300);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     gallery();
     initBetaLicenseFlow();
     initRecoverLicenseFlow();
+    initRequestTemplateFlow();
   });
 
   console.log("Welcome to Portfolio Tracker!");

@@ -3,7 +3,7 @@ import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
 import type { LicenseDoc } from "../lib/types";
-import { SHEET_TEMPLATE_URL } from "../constants";
+import { SHEET_TEMPLATE_URL } from "../../constants.mjs";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {

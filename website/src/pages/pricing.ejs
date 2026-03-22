@@ -114,7 +114,10 @@
         </ul>
         <div class="text-center mt-auto flex flex-col gap-2">
           <button onclick="beta_license_modal.showModal()" class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Get Premium for Free</button>
-          <button onclick="recover_license_modal.showModal()" class="btn btn-link  text-primary-content/80 hover:text-primary-content font-normal mx-auto no-underline hover:underline">Lost your license?</button>
+          <div class="flex justify-center gap-4 text-sm mt-1">
+            <button onclick="recover_license_modal.showModal()" class="btn btn-link text-primary-content/80 hover:text-primary-content font-normal no-underline hover:underline btn-sm">Lost your license?</button>
+            <button onclick="request_template_modal.showModal()" class="btn btn-link text-primary-content/80 hover:text-primary-content font-normal no-underline hover:underline btn-sm">Get latest template</button>
+          </div>
         </div>
       </div>
 
