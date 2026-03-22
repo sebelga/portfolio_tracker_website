@@ -19,6 +19,10 @@ To quickly set up and begin tracking your portfolio, focus on the essentials in 
 
 Navigate to the Configuration sheet to set up the basic parameters for the add-on. Below are the minimum configurations needed to get started.
 
+### License
+
+Before tracking your portfolio, you must enter a valid license key in the Configuration sheet. You can obtain a license from our main website—it is currently free during our beta launch. The license key, along with the link to make a copy of the required Google template sheet, will be sent directly to your email address.
+
 ### Accounting Method
 
 Choose FIFO (First-In-First-Out) or LIFO (Last-In-First-Out) for trade matching. This determines how the add-on pairs your buy and sell transactions to calculate realized gains and losses.

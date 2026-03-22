@@ -15,6 +15,8 @@ This section configures the core settings of the add-on. These settings apply gl
 
 - **matching_method**: Determines the method for matching buy and sell transactions. Options are "LIFO" (Last In, First Out) or "FIFO" (First In, First Out). Default: FIFO.  
   _Example_: Set to "FIFO" if you want to sell the oldest shares first.
+- **license_key**: Your personal license key required to use the add-on. Obtain it from our main website.  
+  _Note_: The license is currently free during our beta launch and will be sent to your email along with the template link.
 - **cmc_api_key**: Your CoinMarketCap API key for fetching cryptocurrency prices. Obtain it from [CoinMarketCap](https://coinmarketcap.com/api/).  
   _Note_: Required for crypto assets; leave blank if not trading crypto or if you prefer to use your own method to update the prices.
 - **massive_api_key**: Your Massive.com API key for fetching stock and options data. Obtain it from [Massive.com](https://massive.com/).  

@@ -9,7 +9,11 @@ tags: [install, uninstall, setup, getting-started]
 
 ## Install
 
-To install the Portfolio Tracker Add-on, visit the [Google Workspace Marketplace](https://workspace.google.com/marketplace/app/portfolio_tracker_addon) and click "Install". Grant the necessary permissions when prompted.
+To use the Portfolio Tracker Add-on, you first need a license and the official spreadsheet template:
+
+1. **Request a License:** Get a license from our website (currently free during our beta launch).
+2. **Check Your Email:** The link to make a copy of the Google template sheet, as well as your license key, will be sent directly to your email address.
+3. **Install the Add-on:** Visit the [Google Workspace Marketplace](https://workspace.google.com/marketplace/app/portfolio_tracker_addon) and click "Install". Grant the necessary permissions when prompted.
 
 ## Uninstall
 
