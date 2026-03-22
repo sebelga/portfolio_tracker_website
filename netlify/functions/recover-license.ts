@@ -28,10 +28,7 @@ export default async (req: Request) => {
     const snapshot = await licensesRef.where("email", "==", email).get();
 
     if (snapshot.empty) {
-      return Response.json(
-        { error: "No license found for this email address." },
-        { status: 404 },
-      );
+      return Response.json({ message: "Request received." });
     }
 
     // Get the first matching license

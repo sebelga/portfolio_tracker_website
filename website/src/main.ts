@@ -206,10 +206,6 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     const recoverStep1 = getElement<HTMLElement>("recover-step-1");
     const recoverStep2 = getElement<HTMLElement>("recover-step-2");
     const recoverBtn = getElement<HTMLButtonElement>("recover-btn");
-    const recoverCopyBtn = getElement<HTMLButtonElement>("recover-copy-btn");
-    const recoveredLicenseKeyText = getElement<HTMLElement>(
-      "recovered-license-key",
-    );
     const recoverModal = getElement<HTMLDialogElement>("recover_license_modal");
 
     if (!recoverForm || !recoverModal) return;
@@ -237,13 +233,11 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 
         const data = await response.json();
 
-        if (!response.ok) {
+        if (!response.ok && response.status !== 404) {
           throw new Error(data.error || "Failed to recover license");
         }
 
-        // Update UI
-        if (recoveredLicenseKeyText)
-          recoveredLicenseKeyText.textContent = data.licenseKey;
+        // Update UI (show same success message whether found or not)
         recoverStep1?.classList.add("hidden");
         recoverStep2?.classList.remove("hidden");
       } catch (error: any) {
@@ -258,22 +252,6 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
           recoverBtn.disabled = false;
         }
       }
-    });
-
-    // Copy License to clipboard
-    recoverCopyBtn?.addEventListener("click", () => {
-      if (!recoveredLicenseKeyText?.textContent) return;
-      navigator.clipboard
-        .writeText(recoveredLicenseKeyText.textContent)
-        .then(() => {
-          const icon = recoverCopyBtn.innerHTML;
-          recoverCopyBtn.textContent = "Copied!";
-          recoverCopyBtn.classList.add("text-success");
-          setTimeout(() => {
-            recoverCopyBtn.innerHTML = icon;
-            recoverCopyBtn.classList.remove("text-success");
-          }, 2000);
-        });
     });
 
     // Reset modal when closed
