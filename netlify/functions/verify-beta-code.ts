@@ -112,10 +112,12 @@ export default async (req: Request) => {
       status: "active",
       paid: true,
       level: "premium",
-      validUntil: Timestamp.fromDate(new Date("2099-12-31")), // Forever logic
+      validUntil: Timestamp.fromDate(
+        new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+      ), // 1 year trial
       metadata: {
         version: 1.0,
-        origin: "Netlify-Free-Launch",
+        origin: "Public-Beta-Free-Launch",
       },
       createdAt: FieldValue.serverTimestamp(),
     };
