@@ -7,8 +7,6 @@ description: Welcome to the Portfolio Tracker Add-on documentation. Learn how to
 tags: [introduction, getting-started, portfolio-tracker, google-sheets]
 ---
 
-import TemplateLink from '@site/src/components/TemplateLink';
-
 # Introduction
 
 Welcome to the Portfolio Tracker Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
@@ -23,7 +21,7 @@ Before diving into setup and usage, let's cover the foundational concepts of how
 
 The add-on is designed to work with a specific Google Sheets™ template file. This template provides the pre-structured layout, formulas, and scripts needed for the add-on to function optimally.
 
-- **How to Get Started**: <TemplateLink>Download the template</TemplateLink> from our website and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
+- **How to Get Started**: Request a license from our main website. Once completed, the link to the official template (along with your license key) will be sent straight to your email. Download the template and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
 - **Why a Template?**: The Add-on has been designed around a specific spreadsheet template which includes sheets, scripts, and configurations that integrate seamlessly with the add-on. Therefore, using the template is mandatory to access the add-on's functionalities.
 
 ### User Input Sheets

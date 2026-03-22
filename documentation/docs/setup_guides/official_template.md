@@ -9,9 +9,7 @@ tags: [template, setup, getting-started]
 
 The Portfolio Tracker add-on requires the official Google Sheets template to function correctly. The template includes pre-configured sheets, formulas, and scripts that the add-on relies on.
 
-import TemplateLink from '@site/src/components/TemplateLink';
-
-- Get the official template <TemplateLink>here</TemplateLink>.
+- **How to Get the Template**: You first need to request a license from our main website. Once you do, the link to the official template will be sent directly to your email address along with your license key.
 
 Make a copy of the template in your Google Drive and install the add-on on your copied file. Do not use the original template directly, as the add-on will write data and the copy keeps the original unchanged.
 
