@@ -102,7 +102,7 @@ export default async (req: Request) => {
             <h2>Your Portfolio Tracker Template</h2>
             <p>You requested the latest version of the official template sheet.</p>
             <p style="margin: 8px 0; color: #666; font-size: 14px;">Template version: <strong>${TEMPLATE_VERSION}</strong></p>
-            <div style="margin: 24px 0; text-align: center;">
+            <div style="margin: 24px 0;">
               <a href="${SHEET_TEMPLATE_URL}" style="display: inline-block; background-color: #16a34a; color: #fff; font-size: 16px; font-weight: bold; text-decoration: none; padding: 14px 28px; border-radius: 8px;">Get your template copy</a>
             </div>
             <p><strong>How to use it:</strong></p>
