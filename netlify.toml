@@ -1,3 +1,6 @@
+[functions]
+  external_node_modules = ["disposable-email-domains"]
+
 [[redirects]]
   from = "/docs/*"
   to = "/docs.html"
