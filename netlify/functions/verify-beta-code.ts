@@ -3,6 +3,7 @@ import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
 import type { LicenseDoc } from "../lib/types";
+import { SHEET_TEMPLATE_URL } from "../constants";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -50,7 +51,11 @@ async function sendLicenseEmail(email: string, licenseKey: string) {
         <div style="background-color: #f4f4f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
           <code style="font-size: 24px; font-weight: bold; color: #000;">${licenseKey}</code>
         </div>
-        <p><strong>How to use it:</strong></p>
+        <p><strong>Get started:</strong></p>
+        <div style="margin: 24px 0;">
+          <a href="${SHEET_TEMPLATE_URL}" style="display: inline-block; background-color: #16a34a; color: #fff; font-size: 16px; font-weight: bold; text-decoration: none; padding: 14px 28px; border-radius: 8px;">Get your template copy</a>
+        </div>
+        <p><strong>How to activate:</strong></p>
         <ul>
           <li>Open your Portfolio Tracker sheet.</li>
           <li>Navigate to the "Configuration" sheet.</li>
