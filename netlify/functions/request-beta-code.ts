@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import jwt from "jsonwebtoken";
 import { initFirebase } from "../lib/firebase";
+import disposableDomains from "disposable-email-domains";
 
 // Safely load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -26,6 +27,13 @@ if (!process.env.EMAIL_FROM) {
 // 3. Sender domain you set up in Resend
 const EMAIL_FROM = process.env.EMAIL_FROM;
 
+// 4. Build a Set for O(1) disposable domain lookups
+const disposableDomainSet = new Set<string>(disposableDomains);
+
+// 5. Rate limiting constants
+const IP_RATE_LIMIT = 3; // max requests per IP per 24 hours
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
 export default async (req: Request) => {
   // Only allow POST
   if (req.method !== "POST") {
@@ -40,8 +48,46 @@ export default async (req: Request) => {
       return Response.json({ error: "Email is required" }, { status: 400 });
     }
 
+    // --- Anti-abuse: Disposable email blocking ---
+    const emailDomain = email.split("@")[1]?.toLowerCase();
+    if (!emailDomain || disposableDomainSet.has(emailDomain)) {
+      return Response.json(
+        { error: "Please use a permanent email address. Disposable or temporary emails are not allowed." },
+        { status: 400 },
+      );
+    }
+
     // Initialize Firebase
     const db = initFirebase();
+
+    // --- Anti-abuse: IP-based rate limiting (3 per 24h) ---
+    const clientIp =
+      req.headers.get("x-nf-client-connection-ip") ||
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      "unknown";
+
+    if (clientIp !== "unknown") {
+      const ipDocRef = db.collection("ip-rate-limits").doc(clientIp);
+      const ipDoc = await ipDocRef.get();
+      const now = Date.now();
+
+      let timestamps: number[] = [];
+      if (ipDoc.exists) {
+        const rawTimestamps: number[] = ipDoc.data()?.timestamps || [];
+        timestamps = rawTimestamps.filter((ts) => now - ts < ONE_DAY_MS);
+      }
+
+      if (timestamps.length >= IP_RATE_LIMIT) {
+        return Response.json(
+          { error: "Too many license requests from this network. Please try again later." },
+          { status: 429 },
+        );
+      }
+
+      // Record this request
+      timestamps.push(now);
+      await ipDocRef.set({ timestamps });
+    }
 
     // Check if the email already has a license
     const licensesRef = db.collection("licenses");
