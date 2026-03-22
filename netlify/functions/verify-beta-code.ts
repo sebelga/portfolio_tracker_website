@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import * as admin from "firebase-admin";
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
+import type { LicenseDoc } from "../lib/types";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -112,10 +113,11 @@ export const handler: Handler = async (event) => {
     const licenseKey = generateLicenseKey();
 
     // 3. Document payload for Firestore DB
-    const licenseDoc = {
+    const licenseDoc: LicenseDoc = {
       email: email,
       status: "active",
       paid: true,
+      level: "premium",
       validUntil: admin.firestore.Timestamp.fromDate(new Date("2099-12-31")), // Forever logic
       metadata: {
         version: 1.0,

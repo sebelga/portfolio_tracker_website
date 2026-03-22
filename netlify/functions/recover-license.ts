@@ -2,6 +2,7 @@ import { Handler } from "@netlify/functions";
 import { Resend } from "resend";
 import * as admin from "firebase-admin";
 import { initFirebase } from "../lib/firebase";
+import type { License } from "../lib/types";
 
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config({ path: "../../.env.local" });
@@ -43,7 +44,7 @@ export const handler: Handler = async (event) => {
     // Get the first matching license
     const doc = snapshot.docs[0];
     const licenseKey = doc.id;
-    const licenseData = doc.data();
+    const licenseData = doc.data() as License;
 
     // 1. Rate Limiting Check (Max 4 per day + 15 min cooldown)
     let rawTimestamps: any[] =
