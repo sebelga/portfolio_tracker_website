@@ -21,7 +21,7 @@ Before diving into setup and usage, let's cover the foundational concepts of how
 
 The add-on is designed to work with a specific Google Sheets™ template file. This template provides the pre-structured layout, formulas, and scripts needed for the add-on to function optimally.
 
-- **How to Get Started**: Request a license from our main website. Once completed, the link to the official template (along with your license key) will be sent straight to your email. Download the template and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
+- **How to Get Started**: Request a license from our main website. Once completed, the link to the official template (along with your license key) will be sent straight to your email. Open the template link and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
 - **Why a Template?**: The Add-on has been designed around a specific spreadsheet template which includes sheets, scripts, and configurations that integrate seamlessly with the add-on. Therefore, using the template is mandatory to access the add-on's functionalities.
 
 ### User Input Sheets

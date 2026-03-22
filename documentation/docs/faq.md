@@ -17,9 +17,9 @@ You can then apply the same light yellow background to the new named range area.
 
 ## How do I set up the add-on for the first time?
 
-1. Obtain the official Google Sheets template from the [setup guide](/setup-guides/official-template).
+1. Request your free license key from the main website and obtain the official Google Sheets template from the [setup guide](/setup-guides/official-template).
 2. Install the Portfolio Tracker add-on from the Google Workspace Marketplace.
-3. Configure your API keys (CoinMarketCap for crypto, Massive.com for options) in the Configuration sheet.
+3. Enter your license key and configure your API keys (CoinMarketCap for crypto, Massive.com for options) in the Configuration sheet.
 4. Add your assets, accounts, and tax rates in the respective sections of the Configuration sheet.
 5. Enter your initial trades in the Transactions sheet and run "Generate trades" to populate calculations.
 
