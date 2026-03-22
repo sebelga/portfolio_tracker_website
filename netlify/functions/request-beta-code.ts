@@ -1,4 +1,3 @@
-import { Handler } from "@netlify/functions";
 import { Resend } from "resend";
 import jwt from "jsonwebtoken";
 import { initFirebase } from "../lib/firebase";
@@ -27,21 +26,18 @@ if (!process.env.EMAIL_FROM) {
 // 3. Sender domain you set up in Resend
 const EMAIL_FROM = process.env.EMAIL_FROM;
 
-export const handler: Handler = async (event) => {
+export default async (req: Request) => {
   // Only allow POST
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
   }
 
   try {
-    const body = JSON.parse(event.body || "{}");
+    const body = await req.json();
     const email = body.email;
 
     if (!email) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Email is required" }),
-      };
+      return Response.json({ error: "Email is required" }, { status: 400 });
     }
 
     // Initialize Firebase
@@ -52,12 +48,12 @@ export const handler: Handler = async (event) => {
     const snapshot = await licensesRef.where("email", "==", email).get();
 
     if (!snapshot.empty) {
-      return {
-        statusCode: 409,
-        body: JSON.stringify({
+      return Response.json(
+        {
           error: "A license has already been generated for this email address.",
-        }),
-      };
+        },
+        { status: 409 },
+      );
     }
 
     // Generate a secure 6-digit random code
@@ -86,25 +82,17 @@ export const handler: Handler = async (event) => {
 
     if (error) {
       console.error("Resend API Error:", error);
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
-          error: "Failed to send confirmation email.",
-        }),
-      };
+      return Response.json(
+        { error: "Failed to send confirmation email." },
+        { status: 500 },
+      );
     }
 
     // Return the JWT back to the client side. The client will store it
     // and push it back up with the user input string in Step 2.
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ token }),
-    };
+    return Response.json({ token });
   } catch (error) {
     console.error("Critical error in request-beta-code:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Internal Server Error" }),
-    };
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }
 };

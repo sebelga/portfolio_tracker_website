@@ -1,6 +1,5 @@
-import { Handler } from "@netlify/functions";
 import jwt from "jsonwebtoken";
-import * as admin from "firebase-admin";
+import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
 import type { LicenseDoc } from "../lib/types";
@@ -69,22 +68,19 @@ async function sendLicenseEmail(email: string, licenseKey: string) {
   }
 }
 
-export const handler: Handler = async (event) => {
+export default async (req: Request) => {
   // Only allow POST
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
   }
 
   try {
     const db = initFirebase();
-    const body = JSON.parse(event.body || "{}");
+    const body = await req.json();
     const { token, code } = body;
 
     if (!token || !code) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Missing token or code" }),
-      };
+      return Response.json({ error: "Missing token or code" }, { status: 400 });
     }
 
     // 1. Verify and decode the JWT
@@ -93,20 +89,18 @@ export const handler: Handler = async (event) => {
       payload = jwt.verify(token, JWT_SECRET);
     } catch (error) {
       // JWT is tampered with, or it expired (15m limit)
-      return {
-        statusCode: 401,
-        body: JSON.stringify({
-          error: "Invalid or expired token. Please start over.",
-        }),
-      };
+      return Response.json(
+        { error: "Invalid or expired token. Please start over." },
+        { status: 401 },
+      );
     }
 
     // 2. Enforce logic
     if (payload.code !== code) {
-      return {
-        statusCode: 401,
-        body: JSON.stringify({ error: "Incorrect verification code." }),
-      };
+      return Response.json(
+        { error: "Incorrect verification code." },
+        { status: 401 },
+      );
     }
 
     const email = payload.email;
@@ -118,12 +112,12 @@ export const handler: Handler = async (event) => {
       status: "active",
       paid: true,
       level: "premium",
-      validUntil: admin.firestore.Timestamp.fromDate(new Date("2099-12-31")), // Forever logic
+      validUntil: Timestamp.fromDate(new Date("2099-12-31")), // Forever logic
       metadata: {
         version: 1.0,
         origin: "Netlify-Free-Launch",
       },
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      createdAt: FieldValue.serverTimestamp(),
     };
 
     // 4. Save to Firestore Collections
@@ -133,15 +127,9 @@ export const handler: Handler = async (event) => {
     await sendLicenseEmail(email, licenseKey);
 
     // 6. Fire back License Key to the frontend for the success Modal
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ licenseKey, email }),
-    };
+    return Response.json({ licenseKey, email });
   } catch (error) {
     console.error("Critical error in verify-beta-code:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Internal Server Error" }),
-    };
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }
 };

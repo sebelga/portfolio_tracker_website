@@ -1,6 +1,4 @@
-import { Handler } from "@netlify/functions";
 import { Resend } from "resend";
-import * as admin from "firebase-admin";
 import { initFirebase } from "../lib/firebase";
 import type { License } from "../lib/types";
 
@@ -12,20 +10,17 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const resend = new Resend(RESEND_API_KEY);
 const EMAIL_FROM = process.env.EMAIL_FROM || "";
 
-export const handler: Handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+export default async (req: Request) => {
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
   }
 
   try {
-    const body = JSON.parse(event.body || "{}");
+    const body = await req.json();
     const email = body.email;
 
     if (!email) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Email is required." }),
-      };
+      return Response.json({ error: "Email is required." }, { status: 400 });
     }
 
     const db = initFirebase();
@@ -33,12 +28,10 @@ export const handler: Handler = async (event) => {
     const snapshot = await licensesRef.where("email", "==", email).get();
 
     if (snapshot.empty) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-          error: "No license found for this email address.",
-        }),
-      };
+      return Response.json(
+        { error: "No license found for this email address." },
+        { status: 404 },
+      );
     }
 
     // Get the first matching license
@@ -69,23 +62,23 @@ export const handler: Handler = async (event) => {
         const minutesLeft = Math.ceil(
           (COOLDOWN_MS - timeSinceLastEmailMs) / 60000,
         );
-        return {
-          statusCode: 429,
-          body: JSON.stringify({
+        return Response.json(
+          {
             error: `Please wait ${minutesLeft} minute(s) before requesting another recovery email.`,
-          }),
-        };
+          },
+          { status: 429 },
+        );
       }
     }
 
     if (recentTimestamps.length >= 4) {
-      return {
-        statusCode: 429,
-        body: JSON.stringify({
+      return Response.json(
+        {
           error:
             "Limit reached: You can only request a license recovery 4 times per 24 hours.",
-        }),
-      };
+        },
+        { status: 429 },
+      );
     }
 
     // Add current timestamp to the array
@@ -127,15 +120,9 @@ export const handler: Handler = async (event) => {
     }
 
     // Return the license key so the frontend can display it
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ licenseKey }),
-    };
+    return Response.json({ licenseKey });
   } catch (error) {
     console.error("Critical error in recover-license:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Internal Server Error" }),
-    };
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }
 };
