@@ -82,6 +82,9 @@ function WebsiteMainMenu() {
       <li>
         <a href="/">Home</a>
       </li>
+      <li>
+        <a href="/pricing">Pricing</a>
+      </li>
       <li className="active">
         <a href="/docs"> Documentation </a>
       </li>
