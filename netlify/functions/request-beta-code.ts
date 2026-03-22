@@ -1,7 +1,10 @@
+import { createRequire } from "node:module";
 import { Resend } from "resend";
 import jwt from "jsonwebtoken";
 import { initFirebase } from "../lib/firebase";
-import disposableDomains from "disposable-email-domains";
+
+const require = createRequire(import.meta.url);
+const disposableDomains: string[] = require("disposable-email-domains");
 
 // Safely load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -52,7 +55,10 @@ export default async (req: Request) => {
     const emailDomain = email.split("@")[1]?.toLowerCase();
     if (!emailDomain || disposableDomainSet.has(emailDomain)) {
       return Response.json(
-        { error: "Please use a permanent email address. Disposable or temporary emails are not allowed." },
+        {
+          error:
+            "Please use a permanent email address. Disposable or temporary emails are not allowed.",
+        },
         { status: 400 },
       );
     }
@@ -79,7 +85,10 @@ export default async (req: Request) => {
 
       if (timestamps.length >= IP_RATE_LIMIT) {
         return Response.json(
-          { error: "Too many license requests from this network. Please try again later." },
+          {
+            error:
+              "Too many license requests from this network. Please try again later.",
+          },
           { status: 429 },
         );
       }
