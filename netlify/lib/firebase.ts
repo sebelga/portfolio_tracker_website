@@ -1,20 +1,20 @@
-import * as admin from "firebase-admin";
+import { initializeApp, cert, getApps } from "firebase-admin/app";
+import { getFirestore, type Firestore } from "firebase-admin/firestore";
 
-let dbInstance: admin.firestore.Firestore | null = null;
+let dbInstance: Firestore | null = null;
 
 export function initFirebase() {
   if (dbInstance) {
     return dbInstance;
   }
 
-  if (!admin.apps.length) {
+  if (!getApps().length) {
     try {
       if (process.env.FIREBASE_SERVICE_ACCOUNT) {
         let accountString = process.env.FIREBASE_SERVICE_ACCOUNT;
 
         // Strip out surrounding single quotes if dotenv added them
         if (accountString.startsWith("'") && accountString.endsWith("'")) {
-          // console.log("Stripping single quotes from FIREBASE_SERVICE_ACCOUNT env var");
           accountString = accountString.slice(1, -1);
         }
 
@@ -23,12 +23,12 @@ export function initFirebase() {
         // Note: Sometimes gRPC errors occur if the implicitly extracted DB
         // string format isn't perfectly mapped. It's safer to pass the projectId
         // explicitly here when using the admin SDK outside of GCP environments.
-        admin.initializeApp({
-          credential: admin.credential.cert(serviceAccount),
+        initializeApp({
+          credential: cert(serviceAccount),
         });
       } else {
         // Fallback for local emulator or default ADC
-        admin.initializeApp();
+        initializeApp();
       }
     } catch (error) {
       console.error("Firebase Initialization Error:", error);
@@ -36,7 +36,7 @@ export function initFirebase() {
     }
   }
 
-  const db = admin.firestore();
+  const db = getFirestore();
 
   // Only call settings if we are the ones creating the instance now
   try {
