@@ -1,8 +1,8 @@
 ---
 id: snapshots
 title: Portfolio Snapshots
-description: Guide to creating and managing portfolio snapshots in the Portfolio Tracker add-on for tracking value over time.
-tags: [snapshots, portfolio-tracker, google-sheets]
+description: Guide to creating and managing portfolio snapshots in the TradeGist add-on for tracking value over time.
+tags: [snapshots, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Portfolio Snapshots

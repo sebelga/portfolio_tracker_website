@@ -2,13 +2,13 @@
 id: stock_splits
 title: Stock Splits
 slug: stock-splits
-description: Guide to configuring and handling stock splits in the Portfolio Tracker add-on.
-tags: [stock-splits, portfolio-tracker, google-sheets]
+description: Guide to configuring and handling stock splits in the TradeGist add-on.
+tags: [stock-splits, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Stock Splits
 
-Stock splits occur when a company divides its shares, increasing the number of shares while reducing the price per share proportionally. Reverse stock splits consolidate shares, decreasing the number of shares while increasing the price per share proportionally. The Portfolio Tracker add-on automatically adjusts historical transactions for both forward and reverse splits, ensuring accurate calculations without manual edits. This is especially useful for assets with many transactions, as it prevents the need to update volumes and prices individually.
+Stock splits occur when a company divides its shares, increasing the number of shares while reducing the price per share proportionally. Reverse stock splits consolidate shares, decreasing the number of shares while increasing the price per share proportionally. The TradeGist add-on automatically adjusts historical transactions for both forward and reverse splits, ensuring accurate calculations without manual edits. This is especially useful for assets with many transactions, as it prevents the need to update volumes and prices individually.
 
 ## How Stock Splits Are Handled
 

@@ -3,15 +3,16 @@ slug: /
 sidebar_position: 1
 id: intro
 title: Introduction
-description: Welcome to the Portfolio Tracker Add-on documentation. Learn how to track your stock, crypto, and options investments in Google Sheets™.
-tags: [introduction, getting-started, portfolio-tracker, google-sheets]
+description: Welcome to the TradeGist Add-on documentation. Learn how to track your stock, crypto, and options investments in Google Sheets™.
+tags:
+  [introduction, getting-started, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Introduction
 
-Welcome to the Portfolio Tracker Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
+Welcome to the TradeGist Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
 
-The Portfolio Tracker Add-on transforms your Google Sheets™ spreadsheet into a powerful tool for managing your investment portfolio. It automates trade matching, calculates profits and losses (P&L), handles tax computations, fetches live prices, and generates insightful dashboards—all within a single spreadsheet.
+The TradeGist Add-on transforms your Google Sheets™ spreadsheet into a powerful tool for managing your investment portfolio. It automates trade matching, calculates profits and losses (P&L), handles tax computations, fetches live prices, and generates insightful dashboards—all within a single spreadsheet.
 
 ## Key Concepts
 
@@ -43,6 +44,6 @@ This documentation is organized into sections for easy navigation:
 - **Core Features**: Detailed explanations of trade matching, tax calculations, live prices, and more.
 - **Advanced Topics**: Multi-currency support, snapshots, caching, utility functions, and troubleshooting.
 
-If you have questions or need support, check our [FAQ](/faq) or <a href="https://portfoliotrackergooglesheets.com/contact" target="_self">send us a message</a>.
+If you have questions or need support, check our [FAQ](/faq) or <a href="https://thetradegist.com/contact" target="_self">send us a message</a>.
 
 Happy tracking!

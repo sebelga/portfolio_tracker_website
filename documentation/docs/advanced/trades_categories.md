@@ -2,8 +2,8 @@
 id: trades_categories
 title: Trades Categories
 slug: trades-categories
-description: Guide to using trades categories to isolate and analyze specific transactions in the Portfolio Tracker add-on.
-tags: [trades-categories, portfolio-tracker, google-sheets]
+description: Guide to using trades categories to isolate and analyze specific transactions in the TradeGist add-on.
+tags: [trades-categories, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Trades Categories

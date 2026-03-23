@@ -1,13 +1,13 @@
 ---
 title: Configuration
 slug: /setup-guides/configuration
-description: How to obtain and prepare the official Google Sheets template for the Portfolio Tracker add-on.
+description: How to obtain and prepare the official Google Sheets template for the TradeGist add-on.
 tags: [template, setup, getting-started]
 ---
 
 # Configuration Sheet
 
-The Configuration sheet is the central place to set up all parameters for the Portfolio Tracker add-on. It consists of multiple sections that control how the add-on behaves, including general settings, asset definitions, and more. Proper configuration ensures accurate tracking and reporting of your portfolio.
+The Configuration sheet is the central place to set up all parameters for the TradeGist add-on. It consists of multiple sections that control how the add-on behaves, including general settings, asset definitions, and more. Proper configuration ensures accurate tracking and reporting of your portfolio.
 
 ## General Configuration
 

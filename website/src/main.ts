@@ -334,5 +334,5 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     initRequestTemplateFlow();
   });
 
-  console.log("Welcome to Portfolio Tracker!");
+  console.log("Welcome to TradeGist!");
 })();

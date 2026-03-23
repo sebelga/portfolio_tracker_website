@@ -2,8 +2,8 @@
 id: closed_positions_summary
 title: Closed positions summary sheet
 slug: closed-positions-summary
-description: Learn about the Closed Positions Summary sheet, which aggregates data for all your closed investment positions in the Portfolio Tracker Add-on.
-tags: [closed positions, summary, portfolio-tracker, google-sheets]
+description: Learn about the Closed Positions Summary sheet, which aggregates data for all your closed investment positions in the TradeGist Add-on.
+tags: [closed positions, summary, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Closed Positions Summary Sheet

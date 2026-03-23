@@ -2,8 +2,8 @@
 id: trades
 title: Trades sheet
 slug: trades
-description: Learn about the Trades sheet, the master table of all your investment trades in the Portfolio Tracker.
-tags: [trades, portfolio-tracker, google-sheets]
+description: Learn about the Trades sheet, the master table of all your investment trades in the TradeGist.
+tags: [trades, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Trades Sheet

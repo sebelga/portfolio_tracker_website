@@ -3,13 +3,13 @@ slug: /release-notes-template
 sidebar_position: 10
 id: release-notes-template
 title: Template Release Notes
-description: Stay up to date with the latest improvements, bug fixes, and structural changes to the Portfolio Tracker spreadsheet template.
+description: Stay up to date with the latest improvements, bug fixes, and structural changes to the TradeGist spreadsheet template.
 tags: [updates, release-notes, changelog, template]
 ---
 
 # Template Release Notes
 
-To ensure the Portfolio Tracker add-on functions correctly, your spreadsheet must be compatible with the latest version of our template. This page tracks all versions, improvements, and breaking changes.
+To ensure the TradeGist add-on functions correctly, your spreadsheet must be compatible with the latest version of our template. This page tracks all versions, improvements, and breaking changes.
 
 :::info Current Version
 The latest stable version of the template is **v0.5.0**.

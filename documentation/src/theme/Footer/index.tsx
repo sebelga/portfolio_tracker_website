@@ -13,7 +13,7 @@ function Footer(): ReactNode {
           <a href="/privacy-policy">Privacy policy</a>
         </p>
         <p className="mb-2">
-          &copy; 2025 Portfolio Tracker Add-on. All rights reserved.
+          &copy; 2026 TradeGist Add-on. All rights reserved.
         </p>
         <p className="text-xs text-gray-400">
           Google Sheets™ is a trademark of Google LLC.

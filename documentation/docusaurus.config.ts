@@ -9,14 +9,14 @@ import { templateUrl } from "./src/constants";
 const isDev = process.env.NODE_ENV === "development";
 const websiteURL = isDev
   ? "http://localhost:5173"
-  : "https://portfoliotrackergooglesheets.com";
+  : "https://thetradegist.com";
 if (isDev) {
   console.log(`Docusaurus running in development mode.`);
 }
 const baseUrl = isDev ? "/" : "/docs/";
 
 const config: Config = {
-  title: "Portfolio tracker for Google Sheets",
+  title: "TradeGist for Google Sheets",
   tagline:
     "Track your stock, crypto, and options investments with Google Sheets effortlessly",
   favicon: "img/favicon.png",
@@ -114,7 +114,7 @@ const config: Config = {
       innerHTML: JSON.stringify({
         "@context": "https://schema.org/",
         "@type": "Organization",
-        name: "Portfolio Tracker for Google Sheets",
+        name: "TradeGist for Google Sheets",
         url: websiteURL,
         logo: `${websiteURL}/img/logo.svg`,
       }),
@@ -132,13 +132,13 @@ const config: Config = {
       {
         name: "keywords",
         content:
-          "portfolio tracker, google sheets, investment tracking, financial management, stock portfolio, crypto portfolio, options portfolio, asset management",
+          "TradeGist, google sheets, investment tracking, financial management, stock portfolio, crypto portfolio, options portfolio, asset management",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     navbar: {
       logo: {
-        alt: "Portfolio tracker logo",
+        alt: "TradeGist logo",
         src: "img/logo.svg",
         href: websiteURL,
         target: "_self",

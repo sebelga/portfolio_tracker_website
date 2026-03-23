@@ -2,8 +2,8 @@
 id: transactions
 title: Transactions
 slug: transactions
-description: Learn how to enter and manage your trading transactions (equity, crypto, and options) in the Portfolio Tracker Add-on.
-tags: [transactions, portfolio-tracker, google-sheets]
+description: Learn how to enter and manage your trading transactions (equity, crypto, and options) in the TradeGist Add-on.
+tags: [transactions, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Transactions
@@ -65,7 +65,7 @@ Accurate FX rates are required to normalize all transactions into your **Base Cu
 You can automatically fetch the historical FX rate based on the asset's trading currency and your base currency for specific transactions:
 
 1.  **Select the rows** in the Transactions sheet that you wish to update.
-2.  Navigate to the top menu: **Portfolio Tracker** > **Update selected FX rate**.
+2.  Navigate to the top menu: **TradeGist** > **Update selected FX rate**.
 3.  The script will identify the asset's currency (e.g., USD for TSLA) and fetch the rate relative to your base currency for that specific transaction date.
 
 :::info API and Subscription Requirement

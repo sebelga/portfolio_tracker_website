@@ -2,13 +2,13 @@
 id: multi_currencies
 title: Multi-currencies
 slug: multi-currencies
-description: Guide to handling multi-currency trades in the Portfolio Tracker add-on, including setup, configuration, and examples.
-tags: [multi-currencies, portfolio-tracker, google-sheets]
+description: Guide to handling multi-currency trades in the TradeGist add-on, including setup, configuration, and examples.
+tags: [multi-currencies, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Multi-Currencies
 
-Trading assets in different currencies can complicate portfolio tracking, especially when calculating real profits, losses, and taxes. The Portfolio Tracker add-on simplifies this by allowing you to log currency conversion rates at the time of each transaction, ensuring accurate ROI, P&L, and tax calculations that account for currency fluctuations.
+Trading assets in different currencies can complicate portfolio tracking, especially when calculating real profits, losses, and taxes. The TradeGist add-on simplifies this by allowing you to log currency conversion rates at the time of each transaction, ensuring accurate ROI, P&L, and tax calculations that account for currency fluctuations.
 
 ## Why Multi-Currency Tracking Matters
 

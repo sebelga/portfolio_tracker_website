@@ -2,8 +2,8 @@
 id: getting-started
 title: Getting Started
 slug: /getting-started
-description: A step-by-step guide to setting up the Portfolio Tracker Add-on with minimum configuration to begin tracking your investments.
-tags: [getting-started, configuration, setup, portfolio-tracker]
+description: A step-by-step guide to setting up the TradeGist Add-on with minimum configuration to begin tracking your investments.
+tags: [getting-started, configuration, setup, portfolio-tracker, tradegist]
 sidebar_position: 2
 ---
 
@@ -43,18 +43,18 @@ If you need to change how dates or currencies are displayed (e.g., changing from
 ## Update Prices and Generate Trades
 
 :::tip Troubleshooting the Menu
-If you click **Extensions** > **Portfolio tracker** and only see one option ("Enable extension"), click it to activate the full suite of tools. Once enabled, the full menu described below will appear.
+If you click **Extensions** > **TradeGist** and only see one option ("Enable extension"), click it to activate the full suite of tools. Once enabled, the full menu described below will appear.
 :::
 
 ### Update Current Prices
 
-Once you have set your API keys (if needed) we can update the current prices. Under the **Extensions** menu > **Portfolio tracker**, click on **Update prices**.
+Once you have set your API keys (if needed) we can update the current prices. Under the **Extensions** menu > **TradeGist**, click on **Update prices**.
 This will populate the `GOOGLEFINANCE` formulas for your equities and fetch the live prices of your crypto assets.
 
 ### Generate the Trades
 
 Once you have the asset current prices, and you have added some transactions, it is time to generate your trades.
-Under the **Extensions** menu > **Portfolio tracker**, click on **Generate trades**. After a few seconds you will have all your trades inside the "Trades" sheet.
+Under the **Extensions** menu > **TradeGist**, click on **Generate trades**. After a few seconds you will have all your trades inside the "Trades" sheet.
 
 Then check the **Summary** sheet to see an aggregated view of your holdings, and navigate to the **Dashboard** sheet for a visual breakdown of your performance.
 

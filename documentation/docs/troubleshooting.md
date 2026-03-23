@@ -1,13 +1,13 @@
 ---
 id: troubleshooting
 title: Troubleshooting
-description: Common issues and solutions for the Portfolio Tracker add-on in Google Sheets.
-tags: [troubleshooting, portfolio-tracker, google-sheets]
+description: Common issues and solutions for the TradeGist add-on in Google Sheets.
+tags: [troubleshooting, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Troubleshooting
 
-This page covers common issues you may encounter with the Portfolio Tracker add-on and provides step-by-step solutions. If you can't resolve an issue, check the [FAQ](/faq) or report it via the add-on's help menu.
+This page covers common issues you may encounter with the TradeGist add-on and provides step-by-step solutions. If you can't resolve an issue, check the [FAQ](/faq) or report it via the add-on's help menu.
 
 ## `#N/A` returned from currency rate transaction value
 
