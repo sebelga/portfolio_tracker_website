@@ -2,14 +2,12 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import path from "path";
-import { templateUrl } from "./src/constants";
+import { workspaceUrl } from "./src/constants";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const isDev = process.env.NODE_ENV === "development";
-const websiteURL = isDev
-  ? "http://localhost:5173"
-  : "https://thetradegist.com";
+const websiteURL = isDev ? "http://localhost:5173" : "https://thetradegist.com";
 if (isDev) {
   console.log(`Docusaurus running in development mode.`);
 }
@@ -60,9 +58,9 @@ const config: Config = {
   ],
 
   // Custom fields are exposed to the site/client code via useDocusaurusContext().
-  // Add a single source of truth for the official template URL so docs can reference it.
+  // Add a single source of truth for the official workspace URL so docs can reference it.
   customFields: {
-    templateUrl,
+    workspaceUrl,
   },
 
   clientModules: [
