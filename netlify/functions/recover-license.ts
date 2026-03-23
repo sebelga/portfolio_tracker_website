@@ -89,19 +89,19 @@ export default async (req: Request) => {
     // Send the email via Resend
     if (RESEND_API_KEY) {
       const { error: resendError } = await resend.emails.send({
-        from: `Portfolio Tracker Beta <${EMAIL_FROM}>`,
+        from: `TradeGist Beta <${EMAIL_FROM}>`,
         to: [email],
-        subject: "Your Recovered Portfolio Tracker License Key",
+        subject: "Your Recovered TradeGist License Key",
         html: `
           <div style="font-family: sans-serif; padding: 20px;">
-            <h2>Here is your Portfolio Tracker License Key!</h2>
+            <h2>Here is your TradeGist License Key!</h2>
             <p>You recently requested to recover your license key.</p>
             <div style="background-color: #f4f4f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
               <code style="font-size: 24px; font-weight: bold; color: #000;">${licenseKey}</code>
             </div>
             <p><strong>How to use it:</strong></p>
             <ul>
-              <li>Open your Portfolio Tracker sheet.</li>
+              <li>Open your TradeGist sheet.</li>
               <li>Navigate to the "Configuration" sheet.</li>
               <li>Paste your key next to "license_key" in the General configuration section.</li>
             </ul>

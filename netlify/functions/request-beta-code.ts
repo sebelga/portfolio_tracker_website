@@ -118,12 +118,12 @@ export default async (req: Request) => {
 
     // Send the email via Resend
     const { data, error } = await resend.emails.send({
-      from: `Portfolio Tracker Beta <${EMAIL_FROM}>`,
+      from: `TradeGist Beta <${EMAIL_FROM}>`,
       to: [email],
-      subject: "Your Portfolio Tracker Confirmation Code",
+      subject: "Your TradeGist Confirmation Code",
       html: `
         <div style="font-family: sans-serif; padding: 20px;">
-          <h2>Portfolio Tracker Public Beta</h2>
+          <h2>TradeGist Public Beta</h2>
           <p>You recently requested a free premium license. Here is your 6-digit confirmation code:</p>
           <div style="font-size: 32px; letter-spacing: 5px; font-weight: bold; margin: 20px 0;">${code}</div>
           <p style="color: #666; font-size: 14px;">This code will expire in 15 minutes.</p>

@@ -94,12 +94,12 @@ export default async (req: Request) => {
     // Send email with template link
     if (RESEND_API_KEY) {
       const { error: resendError } = await resend.emails.send({
-        from: `Portfolio Tracker <${EMAIL_FROM}>`,
+        from: `TradeGist <${EMAIL_FROM}>`,
         to: [licenseData.email],
-        subject: `Portfolio Tracker Template v${TEMPLATE_VERSION}`,
+        subject: `TradeGist Template v${TEMPLATE_VERSION}`,
         html: `
           <div style="font-family: sans-serif; padding: 20px;">
-            <h2>Your Portfolio Tracker Template</h2>
+            <h2>Your TradeGist Template</h2>
             <p>You requested the latest version of the official template sheet.</p>
             <p style="margin: 8px 0; color: #666; font-size: 14px;">Template version: <strong>${TEMPLATE_VERSION}</strong></p>
             <div style="margin: 24px 0;">
@@ -108,7 +108,7 @@ export default async (req: Request) => {
             <p><strong>How to use it:</strong></p>
             <ul>
               <li>Click the button above to make a copy in your Google Drive.</li>
-              <li>Open the copy and install the Portfolio Tracker add-on.</li>
+              <li>Open the copy and install the TradeGist add-on.</li>
               <li>Enter your license key in the Configuration sheet.</li>
             </ul>
             <hr style="border: none; border-top: 1px solid #eaeaea; margin: 30px 0;" />

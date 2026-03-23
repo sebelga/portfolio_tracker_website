@@ -30,7 +30,7 @@ const resend = new Resend(RESEND_API_KEY);
  */
 function generateLicenseKey(): string {
   const rs = () => Math.random().toString(36).substring(2, 6).toUpperCase();
-  return `PT-${rs()}-${rs()}-${rs()}`;
+  return `TG-${rs()}-${rs()}-${rs()}`;
 }
 
 async function sendLicenseEmail(email: string, licenseKey: string) {
@@ -40,12 +40,12 @@ async function sendLicenseEmail(email: string, licenseKey: string) {
   }
 
   const { error: resendError } = await resend.emails.send({
-    from: `Portfolio Tracker Beta <${EMAIL_FROM}>`,
+    from: `TradeGist Beta <${EMAIL_FROM}>`,
     to: [email],
-    subject: "Your Portfolio Tracker Premium License Key!",
+    subject: "Your TradeGist Premium License Key!",
     html: `
       <div style="font-family: sans-serif; padding: 20px;">
-        <h2>Welcome to Portfolio Tracker Beta!</h2>
+        <h2>Welcome to TradeGist Beta!</h2>
         <p>Your email has been verified and your Free Premium License has been successfully generated.</p>
         <p>Here is your license key:</p>
         <div style="background-color: #f4f4f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
@@ -57,7 +57,7 @@ async function sendLicenseEmail(email: string, licenseKey: string) {
         </div>
         <p><strong>How to activate:</strong></p>
         <ul>
-          <li>Open your Portfolio Tracker sheet.</li>
+          <li>Open your TradeGist sheet.</li>
           <li>Navigate to the "Configuration" sheet.</li>
           <li>Paste your key next to "license_key" in the General configuration section.</li>
         </ul>

@@ -56,7 +56,7 @@ export default async () => {
     });
 
     const { error } = await resend.emails.send({
-      from: `Portfolio Tracker Reports <${EMAIL_FROM}>`,
+      from: `TradeGist Reports <${EMAIL_FROM}>`,
       to: [REPORT_EMAIL_TO],
       subject: `Daily License Report — ${total} new signup${total !== 1 ? "s" : ""}`,
       html: `
@@ -78,7 +78,7 @@ export default async () => {
             </tr>
           </table>
           <hr style="border: none; border-top: 1px solid #eaeaea; margin: 30px 0;" />
-          <p style="color: #999; font-size: 12px;">This is an automated report from Portfolio Tracker.</p>
+          <p style="color: #999; font-size: 12px;">This is an automated report from TradeGist.</p>
         </div>
       `,
     });
