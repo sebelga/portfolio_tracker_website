@@ -14,3 +14,9 @@ python3 ./scripts/resize_images.py <maxImageWidth> <folderWithImages>
 # example
 python3 ./scripts/resize_images.py 1600 /Users/seb/Desktop/gallery/originals
 ```
+
+## Favicon
+
+Favicons where generated from https://realfavicongenerator.net/
+
+If we need to update it, upload there a 512x512 svg or png and they will generate all the different versions.
