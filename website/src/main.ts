@@ -1,10 +1,11 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import {
   initBetaLicenseFlow,
-  initNewsletterFlow,
+  initPricingNewsletterFlow,
   initRecoverLicenseFlow,
   initRequestTemplateFlow,
 } from "./pricing";
+import { initNewsletterForm } from "./newsletter";
 
 (function init() {
   function gallery() {
@@ -25,9 +26,17 @@ import {
   document.addEventListener("DOMContentLoaded", function () {
     gallery();
     initBetaLicenseFlow();
-    initNewsletterFlow();
+    initPricingNewsletterFlow();
     initRecoverLicenseFlow();
     initRequestTemplateFlow();
+
+    // Footer newsletter modal
+    initNewsletterForm({
+      formId: "footer-newsletter-form",
+      emailInputId: "footer-newsletter-email",
+      submitBtnId: "footer-newsletter-btn",
+      successId: "footer-newsletter-success",
+    });
   });
 
   console.log("Welcome to TradeGist!");

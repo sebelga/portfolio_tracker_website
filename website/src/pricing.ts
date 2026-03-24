@@ -1,53 +1,12 @@
 import { getElement, showToastError } from "./utils";
+import { initNewsletterForm } from "./newsletter";
 
-export function initNewsletterFlow() {
-  const newsletterForm = getElement<HTMLFormElement>("newsletter-form");
-  const newsletterBtn = getElement<HTMLButtonElement>("newsletter-btn");
-  const newsletterSuccess = getElement<HTMLElement>("newsletter-success");
-
-  if (!newsletterForm) return;
-
-  newsletterForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const emailInput = document.getElementById(
-      "newsletter-email",
-    ) as HTMLInputElement | null;
-    const email = emailInput?.value.trim();
-    if (!email || !newsletterBtn) return;
-
-    const originalBtnText = newsletterBtn.textContent;
-    newsletterBtn.innerHTML =
-      '<span class="loading loading-spinner loading-sm"></span> Subscribing...';
-    newsletterBtn.disabled = true;
-
-    try {
-      const response = await fetch("/.netlify/functions/subscribe-newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to subscribe");
-      }
-
-      // Show success state
-      newsletterForm.classList.add("hidden");
-      newsletterSuccess?.classList.remove("hidden");
-    } catch (error: any) {
-      console.error("Error subscribing to newsletter:", error);
-      showToastError(
-        error.message || "Could not subscribe. Please try again later.",
-      );
-    } finally {
-      if (newsletterBtn) {
-        newsletterBtn.textContent = originalBtnText;
-        newsletterBtn.disabled = false;
-      }
-    }
+export function initPricingNewsletterFlow() {
+  initNewsletterForm({
+    formId: "newsletter-form",
+    emailInputId: "newsletter-email",
+    submitBtnId: "newsletter-btn",
+    successId: "newsletter-success",
   });
 }
 

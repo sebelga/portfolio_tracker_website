@@ -9,6 +9,7 @@
     <h6 class="footer-title">Support</h6>
     <a href="/contact" class="link link-hover">Contact</a>
     <a href="/docs/faq" class="link link-hover">FAQ</a>
+    <button onclick="footer_newsletter_modal.showModal()" class="link link-hover text-left">Subscribe to product updates</button>
   </nav>
   <nav>
     <h6 class="footer-title">Legal</h6>
@@ -30,6 +31,45 @@
     <p class="text-xs opacity-50">Google Sheets™ is a trademark of Google LLC.</p>
   </nav>
 </footer>
+
+<!-- Newsletter Subscribe Modal -->
+<dialog id="footer_newsletter_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Subscribe to Product Updates</h3>
+
+    <div id="footer-newsletter-step-1">
+      <p class="mb-4 text-base-content/80 text-sm">Stay in the loop — get notified about new features, updates, and tips for TradeGist.</p>
+      <form id="footer-newsletter-form" class="flex flex-col gap-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">Email Address</span></div>
+          <input type="email" id="footer-newsletter-email" placeholder="you@example.com" class="input input-bordered w-full" required />
+        </label>
+        <button type="submit" id="footer-newsletter-btn" class="btn btn-primary w-full">Subscribe</button>
+      </form>
+    </div>
+
+    <div id="footer-newsletter-success" class="hidden text-center">
+      <div class="py-6 flex flex-col items-center gap-4">
+        <div class="text-success bg-success/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold">You're Subscribed!</h4>
+        <p class="text-base-content/80 text-sm">Thanks for subscribing.<br />We'll keep you posted on what's new with TradeGist.</p>
+      </div>
+      <div class="modal-action mt-0">
+        <form method="dialog" class="w-full">
+          <button class="btn btn-outline btn-block">Close</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
 
 <!-- Request Template Modal -->
 <dialog id="request_template_modal" class="modal">
