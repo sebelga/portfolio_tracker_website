@@ -2,7 +2,11 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { createMpaPlugin } from "vite-plugin-virtual-mpa";
-import { SHEET_TEMPLATE_URL, TEMPLATE_VERSION } from "./constants.mjs";
+import {
+  SHEET_TEMPLATE_URL,
+  TEMPLATE_VERSION,
+  WORKSPACE_ADDON_URL,
+} from "./constants.mjs";
 
 const projectRoot = resolve(__dirname, "website");
 const pagesDir = resolve(projectRoot, "src/pages");
@@ -28,6 +32,7 @@ export default defineConfig({
           filename: "index.html",
           data: {
             templateUrl: SHEET_TEMPLATE_URL,
+            workspaceUrl: WORKSPACE_ADDON_URL,
             templateVersion: TEMPLATE_VERSION,
           },
         },
@@ -35,37 +40,55 @@ export default defineConfig({
           name: "about",
           template: resolve(pagesDir, "about.ejs"),
           filename: "about.html",
-          data: { templateVersion: TEMPLATE_VERSION },
+          data: {
+            templateVersion: TEMPLATE_VERSION,
+            workspaceUrl: WORKSPACE_ADDON_URL,
+          },
         },
         {
           name: "contact",
           template: resolve(pagesDir, "contact.ejs"),
           filename: "contact.html",
-          data: { templateVersion: TEMPLATE_VERSION },
+          data: {
+            templateVersion: TEMPLATE_VERSION,
+            workspaceUrl: WORKSPACE_ADDON_URL,
+          },
         },
         {
           name: "pricing",
           template: resolve(pagesDir, "pricing.ejs"),
           filename: "pricing.html",
-          data: { templateVersion: TEMPLATE_VERSION },
+          data: {
+            templateVersion: TEMPLATE_VERSION,
+            workspaceUrl: WORKSPACE_ADDON_URL,
+          },
         },
         {
           name: "docs",
           template: resolve(pagesDir, "docs.ejs"),
           filename: "docs.html",
-          data: { templateVersion: TEMPLATE_VERSION },
+          data: {
+            templateVersion: TEMPLATE_VERSION,
+            workspaceUrl: WORKSPACE_ADDON_URL,
+          },
         },
         {
           name: "terms-and-services",
           template: resolve(pagesDir, "terms-and-services.ejs"),
           filename: "terms-and-services.html",
-          data: { templateVersion: TEMPLATE_VERSION },
+          data: {
+            templateVersion: TEMPLATE_VERSION,
+            workspaceUrl: WORKSPACE_ADDON_URL,
+          },
         },
         {
           name: "privacy-policy",
           template: resolve(pagesDir, "privacy-policy.ejs"),
           filename: "privacy-policy.html",
-          data: { templateVersion: TEMPLATE_VERSION },
+          data: {
+            templateVersion: TEMPLATE_VERSION,
+            workspaceUrl: WORKSPACE_ADDON_URL,
+          },
         },
       ],
       htmlMinify: true,
