@@ -66,17 +66,15 @@ body {
 }
 
 .navbar__brand {
-  margin-top: 13px;
-  @media (width >= 64rem) {
-    margin-left: -6px;
-  }
+  display: block;
+  margin: 0;
+  height: 50px;
 }
 
 .navbar__toggle {
   margin-right: 0;
   padding-right: 0.5rem;
   width: 28px;
-  margin-top: -10px;
 }
 
 .navbar-sidebar__brand .navbar__brand {
@@ -85,13 +83,13 @@ body {
 }
 
 .navbar__logo {
-  height: auto;
+  height: 100%;
   margin-right: 0;
 }
 
 .navbar__logo img {
-  width: 280px;
-  height: 41.48px;
+  width: auto;
+  height: 100%;
 }
 
 .navbar__inner {

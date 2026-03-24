@@ -16,8 +16,8 @@ const baseUrl = isDev ? "/" : "/docs/";
 const config: Config = {
   title: "TradeGist for Google Sheets",
   tagline:
-    "Track your stock, crypto, and options investments with Google Sheets effortlessly",
-  favicon: "img/favicon.png",
+    "Most portfolio trackers just tell you if you're up or down. TradeGist tells you why.",
+  favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
