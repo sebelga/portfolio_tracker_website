@@ -10,6 +10,8 @@ You are an expert web developer assisting with the "Portfolio Tracker" project. 
 - **Styling:** Tailwind CSS v4 + Daisy UI 5
 - **Docs:** Docusaurus (located in `/documentation`)
 - **Hosting:** Netlify (using Netlify Functions for backend logic)
+- **Email:** Resend (for sending transactional emails, official TypeScript SDK `resend`)
+- **Newsletter:** Loops (official TypeScript SDK `loops`) for managing contacts and mailing list subscriptions
 - **Dependencies:** All dependencies are managed via `package.json` at the root level and installed using the `yarn` package manager.
 
 ## 📂 Project Structure
