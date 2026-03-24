@@ -10,3 +10,4 @@ todo.txt
 .env.*
 # Local Netlify folder
 .netlify
+checklist_before_release.md
