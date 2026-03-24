@@ -52,6 +52,7 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     const emailForm = getElement<HTMLFormElement>("email-form");
     const codeForm = getElement<HTMLFormElement>("code-form");
     const step1Email = getElement<HTMLElement>("step-1-email");
+    const step1SoldOut = getElement<HTMLElement>("step-1-sold-out");
     const step2Code = getElement<HTMLElement>("step-2-code");
     const step3Success = getElement<HTMLElement>("step-3-success");
     const displayEmail = getElement<HTMLElement>("display-email");
@@ -62,9 +63,47 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     const newLicenseKeyText = getElement<HTMLElement>("new-license-key");
     const betaModal = getElement<HTMLDialogElement>("beta_license_modal");
 
+    // Pricing card elements
+    const remainingBadge = getElement<HTMLElement>("remaining-licenses-badge");
+    const remainingCount = getElement<HTMLElement>("remaining-count");
+    const ctaAvailable = getElement<HTMLElement>("cta-available");
+    const ctaSoldOut = getElement<HTMLElement>("cta-sold-out");
+
     if (!emailForm || !codeForm || !betaModal) return;
 
     let currentJwtToken = "";
+    let licensesAvailable = true;
+
+    // Fetch license availability on page load
+    async function loadLicenseStats() {
+      try {
+        const response = await fetch("/.netlify/functions/license-stats");
+        if (!response.ok) return;
+
+        const data = await response.json();
+        const remaining = data.remaining ?? 0;
+
+        // Update the badge
+        if (remainingBadge && remainingCount) {
+          remainingCount.textContent = String(remaining);
+          remainingBadge.classList.remove("hidden");
+        }
+
+        if (remaining <= 0) {
+          licensesAvailable = false;
+          // Toggle pricing card CTAs
+          ctaAvailable?.classList.add("hidden");
+          ctaSoldOut?.classList.remove("hidden");
+          // Toggle modal steps
+          step1Email?.classList.add("hidden");
+          step1SoldOut?.classList.remove("hidden");
+        }
+      } catch {
+        // Silently fail — default to showing the form
+      }
+    }
+
+    loadLicenseStats();
 
     // Step 1: Request Code
     emailForm.addEventListener("submit", async (e) => {
@@ -191,7 +230,13 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     // Reset modal when completely closed
     betaModal?.addEventListener("close", () => {
       setTimeout(() => {
-        step1Email?.classList.remove("hidden");
+        if (licensesAvailable) {
+          step1Email?.classList.remove("hidden");
+          step1SoldOut?.classList.add("hidden");
+        } else {
+          step1Email?.classList.add("hidden");
+          step1SoldOut?.classList.remove("hidden");
+        }
         step2Code?.classList.add("hidden");
         step3Success?.classList.add("hidden");
         emailForm.reset();

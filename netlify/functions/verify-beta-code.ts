@@ -3,7 +3,7 @@ import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
 import type { LicenseDoc } from "../lib/types";
-import { SHEET_TEMPLATE_URL } from "../../constants.mjs";
+import { SHEET_TEMPLATE_URL, MAX_PREMIUM_LICENSES } from "../../constants.mjs";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -127,15 +127,48 @@ export default async (req: Request) => {
       createdAt: FieldValue.serverTimestamp(),
     };
 
-    // 4. Save to Firestore Collections
-    await db.collection("licenses").doc(licenseKey).set(licenseDoc);
+    // 4. Atomically check the premium license cap and save the license
+    const countersRef = db.collection("metadata").doc("license-counts");
+
+    await db.runTransaction(async (transaction) => {
+      const countersSnap = await transaction.get(countersRef);
+      const currentPremium = countersSnap.exists
+        ? (countersSnap.data()?.premium ?? 0)
+        : 0;
+
+      if (currentPremium >= MAX_PREMIUM_LICENSES) {
+        throw new Error("PREMIUM_CAP_REACHED");
+      }
+
+      // Write the license document
+      const licenseRef = db.collection("licenses").doc(licenseKey);
+      transaction.set(licenseRef, licenseDoc);
+
+      // Increment the premium counter
+      if (countersSnap.exists) {
+        transaction.update(countersRef, {
+          premium: FieldValue.increment(1),
+        });
+      } else {
+        transaction.set(countersRef, { premium: 1, free: 0 });
+      }
+    });
 
     // 5. Send success email with the license key
     await sendLicenseEmail(email, licenseKey);
 
     // 6. Fire back License Key to the frontend for the success Modal
     return Response.json({ licenseKey, email });
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.message === "PREMIUM_CAP_REACHED") {
+      return Response.json(
+        {
+          error:
+            "All free premium licenses for the Beta have been claimed. Stay tuned for the official launch!",
+        },
+        { status: 409 },
+      );
+    }
     console.error("Critical error in verify-beta-code:", error);
     return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }

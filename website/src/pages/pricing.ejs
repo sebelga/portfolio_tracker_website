@@ -113,7 +113,24 @@
           </li>
         </ul>
         <div class="text-center mt-auto flex flex-col gap-2">
-          <button onclick="beta_license_modal.showModal()" class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Get Premium for Free</button>
+          <!-- Remaining licenses badge (loaded dynamically) -->
+          <div id="remaining-licenses-badge" class="mb-2 hidden">
+            <span class="badge badge-outline badge-lg text-primary-content/90 border-primary-content/30">
+              <span id="remaining-count" class="font-bold mr-1"></span> free licenses remaining
+            </span>
+          </div>
+          <!-- Available state: normal CTA -->
+          <div id="cta-available">
+            <button onclick="beta_license_modal.showModal()" class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Get Premium for Free</button>
+          </div>
+          <!-- Sold out state: newsletter CTA (hidden by default) -->
+          <div id="cta-sold-out" class="hidden">
+            <div class="alert bg-primary-content/10 border-primary-content/20 text-primary-content text-sm mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>All free premium licenses for the Beta have been claimed! Subscribe below to be notified when licenses become available for purchase.</span>
+            </div>
+            <button onclick="beta_license_modal.showModal()" class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Notify Me When Available</button>
+          </div>
           <div class="flex justify-center gap-4 text-sm mt-1">
             <button onclick="recover_license_modal.showModal()" class="btn btn-link text-primary-content/80 hover:text-primary-content font-normal no-underline hover:underline btn-sm">Lost your license?</button>
             <button onclick="request_template_modal.showModal()" class="btn btn-link text-primary-content/80 hover:text-primary-content font-normal no-underline hover:underline btn-sm">Get latest template</button>
@@ -130,7 +147,7 @@
   <div class="modal-box">
     <h3 class="font-bold text-lg mb-4">Get your Free Premium License</h3>
 
-    <!-- Step 1: Email Form -->
+    <!-- Step 1: Email Form (shown when licenses are available) -->
     <div id="step-1-email">
       <p class="mb-4 text-base-content/80 text-sm">Enter your email address to receive a confirmation code. We will send your license key here.</p>
       <form id="email-form" class="flex flex-col gap-4">
@@ -140,6 +157,26 @@
         </label>
         <button type="submit" id="send-code-btn" class="btn btn-primary w-full">Send Confirmation Code</button>
       </form>
+    </div>
+
+    <!-- Step 1 Alt: Sold Out (shown when no licenses remain) -->
+    <div id="step-1-sold-out" class="hidden">
+      <div class="flex flex-col items-center gap-4 py-4">
+        <div class="text-warning bg-warning/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold text-center">All Beta Licenses Claimed</h4>
+        <p class="text-base-content/80 text-sm text-center">We're sorry — all free premium licenses for the public Beta have been claimed. Subscribe to our newsletter to be notified when licenses become available for purchase.</p>
+        <form id="newsletter-form" class="flex flex-col gap-4 w-full mt-2">
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">Email Address</span></div>
+            <input type="email" id="newsletter-email" placeholder="you@example.com" class="input input-bordered w-full" required />
+          </label>
+          <button type="submit" id="newsletter-btn" class="btn btn-primary w-full">Notify Me</button>
+        </form>
+      </div>
     </div>
 
     <!-- Step 2: Code Verification Form -->
