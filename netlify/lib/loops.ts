@@ -1,9 +1,10 @@
-const LOOPS_API_URL = "https://app.loops.so/api/v1/contacts/create";
+import { LoopsClient, APIError } from "loops";
+
 const PRODUCT_UPDATE_MAILING_LIST_ID = "cmn4u84l20aqw0ixef0bpbick"; // Loops mailing list ID for product updates
 
 /**
  * Adds a contact to the Loops audience.
- * Uses the "create" endpoint which returns 409 if the contact already exists — we treat that as success.
+ * If the contact already exists, we treat that as success.
  */
 export async function addContactToLoops(
   email: string,
@@ -16,32 +17,33 @@ export async function addContactToLoops(
     return { success: false };
   }
 
-  const response = await fetch(LOOPS_API_URL, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+  const loops = new LoopsClient(apiKey);
+  const mailingLists = {
+    [PRODUCT_UPDATE_MAILING_LIST_ID]: true,
+  };
+
+  try {
+    await loops.createContact({
       email,
-      source,
-      mailingLists: {
-        [PRODUCT_UPDATE_MAILING_LIST_ID]: true,
+      properties: {
+        source,
+        ...(licenseLevel != null && { license: licenseLevel }),
       },
-      license: licenseLevel,
-    }),
-  });
-
-  if (response.ok) {
+      mailingLists,
+    });
     return { success: true };
+  } catch (error) {
+    if (error instanceof APIError && error.statusCode === 409) {
+      return { success: true, alreadyExists: true };
+    }
+    if (error instanceof APIError) {
+      console.error(
+        `Loops API error (${error.statusCode}):`,
+        error.json ?? error.rawBody,
+      );
+    } else {
+      console.error("Loops unexpected error:", error);
+    }
+    return { success: false };
   }
-
-  // 409 = contact already exists — treat as success
-  if (response.status === 409) {
-    return { success: true, alreadyExists: true };
-  }
-
-  const errorBody = await response.text();
-  console.error(`Loops API error (${response.status}):`, errorBody);
-  return { success: false };
 }
