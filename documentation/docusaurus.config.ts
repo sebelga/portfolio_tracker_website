@@ -2,7 +2,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import path from "path";
-import { workspaceUrl } from "./src/constants";
+import { WORKSPACE_ADDON_URL } from "../constants.mjs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -60,7 +60,7 @@ const config: Config = {
   // Custom fields are exposed to the site/client code via useDocusaurusContext().
   // Add a single source of truth for the official workspace URL so docs can reference it.
   customFields: {
-    workspaceUrl,
+    workspaceUrl: WORKSPACE_ADDON_URL,
   },
 
   clientModules: [
