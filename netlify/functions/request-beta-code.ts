@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { initFirebase } from "../lib/firebase";
 // @ts-ignore — JSON import attribute handled by esbuild bundler
 import disposableDomains from "disposable-email-domains/index.json" with { type: "json" };
+import { validateEmail } from "../lib/utils";
 
 // Safely load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -47,6 +48,10 @@ export default async (req: Request) => {
 
     if (!email) {
       return Response.json({ error: "Email is required" }, { status: 400 });
+    }
+
+    if (!validateEmail(email)) {
+      return Response.json({ error: "Invalid email format" }, { status: 400 });
     }
 
     // --- Anti-abuse: Disposable email blocking ---

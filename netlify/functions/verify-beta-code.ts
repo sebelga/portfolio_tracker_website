@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
+import { addContactToLoops } from "../lib/loops";
 import type { LicenseDoc } from "../lib/types";
 import { SHEET_TEMPLATE_URL, MAX_PREMIUM_LICENSES } from "../../constants.mjs";
 
@@ -82,7 +83,7 @@ export default async (req: Request) => {
   try {
     const db = initFirebase();
     const body = await req.json();
-    const { token, code } = body;
+    const { token, code, subscribe } = body;
 
     if (!token || !code) {
       return Response.json({ error: "Missing token or code" }, { status: 400 });
@@ -157,7 +158,16 @@ export default async (req: Request) => {
     // 5. Send success email with the license key
     await sendLicenseEmail(email, licenseKey);
 
-    // 6. Fire back License Key to the frontend for the success Modal
+    // 6. Optionally add the user to the Loops newsletter audience
+    if (subscribe) {
+      // For now we can only generate beta-licenses. We'll have to update this logic
+      // once we can create free|premium licenses.
+      addContactToLoops(email, "beta-license", "beta-license").catch((err) =>
+        console.warn("Non-fatal: Failed to add contact to Loops:", err),
+      );
+    }
+
+    // 7. Fire back License Key to the frontend for the success Modal
     return Response.json({ licenseKey, email });
   } catch (error: any) {
     if (error?.message === "PREMIUM_CAP_REACHED") {

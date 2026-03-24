@@ -1,6 +1,7 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import {
   initBetaLicenseFlow,
+  initNewsletterFlow,
   initRecoverLicenseFlow,
   initRequestTemplateFlow,
 } from "./pricing";
@@ -24,6 +25,7 @@ import {
   document.addEventListener("DOMContentLoaded", function () {
     gallery();
     initBetaLicenseFlow();
+    initNewsletterFlow();
     initRecoverLicenseFlow();
     initRequestTemplateFlow();
   });
