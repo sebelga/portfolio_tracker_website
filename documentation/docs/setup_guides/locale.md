@@ -8,7 +8,7 @@ tags: [locale, portfolio-tracker, tradegist, google-sheets]
 
 # Spreadsheet Locale
 
-The locale setting in Google Sheets determines how dates, numbers, and formulas are interpreted and displayed. The TradeGist template is designed with specific locale considerations to ensure formulas work correctly. Misconfigured locales can lead to errors in calculations, data entry, and formula parsing.
+The locale setting in Google Sheets™ determines how dates, numbers, and formulas are interpreted and displayed. The TradeGist template is designed with specific locale considerations to ensure formulas work correctly. Misconfigured locales can lead to errors in calculations, data entry, and formula parsing.
 
 ## Supported Locales
 

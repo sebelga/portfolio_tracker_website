@@ -8,7 +8,7 @@ tags: [performance, cache, optimization, apps-script]
 
 # Performance and Caching
 
-Processing thousands of financial transactions in Google Sheets can lead to slow execution times or script timeouts. To ensure a "snappy" experience, TradeGist uses two distinct caching mechanisms designed to bypass the latency of repetitive spreadsheet reads during complex script executions.
+Processing thousands of financial transactions in Google Sheets™ can lead to slow execution times or script timeouts. To ensure a "snappy" experience, TradeGist uses two distinct caching mechanisms designed to bypass the latency of repetitive spreadsheet reads during complex script executions.
 
 ## 1. Trades Caching
 

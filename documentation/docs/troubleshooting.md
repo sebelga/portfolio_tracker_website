@@ -1,7 +1,7 @@
 ---
 id: troubleshooting
 title: Troubleshooting
-description: Common issues and solutions for the TradeGist add-on in Google Sheets.
+description: Common issues and solutions for the TradeGist add-on in Google Sheets™.
 tags: [troubleshooting, portfolio-tracker, tradegist, google-sheets]
 ---
 

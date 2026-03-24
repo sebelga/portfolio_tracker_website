@@ -23,7 +23,7 @@ _Note_: Untick "Take Snapshot" for assets you don't want included to reduce data
 
 _Note 2_: If you have created snapshot data for an asset and you decide to untick the "Take Snapshot", the values from the last snapshot will be copied over into the new snapshots.
 
-_Tip_: Make sure to make backups of your Google Sheet to avoid losing historical snapshot data of your portfolio.
+_Tip_: Make sure to make backups of your Google Sheet™ to avoid losing historical snapshot data of your portfolio.
 
 :::info
 Charts assume one snapshot per day for accurate performance calculations. If you take multiple snapshots daily, adjust the "Num days" in Chart Configuration accordingly.
@@ -36,7 +36,7 @@ To take a snapshot manually:
 1. Click on the menu: **Snapshots > Create assets snapshot**.
 2. A new row will be added to the "Snapshots" sheet with the current data.
 
-_Note_: Snapshots are just normal Google Sheets rows. If you don't need a snapshot, simply delete the row. The same applies to columns—you can delete the 3 columns of an asset to completely remove that asset's snapshots without affecting other assets' snapshots.  
+_Note_: Snapshots are just normal Google Sheets™ rows. If you don't need a snapshot, simply delete the row. The same applies to columns—you can delete the 3 columns of an asset to completely remove that asset's snapshots without affecting other assets' snapshots.  
 The only thing that needs to stay consistent is that the first column is the timestamp and the second column is the portfolio total value.
 
 ## Setting Up Daily Automated Snapshots

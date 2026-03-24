@@ -1,7 +1,7 @@
 ---
 id: faq
 title: FAQ
-description: Frequently asked questions about the TradeGist add-on for Google Sheets.
+description: Frequently asked questions about the TradeGist add-on for Google Sheets™.
 tags: [faq, portfolio-tracker, tradegist, google-sheets]
 ---
 
@@ -17,7 +17,7 @@ You can then apply the same light yellow background to the new named range area.
 
 ## How do I set up the add-on for the first time?
 
-1. Request your free license key from the main website and obtain the official Google Sheets template from the [setup guide](/setup-guides/official-template).
+1. Request your free license key from the main website and obtain the official Google Sheets™ template from the [setup guide](/setup-guides/official-template).
 2. Install the TradeGist add-on from the Google Workspace Marketplace.
 3. Enter your license key and configure your API keys (CoinMarketCap for crypto, Massive.com for options) in the Configuration sheet.
 4. Add your assets, accounts, and tax rates in the respective sections of the Configuration sheet.
@@ -64,7 +64,7 @@ _Example_: For a 2-for-1 split of AAPL on 2020-08-31, enter Ticker: AAPL, Date: 
 
 ## Can I import trades from another platform?
 
-The add-on does not support direct imports. Manually enter transactions into the Transactions sheet, or use Google Sheets' import features to copy data from CSV exports. You can also connect services like Zapier to automatically insert the transactions based on events from your brokerage accounts like HTTP hooks.
+The add-on does not support direct imports. Manually enter transactions into the Transactions sheet, or use Google Sheets™' import features to copy data from CSV exports. You can also connect services like Zapier to automatically insert the transactions based on events from your brokerage accounts like HTTP hooks.
 
 _Tip_: Ensure columns match the template (e.g., Date, Asset, Symbol, Volume, Price).
 
@@ -82,7 +82,7 @@ _Example_: Set "Num days" to 180 for a 6-month performance chart.
 
 ## Is my data secure?
 
-Data is **only** stored in your Google Sheets file, which uses Google's security. The add-on does not transmit data to external servers beyond API calls for prices.
+Data is **only** stored in your Google Sheets™ file, which uses Google's security. The add-on does not transmit data to external servers beyond API calls for prices.
 
 _Note_: Regularly back up your sheet.
 

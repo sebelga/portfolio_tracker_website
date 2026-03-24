@@ -1,7 +1,7 @@
 ---
 title: Configuration
 slug: /setup-guides/configuration
-description: How to obtain and prepare the official Google Sheets template for the TradeGist add-on.
+description: How to obtain and prepare the official Google Sheets™ template for the TradeGist add-on.
 tags: [template, setup, getting-started]
 ---
 
@@ -123,7 +123,7 @@ _Example_:
 
 - Key: usdeur, Value: `=GOOGLEFINANCE("USDEUR")` (stores USD/EUR exchange rate).
 
-_Note_: Use Google Sheets formulas for dynamic values.
+_Note_: Use Google Sheets™ formulas for dynamic values.
 
 # Chart Configuration
 
