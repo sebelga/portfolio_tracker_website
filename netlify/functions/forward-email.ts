@@ -3,22 +3,6 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const outputEmail = async (emailId: string) => {
-  const { data: email } = await resend.emails.receiving.get(emailId);
-
-  // Download the raw email content if available
-  if (!email?.raw?.download_url) {
-    return;
-  }
-
-  const rawResponse = await fetch(email.raw.download_url);
-  const rawEmailContent = await rawResponse.text();
-
-  console.log("--- Received email content: ---");
-  console.log(rawEmailContent);
-  console.log("--- End of email content ---");
-};
-
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -29,16 +13,14 @@ export const handler: Handler = async (event) => {
 
     // Only process the 'email.received' event
     if (payload.type === "email.received") {
-      const emailId = payload.data?.email_id;
+      const { email_id, from: originalSender, subject } = payload.data || {};
 
-      if (!emailId) {
+      if (!email_id) {
         return {
           statusCode: 400,
           body: JSON.stringify({ error: "Missing email_id in payload" }),
         };
       }
-
-      await outputEmail(emailId);
 
       // Read fallback from environment variables
       const forwardTo = process.env.RESEND_FORWAD_EMAILS_TO;
@@ -54,11 +36,28 @@ export const handler: Handler = async (event) => {
         };
       }
 
-      // Use the helper method provided by Resend to automatically pull content & attachments
-      const { data, error } = await resend.emails.receiving.forward({
-        emailId: emailId,
+      // Fetch the full email content (webhooks only provide metadata)
+      const { data: emailContent, error: getError } =
+        await resend.emails.receiving.get(email_id);
+
+      if (getError || !emailContent) {
+        console.error("Error fetching email content:", getError);
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            error: getError?.message || "Failed to fetch email content",
+          }),
+        };
+      }
+
+      // Send the email to yourself with the Reply-To header set
+      const { data, error } = await resend.emails.send({
+        from: `TradeGist <${emailFrom}>`,
         to: forwardTo,
-        from: emailFrom,
+        replyTo: originalSender,
+        subject: `[TradeGist] ${subject || "(no subject)"}`,
+        html: emailContent.html || "",
+        text: emailContent.text || "",
       });
 
       if (error) {
