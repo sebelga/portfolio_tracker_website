@@ -1,21 +1,17 @@
-import { Handler, HandlerEvent } from "@netlify/functions";
-import {
-  type EmailReceivedEvent,
-  type WebhookEventPayload,
-} from "resend";
+import { type EmailReceivedEvent, type WebhookEventPayload } from "resend";
 import { simpleParser } from "mailparser";
 import { resend, forwardMessageToAdmin } from "../lib/email";
 
 const verifySignature = (
   payload: string,
-  headers: HandlerEvent["headers"],
+  headers: Headers,
   secret: string,
 ):
   | { result: WebhookEventPayload; error: never }
   | { error: string; result: never } => {
-  const svixId = headers["svix-id"];
-  const svixTimestamp = headers["svix-timestamp"];
-  const svixSignature = headers["svix-signature"];
+  const svixId = headers.get("svix-id");
+  const svixTimestamp = headers.get("svix-timestamp");
+  const svixSignature = headers.get("svix-signature");
 
   if (!svixId || !svixTimestamp || !svixSignature) {
     return {
@@ -50,32 +46,33 @@ const isValidToEmail = (to: string | string[] | undefined): boolean => {
   return to.some((email) => email.includes("hello@"));
 };
 
-export const handler: Handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+export default async (req: Request) => {
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
   }
 
   const webhookSecret = process.env.RESEND_WEBHOOK_SECRET;
   if (!webhookSecret) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
+    return new Response(
+      JSON.stringify({
         error: "Missing environment variables RESEND_WEBHOOK_SECRET",
       }),
-    };
+      { status: 500, headers: { "Content-Type": "application/json" } },
+    );
   }
 
+  const payload = await req.text();
   const { result, error } = verifySignature(
-    event.body || "",
-    event.headers,
+    payload,
+    req.headers,
     webhookSecret,
   );
 
   if (error) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error }),
-    };
+    return new Response(JSON.stringify({ error }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   try {
@@ -85,13 +82,13 @@ export const handler: Handler = async (event) => {
       const emailFrom = process.env.EMAIL_FROM;
 
       if (!forwardTo || !emailFrom) {
-        return {
-          statusCode: 500,
-          body: JSON.stringify({
+        return new Response(
+          JSON.stringify({
             error:
               "Missing environment variables RESEND_FORWARD_EMAILS_TO or EMAIL_FROM",
           }),
-        };
+          { status: 500, headers: { "Content-Type": "application/json" } },
+        );
       }
 
       const { email_id, to, subject } =
@@ -99,19 +96,17 @@ export const handler: Handler = async (event) => {
 
       // Only forward emails sent to hello@
       if (!isValidToEmail(to)) {
-        return {
-          statusCode: 200,
-          body: JSON.stringify({
-            message: "Email not sent to hello@, ignoring",
-          }),
-        };
+        return new Response(
+          JSON.stringify({ message: "Email not sent to hello@, ignoring" }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        );
       }
 
       if (!email_id) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ error: "Missing email_id in payload" }),
-        };
+        return new Response(
+          JSON.stringify({ error: "Missing email_id in payload" }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
       }
 
       // Fetch the full email content (webhooks only provide metadata)
@@ -120,12 +115,12 @@ export const handler: Handler = async (event) => {
 
       if (getError || !emailContent) {
         console.error("Error fetching email content:", getError);
-        return {
-          statusCode: 500,
-          body: JSON.stringify({
+        return new Response(
+          JSON.stringify({
             error: getError?.message || "Failed to fetch email content",
           }),
-        };
+          { status: 500, headers: { "Content-Type": "application/json" } },
+        );
       }
 
       const { from, raw } = emailContent;
@@ -147,7 +142,7 @@ export const handler: Handler = async (event) => {
       }
 
       // Send the email to yourself with the Reply-To header set
-      const { data, error } = await forwardMessageToAdmin({
+      const { data, error: sendError } = await forwardMessageToAdmin({
         senderName: originalSenderName,
         senderEmail: originalSenderEmail,
         subject: subject || "(no subject)",
@@ -155,31 +150,29 @@ export const handler: Handler = async (event) => {
         text: emailContent.text || "",
       });
 
-      if (error) {
-        console.error("Error forwarding email:", error);
-        return {
-          statusCode: 500,
-          body: JSON.stringify({ error: error.message }),
-        };
+      if (sendError) {
+        console.error("Error forwarding email:", sendError);
+        return new Response(JSON.stringify({ error: sendError.message }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        });
       }
 
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Email forwarded successfully", data }),
-      };
+      return new Response(
+        JSON.stringify({ message: "Email forwarded successfully", data }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Event ignored" }),
-    };
+    return new Response(JSON.stringify({ message: "Event ignored" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error: any) {
     console.error("Webhook error:", error);
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-        error: error.message || "Error processing request",
-      }),
-    };
+    return new Response(
+      JSON.stringify({ error: error.message || "Error processing request" }),
+      { status: 400, headers: { "Content-Type": "application/json" } },
+    );
   }
 };
