@@ -130,8 +130,10 @@ export const handler: Handler = async (event) => {
         };
       }
 
-      let from: string = emailContent.from;
-      const { raw } = emailContent;
+      const { from, raw } = emailContent;
+      let originalSenderEmail: string = from;
+      let originalSenderName: string = "Unknown";
+
       if (raw) {
         // Get the raw email to get the full "From" header (in case it contains a name and email)
         const rawResponse = await fetch(raw.download_url);
@@ -139,26 +141,12 @@ export const handler: Handler = async (event) => {
         const parsed = await simpleParser(rawEmailContent, {
           skipImageLinks: true,
         });
-        console.log(
-          "Parsed email content:",
-          JSON.stringify(
-            {
-              from: parsed.from,
-              subject: parsed.subject,
-            },
-            null,
-            2,
-          ),
-        );
 
-        if (parsed.from?.text) {
-          from = parsed.from.text;
+        if (parsed.from?.value && parsed.from.value.length > 0) {
+          originalSenderEmail = parsed.from.value[0].address || from;
+          originalSenderName = parsed.from.value[0].name || "Unknown";
         }
       }
-      // Extract the email from possible format "Name <email@domain.com>"
-      const emailMatch = from?.match(/<(.+)>/);
-      const originalSenderEmail = emailMatch ? emailMatch[1] : from;
-      const originalSenderName = emailMatch ? emailMatch[0].trim() : "Unknown";
 
       // Send the email to yourself with the Reply-To header set
       const { data, error } = await resend.emails.send({
