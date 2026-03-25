@@ -4,6 +4,7 @@ import {
   Resend,
   type WebhookEventPayload,
 } from "resend";
+import { simpleParser } from "mailparser";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -129,7 +130,31 @@ export const handler: Handler = async (event) => {
         };
       }
 
-      const { from } = emailContent;
+      let from: string = emailContent.from;
+      const { raw } = emailContent;
+      if (raw) {
+        // Get the raw email to get the full "From" header (in case it contains a name and email)
+        const rawResponse = await fetch(raw.download_url);
+        const rawEmailContent = await rawResponse.text();
+        const parsed = await simpleParser(rawEmailContent, {
+          skipImageLinks: true,
+        });
+        console.log(
+          "Parsed email content:",
+          JSON.stringify(
+            {
+              from: parsed.from,
+              subject: parsed.subject,
+            },
+            null,
+            2,
+          ),
+        );
+
+        if (parsed.from?.text) {
+          from = parsed.from.text;
+        }
+      }
       // Extract the email from possible format "Name <email@domain.com>"
       const emailMatch = from?.match(/<(.+)>/);
       const originalSenderEmail = emailMatch ? emailMatch[1] : from;
