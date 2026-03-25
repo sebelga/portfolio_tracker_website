@@ -61,6 +61,9 @@ entry: '/src/main.ts'
 
 - **Client-side:** Keep logic in `/website/src/main.ts`. Use TypeScript strictly.
 - **Server-side:** All backend logic (API calls, data fetching, crypto price lookups) must reside in `/netlify/functions`.
+- **Netlify Functions Format:** Always use the Netlify Functions V2 format. 
+  - Export a `default` async function: `export default async (req: Request) => { ... }` (Do NOT use `export const handler`).
+  - Always return standard native `Response` objects (e.g., `return new Response(JSON.stringify({ ... }), { status: 200 })`). Do NOT return plain objects with `statusCode` and `body`.
 
 ### 4. SEO & Schema Rules
 
