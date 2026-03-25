@@ -16,7 +16,10 @@ export const handler: Handler = async (event) => {
       const { email_id, from, subject } = payload.data || {};
       // Extract the email from possible format "Name <email@domain.com>"
       const emailMatch = from?.match(/<(.+)>/);
-      const originalSender = emailMatch ? emailMatch[1] : from;
+      const originalSenderEmail = emailMatch ? emailMatch[1] : from;
+      const originalSenderName = emailMatch
+        ? emailMatch[0].trim()
+        : "Unknown Sender";
 
       if (!email_id) {
         return {
@@ -55,9 +58,9 @@ export const handler: Handler = async (event) => {
 
       // Send the email to yourself with the Reply-To header set
       const { data, error } = await resend.emails.send({
-        from: `TradeGist <${emailFrom}>`,
+        from: `${originalSenderName} <${emailFrom}>`,
         to: forwardTo,
-        replyTo: originalSender,
+        replyTo: originalSenderEmail,
         subject: `[TradeGist] ${subject || "(no subject)"}`,
         html: emailContent.html || "",
         text: emailContent.text || "",
