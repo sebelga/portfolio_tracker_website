@@ -19,6 +19,14 @@
   }
 }
 
+@plugin "daisyui/theme" {
+  name: "forest";
+  --radius-field: 0.5rem;
+}
+
+/* This allows us to use the Tailwind dark variant with DaisyUI themes. E.g. dark:p-10 */
+@custom-variant dark (&:where([data-theme=forest], [data-theme=forest] *));
+
 .mona-sans-body {
   font-family: "Mona Sans", sans-serif;
   font-optical-sizing: auto;

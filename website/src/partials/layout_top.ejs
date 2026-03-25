@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" data-theme="emerald">
+<html lang="en">
 <%- include('head.ejs', { 
   title: title, 
   description: description, 
   slug: typeof slug !== 'undefined' ? slug : '' 
 }) %>
 
-<body class="font-sans text-gray-900 antialiased <%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
+<body class="font-sans antialiased <%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
   <% if (typeof jsonLd !== 'undefined') { %>
   <script type="application/ld+json">
     <% if (Array.isArray(jsonLd)) { %> {

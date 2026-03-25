@@ -6,6 +6,7 @@ import {
   initRequestTemplateFlow,
 } from "./pricing";
 import { initNewsletterForm } from "./newsletter";
+import { initThemeToggle } from "./theme";
 
 (function init() {
   function gallery() {
@@ -22,6 +23,8 @@ import { initNewsletterForm } from "./newsletter";
 
     lightbox.init();
   }
+
+  initThemeToggle();
 
   document.addEventListener("DOMContentLoaded", function () {
     gallery();
