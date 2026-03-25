@@ -1,18 +1,79 @@
-import { Handler } from "@netlify/functions";
-import { Resend } from "resend";
+import { Handler, HandlerEvent } from "@netlify/functions";
+import {
+  type EmailReceivedEvent,
+  Resend,
+  type WebhookEventPayload,
+} from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+const verifySignature = (
+  payload: string,
+  headers: HandlerEvent["headers"],
+  secret: string,
+):
+  | { result: WebhookEventPayload; error: never }
+  | { error: string; result: never } => {
+  const svixId = headers["svix-id"];
+  const svixTimestamp = headers["svix-timestamp"];
+  const svixSignature = headers["svix-signature"];
+
+  if (!svixId || !svixTimestamp || !svixSignature) {
+    return {
+      error: "Missing Svix signature headers",
+      result: void 0 as never,
+    };
+  }
+  try {
+    const result = resend.webhooks.verify({
+      payload: payload,
+      headers: {
+        id: svixId,
+        timestamp: svixTimestamp,
+        signature: svixSignature,
+      },
+      webhookSecret: secret,
+    });
+    return { result, error: void 0 as never };
+  } catch (error) {
+    return {
+      error: "Invalid webhook",
+      result: void 0 as never,
+    };
+  }
+};
 
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  try {
-    const payload = JSON.parse(event.body || "{}");
+  const webhookSecret = process.env.RESEND_WEBHOOK_SECRET;
+  if (!webhookSecret) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error: "Missing environment variables RESEND_WEBHOOK_SECRET",
+      }),
+    };
+  }
 
+  const { result, error } = verifySignature(
+    event.body || "",
+    event.headers,
+    webhookSecret,
+  );
+
+  if (error) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error }),
+    };
+  }
+
+  try {
     // Only process the 'email.received' event
-    if (payload.type === "email.received") {
+    if (result.type === "email.received") {
       const forwardTo = process.env.RESEND_FORWARD_EMAILS_TO;
       const emailFrom = process.env.EMAIL_FROM;
 
@@ -26,7 +87,8 @@ export const handler: Handler = async (event) => {
         };
       }
 
-      const { email_id, to, subject } = payload.data || {};
+      const { email_id, to, subject } =
+        (result as EmailReceivedEvent).data || {};
 
       // Only forward emails sent to hello@
       if (!to || !to.includes("hello@")) {
