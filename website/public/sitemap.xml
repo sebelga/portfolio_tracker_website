@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thetradegist.com/</loc> <!-- Main landing page -->
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority> <!-- Highest priority -->
   </url>
@@ -20,19 +20,19 @@
   </url>
   <url>
     <loc>https://thetradegist.com/contact</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://thetradegist.com/terms-and-services</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://thetradegist.com/privacy-policy</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
