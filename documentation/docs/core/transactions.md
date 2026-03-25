@@ -65,11 +65,11 @@ Accurate FX rates are required to normalize all transactions into your **Base Cu
 You can automatically fetch the historical FX rate based on the asset's trading currency and your base currency for specific transactions:
 
 1.  **Select the rows** in the Transactions sheet that you wish to update.
-2.  Navigate to the top menu: **TradeGist** > **Update selected FX rate**.
+2.  Navigate to the top menu: **TradeGist** > **Update selected FX rates**.
 3.  The script will identify the asset's currency (e.g., USD for TSLA) and fetch the rate relative to your base currency for that specific transaction date.
 
 :::info API and Subscription Requirement
-The **Update selected FX rate** tool works best with an API key from [ExchangeRate-API](https://www.exchangerate-api.com/), which enables hourly updates. Please note that to fetch rates for **historical (past) transaction dates**, a paid subscription to the service is required.
+The **Update selected FX rates** tool works best with an API key from [ExchangeRate-API](https://www.exchangerate-api.com/), which enables hourly updates. Please note that to fetch rates for **historical (past) transaction dates**, a paid subscription to the service is required.
 :::
 
 ### 2. Google Finance Formula
