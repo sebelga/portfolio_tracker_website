@@ -13,7 +13,31 @@ export const handler: Handler = async (event) => {
 
     // Only process the 'email.received' event
     if (payload.type === "email.received") {
-      const { email_id, from, subject } = payload.data || {};
+      const forwardTo = process.env.RESEND_FORWARD_EMAILS_TO;
+      const emailFrom = process.env.EMAIL_FROM;
+
+      if (!forwardTo || !emailFrom) {
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            error:
+              "Missing environment variables RESEND_FORWARD_EMAILS_TO or EMAIL_FROM",
+          }),
+        };
+      }
+
+      const { email_id, from, to, subject } = payload.data || {};
+
+      // Only forward emails sent to hello@
+      if (!to || !to.includes("hello@")) {
+        return {
+          statusCode: 200,
+          body: JSON.stringify({
+            message: "Email not sent to hello@, ignoring",
+          }),
+        };
+      }
+
       // Extract the email from possible format "Name <email@domain.com>"
       const emailMatch = from?.match(/<(.+)>/);
       const originalSenderEmail = emailMatch ? emailMatch[1] : from;
@@ -25,20 +49,6 @@ export const handler: Handler = async (event) => {
         return {
           statusCode: 400,
           body: JSON.stringify({ error: "Missing email_id in payload" }),
-        };
-      }
-
-      // Read fallback from environment variables
-      const forwardTo = process.env.RESEND_FORWAD_EMAILS_TO;
-      const emailFrom = process.env.EMAIL_FROM;
-
-      if (!forwardTo || !emailFrom) {
-        return {
-          statusCode: 500,
-          body: JSON.stringify({
-            error:
-              "Missing environment variables RESEND_FORWAD_EMAILS_TO or EMAIL_FROM",
-          }),
         };
       }
 
