@@ -10,39 +10,27 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config({ path: "../../.env.local" });
 }
 
-// 1. Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Throw an error if process.env.JWT_SECRET is not set
-if (!process.env.JWT_SECRET) {
-  throw new Error("JWT_SECRET environment variable is not set.");
-}
-
-// 2. Secret Key used to hash JWTs in transit (never expose this)
-const JWT_SECRET = process.env.JWT_SECRET;
-
-// throw if EMAIL_FROM is not set
-if (!process.env.EMAIL_FROM) {
-  throw new Error("EMAIL_FROM environment variable is not set.");
-}
-
-// 3. Sender domain you set up in Resend
-const EMAIL_FROM = process.env.EMAIL_FROM;
-
-// 4. Build a Set for O(1) disposable domain lookups
 const disposableDomainSet = new Set<string>(disposableDomains);
 
-// 5. Rate limiting constants
+const JWT_SECRET = process.env.JWT_SECRET;
+const EMAIL_FROM = process.env.EMAIL_FROM;
 const IP_RATE_LIMIT = 3; // max requests per IP per 24 hours
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 export default async (req: Request) => {
-  // Only allow POST
   if (req.method !== "POST") {
     return new Response("Method Not Allowed", { status: 405 });
   }
 
   try {
+    if (!JWT_SECRET) {
+      throw new Error("JWT_SECRET environment variable is not set.");
+    }
+    if (!EMAIL_FROM) {
+      throw new Error("EMAIL_FROM environment variable is not set.");
+    }
+
     const body = await req.json();
     const email = body.email;
 

@@ -8,19 +8,19 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config({ path: "../../.env.local" });
 }
 
-if (!process.env.EMAIL_FROM) {
-  throw new Error("EMAIL_FROM environment variable is not set.");
-}
-if (!process.env.REPORT_EMAIL_TO) {
-  throw new Error("REPORT_EMAIL_TO environment variable is not set.");
-}
-
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const REPORT_EMAIL_TO = process.env.REPORT_EMAIL_TO;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async () => {
   try {
+    if (!EMAIL_FROM) {
+      throw new Error("EMAIL_FROM environment variable is not set.");
+    }
+    if (!REPORT_EMAIL_TO) {
+      throw new Error("REPORT_EMAIL_TO environment variable is not set.");
+    }
+
     const db = initFirebase();
 
     // Query licenses created in the last 24 hours

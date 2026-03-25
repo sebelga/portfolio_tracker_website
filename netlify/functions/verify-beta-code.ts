@@ -11,20 +11,11 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config({ path: "../../.env.local" });
 }
 
-// Throw an error if JWT_SECRET is not set
-if (!process.env.JWT_SECRET) {
-  throw new Error("JWT_SECRET environment variable is not set.");
-}
-if (!process.env.EMAIL_FROM) {
-  throw new Error("EMAIL_FROM environment variable is not set.");
-}
-
 const JWT_SECRET = process.env.JWT_SECRET;
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const SHEET_TEMPLATE_URL = process.env.SHEET_TEMPLATE_URL;
 
-// Initialize Resend
 const resend = new Resend(RESEND_API_KEY);
 
 /**
@@ -82,6 +73,13 @@ export default async (req: Request) => {
   }
 
   try {
+    if (!JWT_SECRET) {
+      throw new Error("JWT_SECRET environment variable is not set.");
+    }
+    if (!EMAIL_FROM) {
+      throw new Error("EMAIL_FROM environment variable is not set.");
+    }
+
     const db = initFirebase();
     const body = await req.json();
     const { token, code, subscribe } = body;
