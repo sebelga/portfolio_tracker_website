@@ -26,7 +26,7 @@ export const handler: Handler = async (event) => {
         };
       }
 
-      const { email_id, from, to, subject } = payload.data || {};
+      const { email_id, to, subject } = payload.data || {};
 
       // Only forward emails sent to hello@
       if (!to || !to.includes("hello@")) {
@@ -37,13 +37,6 @@ export const handler: Handler = async (event) => {
           }),
         };
       }
-
-      // Extract the email from possible format "Name <email@domain.com>"
-      const emailMatch = from?.match(/<(.+)>/);
-      const originalSenderEmail = emailMatch ? emailMatch[1] : from;
-      const originalSenderName = emailMatch
-        ? emailMatch[0].trim()
-        : "Unknown Sender";
 
       if (!email_id) {
         return {
@@ -65,6 +58,12 @@ export const handler: Handler = async (event) => {
           }),
         };
       }
+
+      const { from } = emailContent;
+      // Extract the email from possible format "Name <email@domain.com>"
+      const emailMatch = from?.match(/<(.+)>/);
+      const originalSenderEmail = emailMatch ? emailMatch[1] : from;
+      const originalSenderName = emailMatch ? emailMatch[0].trim() : "Unknown";
 
       // Send the email to yourself with the Reply-To header set
       const { data, error } = await resend.emails.send({
