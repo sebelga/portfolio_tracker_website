@@ -29,6 +29,9 @@ export function initBetaLicenseFlow() {
   const remainingBadge = getElement<HTMLElement>("remaining-licenses-badge");
   const remainingCount = getElement<HTMLElement>("remaining-count");
   const ctaAvailable = getElement<HTMLElement>("cta-available");
+  const ctaAvailableButton = ctaAvailable
+    ? ctaAvailable.getElementsByTagName("button")[0]
+    : null;
   const ctaSoldOut = getElement<HTMLElement>("cta-sold-out");
 
   const subscribeCheckbox = getElement<HTMLInputElement>("subscribe");
@@ -63,7 +66,10 @@ export function initBetaLicenseFlow() {
         step1Email?.classList.add("hidden");
         step1SoldOut?.classList.remove("hidden");
       } else {
-        ctaAvailable?.classList.remove("hidden");
+        if (ctaAvailableButton) {
+          ctaAvailableButton.disabled = false;
+          ctaAvailableButton.textContent = "Get Premium for Free";
+        }
       }
     } catch {
       // Silently fail — default to showing the form
