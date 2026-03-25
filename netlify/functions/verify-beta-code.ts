@@ -4,7 +4,7 @@ import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
 import { addContactToLoops } from "../lib/loops";
 import type { LicenseDoc } from "../lib/types";
-import { SHEET_TEMPLATE_URL, MAX_PREMIUM_LICENSES } from "../../constants.mjs";
+import { MAX_PREMIUM_LICENSES } from "../../constants.mjs";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -22,6 +22,7 @@ if (!process.env.EMAIL_FROM) {
 const JWT_SECRET = process.env.JWT_SECRET;
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const EMAIL_FROM = process.env.EMAIL_FROM;
+const SHEET_TEMPLATE_URL = process.env.SHEET_TEMPLATE_URL;
 
 // Initialize Resend
 const resend = new Resend(RESEND_API_KEY);
@@ -87,6 +88,19 @@ export default async (req: Request) => {
 
     if (!token || !code) {
       return Response.json({ error: "Missing token or code" }, { status: 400 });
+    }
+
+    if (!SHEET_TEMPLATE_URL) {
+      console.warn(
+        "SHEET_TEMPLATE_URL is not set. Cannot send template link email.",
+      );
+      return Response.json(
+        {
+          error:
+            "Template URL is not configured. Please contact support for assistance.",
+        },
+        { status: 500 },
+      );
     }
 
     // 1. Verify and decode the JWT

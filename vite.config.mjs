@@ -2,11 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { createMpaPlugin } from "vite-plugin-virtual-mpa";
-import {
-  SHEET_TEMPLATE_URL,
-  TEMPLATE_VERSION,
-  WORKSPACE_ADDON_URL,
-} from "./constants.mjs";
+import { TEMPLATE_VERSION, WORKSPACE_ADDON_URL } from "./constants.mjs";
 
 const projectRoot = resolve(__dirname, "website");
 const pagesDir = resolve(projectRoot, "src/pages");
@@ -31,7 +27,6 @@ export default defineConfig({
           template: resolve(pagesDir, "index.ejs"),
           filename: "index.html",
           data: {
-            templateUrl: SHEET_TEMPLATE_URL,
             workspaceUrl: WORKSPACE_ADDON_URL,
             templateVersion: TEMPLATE_VERSION,
           },

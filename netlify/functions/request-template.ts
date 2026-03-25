@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { initFirebase } from "../lib/firebase";
-import { SHEET_TEMPLATE_URL, TEMPLATE_VERSION } from "../../constants.mjs";
+import { TEMPLATE_VERSION } from "../../constants.mjs";
 import type { License } from "../lib/types";
 
 if (process.env.NODE_ENV === "development") {
@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === "development") {
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const resend = new Resend(RESEND_API_KEY);
 const EMAIL_FROM = process.env.EMAIL_FROM || "";
+const SHEET_TEMPLATE_URL = process.env.SHEET_TEMPLATE_URL;
 
 export default async (req: Request) => {
   if (req.method !== "POST") {
@@ -24,6 +25,19 @@ export default async (req: Request) => {
       return Response.json(
         { error: "License key is required." },
         { status: 400 },
+      );
+    }
+
+    if (!SHEET_TEMPLATE_URL) {
+      console.warn(
+        "SHEET_TEMPLATE_URL is not set. Cannot send template link email.",
+      );
+      return Response.json(
+        {
+          error:
+            "Template URL is not configured. Please contact support for assistance.",
+        },
+        { status: 500 },
       );
     }
 
