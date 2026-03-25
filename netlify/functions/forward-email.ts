@@ -43,6 +43,14 @@ const verifySignature = (
   }
 };
 
+const isValidToEmail = (to: string | string[] | undefined): boolean => {
+  if (!to) return false;
+  if (typeof to === "string") {
+    return to.includes("hello@");
+  }
+  return to.some((email) => email.includes("hello@"));
+};
+
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -91,7 +99,7 @@ export const handler: Handler = async (event) => {
         (result as EmailReceivedEvent).data || {};
 
       // Only forward emails sent to hello@
-      if (!to || !to.includes("hello@")) {
+      if (!isValidToEmail(to)) {
         return {
           statusCode: 200,
           body: JSON.stringify({
