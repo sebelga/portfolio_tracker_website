@@ -13,7 +13,10 @@ export const handler: Handler = async (event) => {
 
     // Only process the 'email.received' event
     if (payload.type === "email.received") {
-      const { email_id, from: originalSender, subject } = payload.data || {};
+      const { email_id, from, subject } = payload.data || {};
+      // Extract the email from possible format "Name <email@domain.com>"
+      const emailMatch = from?.match(/<(.+)>/);
+      const originalSender = emailMatch ? emailMatch[1] : from;
 
       if (!email_id) {
         return {
