@@ -3,6 +3,22 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const outputEmail = async (emailId: string) => {
+  const { data: email } = await resend.emails.receiving.get(emailId);
+
+  // Download the raw email content if available
+  if (!email?.raw?.download_url) {
+    return;
+  }
+
+  const rawResponse = await fetch(email.raw.download_url);
+  const rawEmailContent = await rawResponse.text();
+
+  console.log("--- Received email content: ---");
+  console.log(rawEmailContent);
+  console.log("--- End of email content ---");
+};
+
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -21,6 +37,8 @@ export const handler: Handler = async (event) => {
           body: JSON.stringify({ error: "Missing email_id in payload" }),
         };
       }
+
+      await outputEmail(emailId);
 
       // Read fallback from environment variables
       const forwardTo = process.env.RESEND_FORWAD_EMAILS_TO;
