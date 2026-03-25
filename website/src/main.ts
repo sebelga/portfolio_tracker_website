@@ -1,12 +1,8 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import {
-  initBetaLicenseFlow,
-  initPricingNewsletterFlow,
-  initRecoverLicenseFlow,
-  initRequestTemplateFlow,
-} from "./pricing";
+import { initBetaLicenseFlow, initPricingNewsletterFlow, initRecoverLicenseFlow, initRequestTemplateFlow } from "./pricing";
 import { initNewsletterForm } from "./newsletter";
 import { initThemeToggle } from "./theme";
+import { initContactForm } from "./contact";
 
 (function init() {
   function gallery() {
@@ -32,6 +28,7 @@ import { initThemeToggle } from "./theme";
     initPricingNewsletterFlow();
     initRecoverLicenseFlow();
     initRequestTemplateFlow();
+    initContactForm();
 
     // Footer newsletter modal
     initNewsletterForm({

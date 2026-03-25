@@ -1,12 +1,10 @@
 import { Handler, HandlerEvent } from "@netlify/functions";
 import {
   type EmailReceivedEvent,
-  Resend,
   type WebhookEventPayload,
 } from "resend";
 import { simpleParser } from "mailparser";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { resend, forwardMessageToAdmin } from "../lib/email";
 
 const verifySignature = (
   payload: string,
@@ -149,11 +147,10 @@ export const handler: Handler = async (event) => {
       }
 
       // Send the email to yourself with the Reply-To header set
-      const { data, error } = await resend.emails.send({
-        from: `${originalSenderName} <${emailFrom}>`,
-        to: forwardTo,
-        replyTo: originalSenderEmail,
-        subject: `[TradeGist] ${subject || "(no subject)"}`,
+      const { data, error } = await forwardMessageToAdmin({
+        senderName: originalSenderName,
+        senderEmail: originalSenderEmail,
+        subject: subject || "(no subject)",
         html: emailContent.html || "",
         text: emailContent.text || "",
       });
