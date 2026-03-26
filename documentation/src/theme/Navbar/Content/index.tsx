@@ -82,7 +82,7 @@ function WebsiteMainMenu() {
       <li>
         <a href="/">Home</a>
       </li>
-      <li>
+      {/* <li>
         <a href="/pricing">Pricing</a>
       </li>
       <li className="active">
@@ -93,7 +93,7 @@ function WebsiteMainMenu() {
       </li>
       <li>
         <a href="/contact"> Contact </a>
-      </li>
+      </li> */}
     </ul>
   );
 }
