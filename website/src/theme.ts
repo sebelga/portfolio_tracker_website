@@ -46,7 +46,11 @@ function updateActiveButton(pref: ThemePreference) {
 }
 
 function setPreference(pref: ThemePreference) {
-  localStorage.setItem(STORAGE_KEY, pref);
+  if (pref === "system") {
+    localStorage.removeItem(STORAGE_KEY);
+  } else {
+    localStorage.setItem(STORAGE_KEY, pref);
+  }
   applyTheme(pref);
   updateActiveButton(pref);
 }
