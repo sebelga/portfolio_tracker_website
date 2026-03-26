@@ -8,6 +8,7 @@ type LicenseLevel = "free" | "premium";
 export interface LicenseDoc {
   createdAt: FieldValue;
   email: string;
+  linkedGoogleAccount?: string;
   metadata: {
     origin: string;
     version: number;
