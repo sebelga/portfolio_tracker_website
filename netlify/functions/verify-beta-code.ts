@@ -5,6 +5,7 @@ import { initFirebase } from "../lib/firebase";
 import { addContactToLoops } from "../lib/loops";
 import type { LicenseDoc } from "../lib/types";
 import { MAX_PREMIUM_LICENSES } from "../../constants.mjs";
+import { validateEmail } from "../lib/utils";
 
 // Load fast `.env.local` for local development
 if (process.env.NODE_ENV === "development") {
@@ -122,6 +123,9 @@ export default async (req: Request) => {
     }
 
     const email = payload.email;
+    if (!validateEmail(email)) {
+      return Response.json({ error: "Invalid email format" }, { status: 400 });
+    }
 
     // 3. Document payload for Firestore DB
     const licenseDoc: LicenseDoc = {
@@ -204,8 +208,9 @@ export default async (req: Request) => {
     if (subscribe) {
       // For now we can only generate beta-licenses. We'll have to update this logic
       // once we can create free|premium licenses.
-      addContactToLoops(email, "beta-license", "beta-license").catch((err) =>
-        console.warn("Non-fatal: Failed to add contact to Loops:", err),
+      await addContactToLoops(email, "beta-license", "beta-license").catch(
+        (err) =>
+          console.warn("Non-fatal: Failed to add contact to Loops:", err),
       );
     }
 
