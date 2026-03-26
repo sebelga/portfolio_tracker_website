@@ -122,7 +122,6 @@ export default async (req: Request) => {
     }
 
     const email = payload.email;
-    const licenseKey = generateLicenseKey();
 
     // 3. Document payload for Firestore DB
     const licenseDoc: LicenseDoc = {
@@ -140,32 +139,63 @@ export default async (req: Request) => {
       createdAt: FieldValue.serverTimestamp(),
     };
 
-    // 4. Atomically check the premium license cap and save the license
+    // 4. Atomically check the premium license cap, verify key uniqueness, and save
     const countersRef = db.collection("metadata").doc("license-counts");
+    const MAX_KEY_ATTEMPTS = 5;
+    let licenseKey: string | null = null;
 
-    await db.runTransaction(async (transaction) => {
-      const countersSnap = await transaction.get(countersRef);
-      const currentPremium = countersSnap.exists
-        ? (countersSnap.data()?.premium ?? 0)
-        : 0;
+    for (let attempt = 0; attempt < MAX_KEY_ATTEMPTS; attempt++) {
+      const candidateKey = generateLicenseKey();
 
-      if (currentPremium >= MAX_PREMIUM_LICENSES) {
-        throw new Error("PREMIUM_CAP_REACHED");
-      }
+      try {
+        await db.runTransaction(async (transaction) => {
+          const countersSnap = await transaction.get(countersRef);
+          const currentPremium = countersSnap.exists
+            ? (countersSnap.data()?.premium ?? 0)
+            : 0;
 
-      // Write the license document
-      const licenseRef = db.collection("licenses").doc(licenseKey);
-      transaction.set(licenseRef, licenseDoc);
+          if (currentPremium >= MAX_PREMIUM_LICENSES) {
+            throw new Error("PREMIUM_CAP_REACHED");
+          }
 
-      // Increment the premium counter
-      if (countersSnap.exists) {
-        transaction.update(countersRef, {
-          premium: FieldValue.increment(1),
+          // Check for key collision
+          const licenseRef = db.collection("licenses").doc(candidateKey);
+          const existingDoc = await transaction.get(licenseRef);
+          if (existingDoc.exists) {
+            throw new Error("LICENSE_KEY_COLLISION");
+          }
+
+          // Write the license document
+          transaction.set(licenseRef, licenseDoc);
+
+          // Increment the premium counter
+          if (countersSnap.exists) {
+            transaction.update(countersRef, {
+              premium: FieldValue.increment(1),
+            });
+          } else {
+            transaction.set(countersRef, { premium: 1, free: 0 });
+          }
         });
-      } else {
-        transaction.set(countersRef, { premium: 1, free: 0 });
+
+        licenseKey = candidateKey;
+        break;
+      } catch (error: any) {
+        if (error?.message === "LICENSE_KEY_COLLISION") {
+          console.warn(
+            `License key collision on attempt ${attempt + 1}, retrying...`,
+          );
+          continue;
+        }
+        throw error;
       }
-    });
+    }
+
+    if (!licenseKey) {
+      throw new Error(
+        "Failed to generate a unique license key after multiple attempts.",
+      );
+    }
 
     // 5. Send success email with the license key
     await sendLicenseEmail(email, licenseKey);
