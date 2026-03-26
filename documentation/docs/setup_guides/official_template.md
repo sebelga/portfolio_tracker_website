@@ -10,6 +10,7 @@ tags: [template, setup, getting-started]
 The TradeGist add-on requires the official Google Sheets™ template to function correctly. The template includes pre-configured sheets, formulas, and scripts that the add-on relies on.
 
 - **How to Get the Template**: You first need to request a license from our main website. Once you do, the link to the official template will be sent directly to your email address along with your license key.
+  - **Existing users**: If you already have a license key, you can click on the "Get your copy" link under the "TEMPLATE" section in the footer of our website. Enter your license key, and the latest template link will be sent to your associated email address.
 
 Make a copy of the template in your Google Drive™ and install the add-on on your copied file. Do not use the original template directly, as the add-on will write data and the copy keeps the original unchanged.
 
