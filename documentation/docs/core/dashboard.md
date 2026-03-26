@@ -3,12 +3,12 @@ id: dashboard
 title: Dashboard sheet
 slug: dashboard
 description: Overview of the Dashboard sheet, the visual interface for monitoring your portfolio's performance and status.
-tags: [dashboard, portfolio-tracker, google-sheets]
+tags: [dashboard, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Dashboard Sheet
 
-The Dashboard sheet serves as the primary visual interface for your Portfolio Tracker add-on. It provides a quick, at-a-glance view of your investment portfolio's current status, performance trends, and key metrics. All data displayed here is automatically populated from your Trades sheet and snapshots, ensuring real-time accuracy based on your transaction history.
+The Dashboard sheet serves as the primary visual interface for your TradeGist add-on. It provides a quick, at-a-glance view of your investment portfolio's current status, performance trends, and key metrics. All data displayed here is automatically populated from your Trades sheet and snapshots, ensuring real-time accuracy based on your transaction history.
 
 ## Purpose and Overview
 

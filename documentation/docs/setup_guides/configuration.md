@@ -1,13 +1,13 @@
 ---
 title: Configuration
 slug: /setup-guides/configuration
-description: How to obtain and prepare the official Google Sheets template for the Portfolio Tracker add-on.
+description: How to obtain and prepare the official Google Sheets™ template for the TradeGist add-on.
 tags: [template, setup, getting-started]
 ---
 
 # Configuration Sheet
 
-The Configuration sheet is the central place to set up all parameters for the Portfolio Tracker add-on. It consists of multiple sections that control how the add-on behaves, including general settings, asset definitions, and more. Proper configuration ensures accurate tracking and reporting of your portfolio.
+The Configuration sheet is the central place to set up all parameters for the TradeGist add-on. It consists of multiple sections that control how the add-on behaves, including general settings, asset definitions, and more. Proper configuration ensures accurate tracking and reporting of your portfolio.
 
 ## General Configuration
 
@@ -15,6 +15,8 @@ This section configures the core settings of the add-on. These settings apply gl
 
 - **matching_method**: Determines the method for matching buy and sell transactions. Options are "LIFO" (Last In, First Out) or "FIFO" (First In, First Out). Default: FIFO.  
   _Example_: Set to "FIFO" if you want to sell the oldest shares first.
+- **license_key**: Your personal license key required to use the add-on. Obtain it from our main website.  
+  _Note_: The license is currently free during our beta launch and will be sent to your email along with the template link.
 - **cmc_api_key**: Your CoinMarketCap API key for fetching cryptocurrency prices. Obtain it from [CoinMarketCap](https://coinmarketcap.com/api/).  
   _Note_: Required for crypto assets; leave blank if not trading crypto or if you prefer to use your own method to update the prices.
 - **massive_api_key**: Your Massive.com API key for fetching stock and options data. Obtain it from [Massive.com](https://massive.com/).  
@@ -121,7 +123,7 @@ _Example_:
 
 - Key: usdeur, Value: `=GOOGLEFINANCE("USDEUR")` (stores USD/EUR exchange rate).
 
-_Note_: Use Google Sheets formulas for dynamic values.
+_Note_: Use Google Sheets™ formulas for dynamic values.
 
 # Chart Configuration
 

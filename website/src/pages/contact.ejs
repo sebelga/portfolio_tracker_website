@@ -1,64 +1,83 @@
-<!doctype html>
-<html lang="en" data-theme="emerald">
-<%- include('./src/partials/head.ejs', { title: 'Contact us: Portfolio Tracker', description: 'Get in touch with the Portfolio Tracker team.', slug: '/contact' }) %>
-
-<body class="bg-white pt-25 font-sans text-gray-900 antialiased">
-  <!-- Schema markup for ContactPage -->
-  <script type="application/ld+json">
+<%- include('./src/partials/layout_top.ejs', { 
+  title: 'Contact me: TradeGist', 
+  description: 'Get in touch with me.',
+  slug: '/contact',
+  bodyClass: 'pt-25',
+  jsonLd: [
     {
-      "@context": "https://schema.org",
       "@type": "ContactPage",
       "mainEntity": {
         "@type": "Organization",
-        "name": "Portfolio Tracker",
-        "url": "https://portfoliotrackergooglesheets.com",
+        "name": "TradeGist",
+        "url": "https://thetradegist.com",
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer service",
-          "url": "https://portfoliotrackergooglesheets.com/contact"
+          "url": "https://thetradegist.com/contact"
         }
       }
-    }
-  </script>
-  <!-- Breadcrumb structured data -->
-  <script type="application/ld+json">
+    },
     {
-      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [{
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://portfoliotrackergooglesheets.com"
+          "item": "https://thetradegist.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Contact",
-          "item": "https://portfoliotrackergooglesheets.com/contact"
+          "item": "https://thetradegist.com/contact"
         }
       ]
     }
-  </script>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  ]
+}) %>
 
-  <!-- Header -->
-  <%- include('./src/partials/header.ejs') %>
-  <main>
-    <section>
-      <div class="container mx-auto px-4 py-4 md:px-6 md:py-16 max-w-2xl">
-        <h1 class="font-display text-2xl md:text-5xl mb-3">
-          Contact Us
-        </h1>
-        <p class="mb-12">If you have any questions or feedback regarding our portfolio tracker Add-on, reach out using the form below.</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdyWFlTCnA3AXK3EGhWSMprvMSImYx51FI9xUGU1ljhnhFpSg/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form for Portfolio Tracker Support">Loading…</iframe>
+<section class="min-h-[calc(100vh-21.9rem)] flex flex-col justify-center">
+  <div class="container mx-auto px-4 py-4 md:px-6 md:py-12 max-w-2xl">
+    <h1 class="font-display text-2xl md:text-5xl mb-3">
+      Contact Me
+    </h1>
+    <p class="mb-12">If you have any questions or feedback regarding the TradeGist Add-on, reach out using the form below.</p>
+
+    <div class="card bg-base-200 border border-base-300">
+      <div class="card-body">
+        <form id="contact-form" class="space-y-4">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Name</legend>
+            <input type="text" name="name" class="input w-full validator" required placeholder="What is your name?" />
+            <p class="validator-hint hidden">Name is required</p>
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Email</legend>
+            <input type="email" name="email" class="input w-full validator" required placeholder="me@example.com" />
+            <p class="validator-hint hidden">Enter a valid email address</p>
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Message</legend>
+            <textarea name="message" class="textarea h-32 w-full validator" required placeholder="How can I help you?"></textarea>
+            <p class="validator-hint hidden">Message is required</p>
+          </fieldset>
+
+          <div class="mt-6">
+            <button type="submit" id="contact-btn" class="btn btn-primary w-full">Send Message</button>
+          </div>
+
+          <div id="contact-success" class="hidden alert alert-success mt-4">
+            Your message has been received! I'll get back to you shortly.
+          </div>
+          <div id="contact-error" class="hidden alert alert-error mt-4">
+            There was an error sending your message. Please try again later.
+          </div>
+        </form>
       </div>
-    </section>
-  </main>
-  <!-- Footer -->
-  <%- include('./src/partials/footer.ejs') %>
-</body>
+    </div>
+  </div>
+</section>
 
-</html>
+<%- include('./src/partials/layout_bottom.ejs') %>

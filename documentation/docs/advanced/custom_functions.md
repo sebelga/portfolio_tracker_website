@@ -2,13 +2,13 @@
 id: custom_functions
 slug: custom-functions
 title: Custom Functions
-description: Reference guide for custom functions available in the Portfolio Tracker add-on.
-tags: [custom-functions, portfolio-tracker, google-sheets]
+description: Reference guide for custom functions available in the TradeGist add-on.
+tags: [custom-functions, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Custom Functions
 
-The Portfolio Tracker add-on provides custom functions for advanced analysis of trades, assets, and snapshots. These can be used in any sheet cell for deeper insights. Below is a complete list with descriptions and examples.
+The TradeGist add-on provides custom functions for advanced analysis of trades, assets, and snapshots. These can be used in any sheet cell for deeper insights. Below is a complete list with descriptions and examples.
 
 ## Available Functions
 

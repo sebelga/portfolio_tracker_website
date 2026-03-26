@@ -1,23 +1,12 @@
-<!doctype html>
-<html lang="en" data-theme="emerald">
-<%- include('./src/partials/head.ejs', { title: 'Documentation: Portfolio Tracker', description: 'Explore the documentation for Portfolio Tracker.' }) %>
+<%- include('./src/partials/layout_top.ejs', { 
+  title: 'Documentation: TradeGist', 
+  description: 'Explore the documentation for TradeGist.',
+  slug: '/docs',
+}) %>
 
-<body class="bg-white font-sans text-gray-900 antialiased">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<div class="container mx-auto px-4 md:px-16 py-24">
+  <h2 class="text-3xl font-bold mt-24 mb-8">Documentation</h2>
+  <p class="mb-8">This page is a place holder for the Docusaurus documentation. Will only appear after building the website and previewing.</p>
+</div>
 
-  <!-- Header -->
-  <%- include('./src/partials/header.ejs') %>
-
-  <div class="container mx-auto px-4 md:px-16 py-24">
-    <h2 class="text-3xl font-bold mt-24 mb-8">Documentation</h2>
-    <p class="mb-8">This page is a place holder for the Docusaurus documentation. Will only appear after building the website and previewing.</p>
-  </div>
-
-  <!-- Footer -->
-  <%- include('./src/partials/footer.ejs') %>
-
-</body>
-
-</html>
+<%- include('./src/partials/layout_bottom.ejs') %>

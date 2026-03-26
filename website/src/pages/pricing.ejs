@@ -1,0 +1,309 @@
+<%- include('./src/partials/layout_top.ejs', { 
+  title: 'Pricing - TradeGist for Google Sheets', 
+  description: 'Simple and transparent pricing for the TradeGist Google Sheets Add-on. Try for free, special launch price available.',
+  slug: '/pricing',
+  bodyClass: 'pt-12',
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "name": "Pricing - TradeGist",
+    "description": "Pricing for TradeGist.",
+    "url": "https://thetradegist.com/pricing",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thetradegist.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Pricing",
+        "item": "https://thetradegist.com/pricing"
+      }
+    ]
+  }
+}) %>
+
+<section class="py-12 md:py-24">
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-base-content mb-4 drop-shadow-sm">
+      Simple, Transparent Pricing
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+      Try the full power of TradeGist.<br>Your first year of Premium is completely free during our public Beta phase.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Reapply style when free tier is back: grid md:grid-cols-2 gap-8 items-start -->
+    <div class="">
+      <!-- Free Tier Card -->
+      <!-- Hidden for now as the premium is free during beta. -->
+      <div class="hidden card bg-base-100 shadow-xl p-8 border border-base-300">
+        <h2 class="text-2xl font-bold text-base-content mb-4 w-full text-center">Free Quota</h2>
+        <div class="flex justify-center items-center h-24 mb-6">
+          <span class="text-5xl font-extrabold">$0</span>
+          <span class="text-xl text-base-content/60 ml-2"> / forever</span>
+        </div>
+        <p class="text-base-content/70 mb-6 text-center">
+          Perfect for trying out TradeGist and making sure it fits your needs.
+        </p>
+        <ul class="text-left space-y-4 mb-8 grow">
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Up to 30 transactions in your sheet
+          </li>
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Track your portfolio with no license required
+          </li>
+          <li class="flex items-start">
+            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Fully explore features before buying
+          </li>
+        </ul>
+        <div class="text-center mt-auto">
+          <a href="#" class="btn btn-outline btn-secondary btn-block text-lg">Try for Free</a>
+        </div>
+      </div>
+
+      <!-- Paid Tier Card -->
+      <div class="card bg-primary/20 shadow-2xl p-8 border-2 border-primary-content/20 relative max-w-xl mx-auto">
+        <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
+          <span class="badge badge-accent badge-lg shadow-sm animate-bounce">Beta Special!</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 w-full text-center">Premium License</h2>
+        <div class="flex flex-col justify-center items-center h-24 mb-6 relative">
+          <div class="flex items-center">
+            <span class="text-5xl font-extrabold">$0</span>
+            <span class="text-xl text-content-content/80 ml-2"> / 1st year</span>
+          </div>
+          <p class="text-sm line-through text-content/70 mt-1">Normal price: $29/year</p>
+        </div>
+        <div class="text-sm text-content/90 mb-6 text-center space-y-2">
+          <p><span class="font-semibold">During our public Beta phase, get 1 year of Premium for free!</span></p>
+          <p>Your license key and a link to the official template sheet will be sent directly to your email address.</p>
+          <p class="opacity-80 text-sm mt-2">Note: After the 1-year trial, the license will revert to the free version with a limitation of maximum 30 transactions.</p>
+        </div>
+        <ul class="text-left space-y-4 mb-8 grow">
+          <li class="flex items-start">
+            <svg class="basis-[16px] shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Unlimited transactions
+          </li>
+          <li class="flex items-start">
+            <svg class="basis-[16px] shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Automated FIFO & LIFO matching for accurate cost basis
+          </li>
+          <li class="flex items-start">
+            <svg class="basis-[16px] shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Customizable tax calculations by year and asset class
+          </li>
+          <li class="flex items-start">
+            <svg class="basis-[16px] shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Daily historical snapshots to track portfolio performance
+          </li>
+          <li class="flex items-start">
+            <svg class="basis-[16px] shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            All-in-one unified tracker for stocks, options, and crypto
+          </li>
+          <li class="flex items-start">
+            <svg class="basis-[16px] shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Priority support access
+          </li>
+        </ul>
+        <div class="text-center mt-auto flex flex-col gap-2">
+          <!-- Remaining licenses badge (loaded dynamically) -->
+          <div id="remaining-licenses-badge" class="mb-2 hidden">
+            <span class="badge badge-outline badge-lg text-content/90 border-content/30">
+              <span id="remaining-count" class="font-bold mr-1"></span>
+              <div><span class="hidden sm:inline">free </span>licenses remaining</div>
+            </span>
+          </div>
+          <!-- Available state: normal CTA -->
+          <div id="cta-available">
+            <button onclick="beta_license_modal.showModal()" class="btn btn-primary btn-block text-lg border-none hover:brightness-110" disabled>Loading...</button>
+          </div>
+          <!-- Sold out state: newsletter CTA (hidden by default) -->
+          <div id="cta-sold-out" class="hidden">
+            <div class="alert bg-primary-content/10 border-primary-content/20 text-content text-sm mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>All free premium licenses for the Beta have been claimed! Subscribe below to be notified when licenses become available for purchase.</span>
+            </div>
+            <button onclick="beta_license_modal.showModal()" class="btn btn-primary btn-block text-lg border-none hover:brightness-110">Notify Me When Available</button>
+          </div>
+          <div class="flex justify-center gap-4 text-sm mt-1">
+            <button onclick="recover_license_modal.showModal()" class="btn btn-link no-underline hover:underline btn-sm">Lost your license?</button>
+            <button onclick="request_template_modal.showModal()" class="btn btn-link no-underline hover:underline btn-sm">Get latest template</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Beta License Generation Modal -->
+<dialog id="beta_license_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Get your Free Premium License</h3>
+
+    <!-- Step 1: Email Form (shown when licenses are available) -->
+    <div id="step-1-email">
+      <p class="mb-4 text-base-content/80 text-sm">Enter your email address to receive a confirmation code. We will send your license key here.</p>
+      <form id="email-form" class="flex flex-col gap-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">Email Address</span></div>
+          <input type="email" id="user-email" placeholder="you@example.com" class="input input-bordered w-full" required />
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" id="subscribe" class="checkbox checkbox-sm checkbox-primary" />
+          <span class="label-text">Subscribe to product updates</span>
+        </label>
+        <button type="submit" id="send-code-btn" class="btn btn-primary w-full">Send Confirmation Code</button>
+      </form>
+    </div>
+
+    <!-- Step 1 Alt: Sold Out (shown when no licenses remain) -->
+    <div id="step-1-sold-out" class="hidden">
+      <div class="flex flex-col items-center gap-4 py-4">
+        <div class="text-warning bg-warning/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold text-center">All Beta Licenses Claimed</h4>
+        <p class="text-base-content/80 text-sm text-center">We're sorry — all free premium licenses for the public Beta have been claimed. Subscribe to our newsletter to be notified when licenses become available for purchase.</p>
+        <form id="newsletter-form" class="flex flex-col gap-4 w-full mt-2">
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">Email Address</span></div>
+            <input type="email" id="newsletter-email" placeholder="you@example.com" class="input input-bordered w-full" required />
+          </label>
+          <button type="submit" id="newsletter-btn" class="btn btn-primary w-full">Notify Me</button>
+        </form>
+        <div id="newsletter-success" class="hidden w-full mt-2">
+          <div class="flex flex-col items-center gap-3 py-2">
+            <div class="text-success bg-success/10 p-3 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <p class="text-base-content/80 text-sm text-center">You're on the list! We'll notify you when licenses become available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Code Verification Form -->
+    <div id="step-2-code" class="hidden">
+      <div class="alert alert-info bg-info/10 text-info-content border-info/20 mb-4 text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>We've sent a 6-digit code to <strong id="display-email"></strong>.</span>
+      </div>
+      <form id="code-form" class="flex flex-col gap-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">Confirmation Code</span></div>
+          <input type="text" id="verification-code" placeholder="123456" class="input input-bordered w-full text-center text-2xl tracking-widest font-mono" required maxlength="6" pattern="\d{6}" autocomplete="one-time-code" />
+        </label>
+        <button type="submit" id="verify-code-btn" class="btn btn-primary w-full">Verify & Get License</button>
+        <button type="button" id="back-to-email-btn" class="btn btn-ghost btn-sm mt-2">Use a different email</button>
+      </form>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div id="step-3-success" class="hidden text-center">
+      <div class="py-6 flex flex-col items-center gap-4">
+        <div class="text-success bg-success/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold">License Generated!</h4>
+        <p class="text-base-content/80 text-sm">Your premium license key is ready:</p>
+        <div class="bg-base-200/50 p-4 rounded-lg border border-base-300 w-full flex items-center justify-between gap-2">
+          <code id="new-license-key" class="text-lg font-bold text-primary select-all break-all text-left">...</code>
+          <button id="copy-license-btn" class="btn btn-sm btn-square btn-ghost" title="Copy to clipboard">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+          </button>
+        </div>
+        <p class="text-sm text-base-content/60 mt-2">We also sent your key and a link to the sheet template to your email.</p>
+      </div>
+      <div class="modal-action mt-0">
+        <form method="dialog" class="w-full">
+          <button class="btn btn-outline btn-block">Close</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<!-- Recover License Modal -->
+<dialog id="recover_license_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Recover your License</h3>
+
+    <!-- Step 1: Recover Email Form -->
+    <div id="recover-step-1">
+      <p class="mb-4 text-base-content/80 text-sm">Enter the email address you used to request your license. We will display it here and send it to you again.</p>
+      <form id="recover-form" class="flex flex-col gap-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">Email Address</span></div>
+          <input type="email" id="recover-email" placeholder="you@example.com" class="input input-bordered w-full" required />
+        </label>
+        <button type="submit" id="recover-btn" class="btn btn-primary w-full">Find License</button>
+      </form>
+    </div>
+
+    <!-- Step 2: Recover Success -->
+    <div id="recover-step-2" class="hidden text-center">
+      <div class="py-6 flex flex-col items-center gap-4">
+        <div class="text-success bg-success/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold">Request Received!</h4>
+        <p class="text-base-content/80 text-sm">If a license was found for this email address, it has been sent to your inbox. Please check your email.</p>
+      </div>
+      <div class="modal-action mt-0">
+        <form method="dialog" class="w-full">
+          <button class="btn btn-outline btn-block">Close</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<%- include('./src/partials/layout_bottom.ejs') %>

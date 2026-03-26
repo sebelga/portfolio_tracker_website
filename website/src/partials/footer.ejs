@@ -1,11 +1,132 @@
-<footer class="bg-gray-100 py-6">
-  <div class="mx-auto mt-6 text-center text-sm leading-relaxed text-gray-500">
-
-    <p class="mb-4">
-      <a href="/">Home</a> | <a href="/contact">Contact</a> | <a href="/docs">Documentation</a> <span class="hidden md:inline">|</span> <br class="md:hidden"><a href="/terms-and-services"> Terms and services</a> | <a href="/privacy-policy">Privacy policy</a>
-    </p>
-    <p class="mb-2">&copy; 2026 Portfolio Tracker Add-on. All rights reserved.</p>
-    <p class="text-xs text-gray-400">Google Sheets™ is a trademark of Google LLC.</p>
-  </div>
+<footer class="footer footer-vertical sm:footer-horizontal bg-base-200 text-base-content p-10">
+  <nav>
+    <h6 class="footer-title">Product</h6>
+    <a href="/pricing" class="link link-hover">Pricing</a>
+    <a href="/docs" class="link link-hover">Documentation</a>
+    <a href="/about" class="link link-hover">About</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Support</h6>
+    <a href="/contact" class="link link-hover">Contact</a>
+    <a href="/docs/faq" class="link link-hover">FAQ</a>
+    <button onclick="footer_newsletter_modal.showModal()" class="link link-hover text-left">Subscribe to product updates</button>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Legal</h6>
+    <a href="/terms-and-services" class="link link-hover">Terms of service</a>
+    <a href="/privacy-policy" class="link link-hover">Privacy policy</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Template</h6>
+    <span class="text-xs opacity-60">Latest version: v<%= templateVersion %></span>
+    <button onclick="request_template_modal.showModal()" class="link link-hover text-left">Get your copy</button>
+    <a class="link link-hover text-left" href="/docs/release-notes-template">Release notes</a>
+  </nav>
 </footer>
-<script type="module" src="/src/main.ts"></script>
+
+<footer class="footer footer-horizontal bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
+  <aside class="grid-flow-col items-center">
+    <p>&copy; <%= new Date().getFullYear() %> TradeGist Add-on. All rights reserved.</p>
+  </aside>
+  <nav class="md:place-self-center md:justify-self-end flex items-center gap-4">
+    <p class="text-xs opacity-50">Google Sheets™ is a trademark of Google LLC.</p>
+    <div class="flex items-center gap-1">
+      <button id="theme-system" class="btn btn-ghost btn-xs btn-square tooltip tooltip-top" data-tip="System" aria-label="System theme">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </button>
+      <button id="theme-light" class="btn btn-ghost btn-xs btn-square tooltip tooltip-top" data-tip="Light" aria-label="Light theme">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.95 7.95l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      </button>
+      <button id="theme-dark" class="btn btn-ghost btn-xs btn-square tooltip tooltip-top" data-tip="Dark" aria-label="Dark theme">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</footer>
+
+<!-- Newsletter Subscribe Modal -->
+<dialog id="footer_newsletter_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Subscribe to Product Updates</h3>
+
+    <div id="footer-newsletter-step-1">
+      <p class="mb-4 text-base-content/80 text-sm">Stay in the loop — get notified about new features, updates, and tips for TradeGist.</p>
+      <form id="footer-newsletter-form" class="flex flex-col gap-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">Email Address</span></div>
+          <input type="email" id="footer-newsletter-email" placeholder="you@example.com" class="input input-bordered w-full" required />
+        </label>
+        <button type="submit" id="footer-newsletter-btn" class="btn btn-primary w-full">Subscribe</button>
+      </form>
+    </div>
+
+    <div id="footer-newsletter-success" class="hidden text-center">
+      <div class="py-6 flex flex-col items-center gap-4">
+        <div class="text-success bg-success/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold">You're Subscribed!</h4>
+        <p class="text-base-content/80 text-sm">Thanks for subscribing.<br />We'll keep you posted on what's new with TradeGist.</p>
+      </div>
+      <div class="modal-action mt-0">
+        <form method="dialog" class="w-full">
+          <button class="btn btn-outline btn-block">Close</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<!-- Request Template Modal -->
+<dialog id="request_template_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Get the Latest Template</h3>
+
+    <!-- Step 1: License Key Form -->
+    <div id="template-step-1">
+      <p class="mb-4 text-base-content/80 text-sm">Enter your license key and we'll send the latest template link to the email associated with your license.</p>
+      <form id="template-form" class="flex flex-col gap-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">License Key</span></div>
+          <input type="text" id="template-license-key" placeholder="PT-XXXX-XXXX-XXXX" class="input input-bordered w-full font-mono tracking-wide" required />
+        </label>
+        <button type="submit" id="template-btn" class="btn btn-primary w-full">Send Template Link</button>
+      </form>
+      <p class="text-center text-sm mt-3 text-base-content/60">Don't have a license? <a href="/pricing" class="link link-primary">Get one here</a></p>
+    </div>
+
+    <!-- Step 2: Success -->
+    <div id="template-step-2" class="hidden text-center">
+      <div class="py-6 flex flex-col items-center gap-4">
+        <div class="text-success bg-success/10 p-4 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold">Template Link Sent!</h4>
+        <p class="text-base-content/80 text-sm">We've sent the latest template link to the email address associated with your license. Please check your inbox.</p>
+      </div>
+      <div class="modal-action mt-0">
+        <form method="dialog" class="w-full">
+          <button class="btn btn-outline btn-block">Close</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

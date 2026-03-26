@@ -1,7 +1,15 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
+import { initBetaLicenseFlow, initPricingNewsletterFlow, initRecoverLicenseFlow, initRequestTemplateFlow } from "./pricing";
+import { initNewsletterForm } from "./newsletter";
+import { initThemeToggle } from "./theme";
+import { initContactForm } from "./contact";
 
 (function init() {
   function gallery() {
+    if (!document.getElementById("gallery")) {
+      return;
+    }
+
     const lightbox = new PhotoSwipeLightbox({
       gallery: "#gallery",
       children: "a",
@@ -12,46 +20,24 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
     lightbox.init();
   }
 
-  function initActiveLinks() {
-    document.addEventListener("DOMContentLoaded", function () {
-      let currentPath = window.location.pathname;
+  initThemeToggle();
 
-      // Trim trailing slash for sub-paths (but keep '/' for home intact)
-      if (currentPath.endsWith("/") && currentPath !== "/") {
-        currentPath = currentPath.slice(0, -1);
-      }
+  document.addEventListener("DOMContentLoaded", function () {
+    gallery();
+    initBetaLicenseFlow();
+    initPricingNewsletterFlow();
+    initRecoverLicenseFlow();
+    initRequestTemplateFlow();
+    initContactForm();
 
-      // Select all <li> in menu lists (covers both mobile and desktop)
-      const menuItems = document.querySelectorAll(".menu li");
-
-      menuItems.forEach(function (li) {
-        const a = li.querySelector("a");
-        if (!a) return; // Skip if no <a> found
-
-        const linkPath = a.getAttribute("href");
-
-        if (linkPath === "/") {
-          // Home: exact match for base URL
-          if (currentPath === "/") {
-            li.classList.add("active");
-          }
-        } else if (linkPath === "/docs") {
-          // Documentation: any path starting with /docs
-          if (currentPath.startsWith("/docs")) {
-            li.classList.add("active");
-          }
-        } else if (linkPath === "/contact") {
-          // Contact: exact match for /contact (after trimming trailing slash if present)
-          if (currentPath === "/contact") {
-            li.classList.add("active");
-          }
-        }
-      });
+    // Footer newsletter modal
+    initNewsletterForm({
+      formId: "footer-newsletter-form",
+      emailInputId: "footer-newsletter-email",
+      submitBtnId: "footer-newsletter-btn",
+      successId: "footer-newsletter-success",
     });
-  }
+  });
 
-  gallery();
-  initActiveLinks();
-
-  console.log("Welcome to Portfolio Tracker!");
+  console.log("Welcome to TradeGist!");
 })();

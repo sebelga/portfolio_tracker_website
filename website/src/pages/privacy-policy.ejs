@@ -1,102 +1,98 @@
-<!doctype html>
-<html lang="en" data-theme="emerald">
-<%- include('./src/partials/head.ejs', { title: 'Privacy Policy: Portfolio Tracker for Investment Tracking', description: 'Review the privacy policy for Portfolio Tracker, your secure investment tracker add-on for Google Sheets.', slug: '/privacy-policy' }) %>
+<%- include('./src/partials/layout_top.ejs', { 
+  title: 'Privacy Policy: TradeGist', 
+  description: 'Review the privacy policy for TradeGist, your secure investment tracker add-on for Google Sheets.',
+  slug: '/privacy-policy',
+  bodyClass: 'pt-25',
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "name": "Privacy Policy: TradeGist",
+    "description": "Review the privacy policy for TradeGist, your secure investment tracker add-on for Google Sheets.",
+    "url": "https://thetradegist.com/privacy-policy",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thetradegist.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://thetradegist.com/privacy-policy"
+      }
+    ]
+  }
+}) %>
 
-<body class="bg-white pt-25 font-sans text-gray-900 antialiased">
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://portfoliotrackergooglesheets.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Privacy Policy",
-          "item": "https://portfoliotrackergooglesheets.com/privacy-policy"
-        }
-      ]
-    }
-  </script>
+<section>
+  <div class="container mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-16">
+    <div class="prose max-w-none">
+      <h1 class="font-display text-2xl md:text-5xl mb-3">
+        Privacy Policy - TradeGist
+      </h1>
 
-  <%- include('./src/partials/header.ejs') %>
-  <main>
-    <section>
-      <div class="container mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-16">
-        <div class="prose max-w-none">
-          <h1 class="font-display text-2xl md:text-5xl mb-3">
-            Privacy Policy - Portfolio Tracker
-          </h1>
+      <p class="mb-3"><strong>Effective Date: March 19, 2026</strong></p>
 
-          <p class="mb-3"><strong>Effective Date: March 19, 2026</strong></p>
+      <p>Welcome to the TradeGist Add-on (the "Add-on") for Google Sheets™. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Add-on. By using the Add-on, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use the Add-on.</p>
 
-          <p>Welcome to the Portfolio Tracker Add-on (the "Add-on") for Google Sheets™. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Add-on. By using the Add-on, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use the Add-on.</p>
+      <h2 class="text-3xl mt-6 mb-3">1. Information We Collect</h2>
+      <p>We collect limited personal information to provide and manage the Add-on's services:</p>
+      <ul>
+        <li><strong>Email Address:</strong> We collect and store your email address to handle licensing, recovering your license key, and communications related to your account. We do not share your email with any third parties, and we do not send marketing communications.</li>
+      </ul>
 
-          <h2 class="text-3xl mt-6 mb-3">1. Information We Collect</h2>
-          <p>We collect limited personal information to provide and manage the Add-on's services:</p>
-          <ul>
-            <li><strong>Email Address:</strong> We collect and store your email address to handle licensing, password resets, and communications related to your account. We do not share your email with any third parties, and we do not send marketing communications.</li>
-          </ul>
+      <p><strong>Transaction Data:</strong> We do not collect or store any transaction data from your Google Sheets™. All transaction data (such as stock, crypto, and options investments) is read into memory, parsed, and rendered directly into your attached Google Sheet. No data is stored externally or retained after processing.</p>
 
-          <p><strong>Transaction Data:</strong> We do not collect or store any transaction data from your Google Sheets™. All transaction data (such as stock, crypto, and options investments) is read into memory, parsed, and rendered directly into your attached Google Sheet. No data is stored externally or retained after processing.</p>
+      <p><strong>External Data Requests (Live Data Fetching):</strong> To provide real-time investment tracking, the Add-on makes authorized external requests to fetch current market data. These requests are limited exclusively to the following services approved by Google:</p>
+      <ul>
+        <li><strong>CoinMarketCap (https://pro-api.coinmarketcap.com):</strong> Used for fetching live crypto asset prices.</li>
+        <li><strong>Massive (https://api.massive.com):</strong> Used for fetching live option contract data.</li>
+        <li><strong>ExchangeRate-API (https://v6.exchangerate-api.com) and Open Exchange Rates (https://open.er-api.com):</strong> Used for fetching real-time FX rates.</li>
+      </ul>
+      <p>No personal information or specific portfolio quantities are transmitted to these external APIs; we only send the ticker symbols or currency codes required to retrieve current pricing information.</p>
 
-          <p><strong>External Data Requests (Live Data Fetching):</strong> To provide real-time investment tracking, the Add-on makes authorized external requests to fetch current market data. These requests are limited exclusively to the following services approved by Google:</p>
-          <ul>
-            <li><strong>CoinMarketCap (https://pro-api.coinmarketcap.com):</strong> Used for fetching live crypto asset prices.</li>
-            <li><strong>Massive (https://api.massive.com):</strong> Used for fetching live option contract data.</li>
-            <li><strong>ExchangeRate-API (https://v6.exchangerate-api.com) and Open Exchange Rates (https://open.er-api.com):</strong> Used for fetching real-time FX rates.</li>
-          </ul>
-          <p>No personal information or specific portfolio quantities are transmitted to these external APIs; we only send the ticker symbols or currency codes required to retrieve current pricing information.</p>
+      <h2 class="text-3xl mt-6 mb-3">2. How We Use Your Information</h2>
+      <p>We use the collected information solely for the following purposes:</p>
+      <ul>
+        <li>Managing your license and account access.</li>
+        <li>Facilitating license key recovery.</li>
+        <li>Communicating with you about your account, updates, or support issues.</li>
+      </ul>
+      <p>We do not use your information for marketing, advertising, or any other unrelated purposes.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">2. How We Use Your Information</h2>
-          <p>We use the collected information solely for the following purposes:</p>
-          <ul>
-            <li>Managing your license and account access.</li>
-            <li>Facilitating password resets.</li>
-            <li>Communicating with you about your account, updates, or support issues.</li>
-          </ul>
-          <p>We do not use your information for marketing, advertising, or any other unrelated purposes.</p>
+      <h2 class="text-3xl mt-6 mb-3">3. Data Sharing and Disclosure</h2>
+      <p>We do not sell, trade, or share your personal information with third parties. Your email address is used exclusively for the purposes outlined above and is not disclosed to anyone outside of Sébastien Loix, except as required by law (e.g., in response to a subpoena or court order).</p>
 
-          <h2 class="text-3xl mt-6 mb-3">3. Data Sharing and Disclosure</h2>
-          <p>We do not sell, trade, or share your personal information with third parties. Your email address is used exclusively for the purposes outlined above and is not disclosed to anyone outside of Sébastien Loix, except as required by law (e.g., in response to a subpoena or court order).</p>
+      <h2 class="text-3xl mt-6 mb-3">4. Data Security</h2>
+      <p>We implement reasonable security measures to protect your email address from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, so we cannot guarantee absolute security.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">4. Data Security</h2>
-          <p>We implement reasonable security measures to protect your email address from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, so we cannot guarantee absolute security.</p>
+      <h2 class="text-3xl mt-6 mb-3">5. Your Rights and Choices</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you.</li>
+        <li>Request correction of any inaccurate information.</li>
+        <li>Request deletion of your email address and associated account data.</li>
+      </ul>
+      <p>To exercise these rights, contact us using the form <a href="/contact">on this page</a>. We will respond to your request within a reasonable timeframe.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">5. Your Rights and Choices</h2>
-          <p>You have the right to:</p>
-          <ul>
-            <li>Access the personal information we hold about you.</li>
-            <li>Request correction of any inaccurate information.</li>
-            <li>Request deletion of your email address and associated account data.</li>
-          </ul>
-          <p>To exercise these rights, contact us using the form <a href="/contact">on this page</a>. We will respond to your request within a reasonable timeframe.</p>
+      <h2 class="text-3xl mt-6 mb-3">6. Children's Privacy</h2>
+      <p>The Add-on is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">6. Children's Privacy</h2>
-          <p>The Add-on is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it.</p>
+      <h2 class="text-3xl mt-6 mb-3">7. International Users</h2>
+      <p>The Add-on operates primarily within Google's ecosystem, and your core account data is handled on Google servers. While we use the specific external APIs listed in Section 1 to fetch live market data, we do not transfer, store, or process any of your personal data on servers in Andorra or elsewhere outside of Google.</p>
+      <p>For contact form submissions (e.g., support requests), your email and message are stored in a Google Sheet on Google's servers. By using the Add-on and submitting forms, you consent to this processing by Google under their privacy terms. For details, review Google's Privacy Policy.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">7. International Users</h2>
-          <p>The Add-on operates primarily within Google's ecosystem, and your core account data is handled on Google servers. While we use the specific external APIs listed in Section 1 to fetch live market data, we do not transfer, store, or process any of your personal data on servers in Andorra or elsewhere outside of Google.</p>
-          <p>For contact form submissions (e.g., support requests), your email and message are stored in a Google Sheet on Google's servers. By using the Add-on and submitting forms, you consent to this processing by Google under their privacy terms. For details, review Google's Privacy Policy.</p>
+      <h2 class="text-3xl mt-6 mb-3">8. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Changes will be posted here, and the effective date will be updated. Your continued use of the Add-on after changes constitutes acceptance of the updated policy. We encourage you to review this page periodically.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">8. Changes to This Privacy Policy</h2>
-          <p>We may update this Privacy Policy from time to time. Changes will be posted here, and the effective date will be updated. Your continued use of the Add-on after changes constitutes acceptance of the updated policy. We encourage you to review this page periodically.</p>
+      <h2 class="text-3xl mt-6 mb-3">9. Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or our data practices, contact us using the form <a href="/contact">on this page</a>.</p>
 
-          <h2 class="text-3xl mt-6 mb-3">9. Contact Us</h2>
-          <p>If you have questions about this Privacy Policy or our data practices, contact us using the form <a href="/contact">on this page</a>.</p>
+      <p class="mt-8">Thank you for using the TradeGist Add-on!</p>
 
-          <p class="mt-8">Thank you for using the Portfolio Tracker Add-on!</p>
+    </div>
+  </div>
+</section>
 
-        </div>
-      </div>
-    </section>
-  </main>
-  <%- include('./src/partials/footer.ejs') %>
-</body>
-
-</html>
+<%- include('./src/partials/layout_bottom.ejs') %>

@@ -1,96 +1,87 @@
-<!doctype html>
-<html lang="en" data-theme="emerald">
-<%- include('./src/partials/head.ejs', { title: 'About the Creator: Sébastien Loix & Portfolio Tracker', description: 'The story behind Portfolio Tracker: How a former Elastic engineer built his own sacred guide to financial independence.', slug: '/about' }) %>
+<%- include('./src/partials/layout_top.ejs', { 
+  title: 'About the Creator: Sébastien Loix & TradeGist', 
+  description: 'The story behind TradeGist: How a former Elastic engineer built his own sacred guide to financial independence.',
+  slug: '/about',
+  bodyClass: 'pt-12',
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "name": "About the Creator: Sébastien Loix & TradeGist",
+    "description": "The story behind TradeGist: How a former Elastic engineer built his own sacred guide to financial independence.",
+    "url": "https://thetradegist.com/about",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thetradegist.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://thetradegist.com/about"
+      }
+    ]
+  }
+}) %>
 
-<body class="bg-white pt-25 font-sans text-gray-900 antialiased">
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://portfoliotrackergooglesheets.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "About",
-          "item": "https://portfoliotrackergooglesheets.com/about"
-        }
-      ]
-    }
-  </script>
+<section class="py-12 md:py-24">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-display text-4xl md:text-6xl mb-6 leading-tight">
+        From Scaling Search Engines to Tracking the "Sacred Guide"
+      </h1>
 
-  <%- include('./src/partials/header.ejs') %>
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
+        I'm Sébastien Loix. I spent years as a Principal Engineer at Elastic, but in late 2024, I decided to resign and bet entirely on my own investment strategy. This tool is the result of that transition.
+      </p>
 
-  <main>
-    <section class="py-12 md:py-24">
-      <div class="container mx-auto px-4 md:px-6">
-        <div class="max-w-3xl mx-auto">
-          <h1 class="font-display text-4xl md:text-6xl mb-6 leading-tight">
-            From Scaling Search Engines to Tracking the "Sacred Guide"
-          </h1>
+      <div class="prose prose-lg">
+        <h2 class="text-3xl mt-10">The "Why" Behind the Project</h2>
+        <p>
+          When I began managing my portfolio full-time, I hit a wall. I couldn’t find a single tool online that allowed me to truly analyze my trade history. I needed to know: <em>"If I sell today in 2026, which specific shares from 2022 am I selling, and what is my actual tax liability?"</em>
+        </p>
+        <p>
+          Beyond that, most trackers forced me to choose between an "equity tracker," a "crypto app," or a "manual spreadsheet." I needed a single source of truth that unified <strong>Spot Equity, Options, and Crypto</strong> in one place.
+        </p>
 
-          <p class="text-xl text-gray-600 mb-12 leading-relaxed">
-            I’m Sébastien Loix. I spent years as a Principal Engineer at Elastic, but in late 2024, I decided to resign and bet entirely on my own investment strategy. This tool is the result of that transition.
+        <blockquote class="border-l-4 border-emerald-500 pl-4 italic my-8">
+          "I built this because it was going to be my 'sacred guide' to ensure I don’t have to worry about money until I turn 120."
+        </blockquote>
+
+        <h2 class="text-3xl mt-10">The Philosophy: Where the Puck is Going</h2>
+        <p>
+          My investment journey changed when I found the <a href="https://www.youtube.com/@InvestAnswers" target="_blank" rel="noopener noreferrer"><strong>InvestAnswers</strong></a> community. If you don't know James, you should check out his YouTube channel. His dedication to sharing knowledge on finance, macro, and market positioning is unmatched.
+        </p>
+        <p>
+          James taught me the importance of <strong>positioning yourself where the puck is going to be</strong>. To do that effectively, you need clear data. You need to be able to make decisions quickly without wrestling with your spreadsheet for hours.
+        </p>
+
+        <h2 class="text-3xl mt-10">Optimizing for Freedom</h2>
+        <p>
+          Living off investments requires discipline, and a big part of that is controlling your environment. By intentionally designing my lifestyle, I have the freedom to focus entirely on what matters: refining this tool and my portfolio.
+        </p>
+
+        <div class="bg-primary/20 p-8 rounded-2xl my-12 border border-primary/40">
+          <h3 class="text-2xl mb-4 text-primary">The Mission & Commitment</h3>
+          <p class="text-gray-800 dark:text-gray-400">
+            This project is, first and foremost, a tool I built for myself. It is now in <strong>public beta</strong> and available to everyone with a <strong>free premium license valid for 1 year</strong>.
           </p>
-
-          <div class="prose prose-lg">
-            <h2 class="text-3xl font-display mt-10">The "Why" Behind the Project</h2>
-            <p>
-              When I began managing my portfolio full-time, I hit a wall. I couldn’t find a single tool online that allowed me to truly analyze my trade history. I needed to know: <em>"If I sell today in 2026, which specific shares from 2022 am I selling, and what is my actual tax liability?"</em>
-            </p>
-            <p>
-              Beyond that, most trackers forced me to choose between an "equity tracker," a "crypto app," or a "manual spreadsheet." I needed a single source of truth that unified <strong>Spot Equity, Options, and Crypto</strong> in one place.
-            </p>
-
-            <blockquote class="border-l-4 border-emerald-500 pl-4 italic my-8">
-              "I built this because it was going to be my 'sacred guide' to ensure I don’t have to worry about money until I turn 120."
-            </blockquote>
-
-            <h2 class="text-3xl font-display mt-10">The Philosophy: Where the Puck is Going</h2>
-            <p>
-              My investment journey changed when I found the <strong>InvestAnswers</strong> community. If you don't know James, you should check out his YouTube channel. His dedication to sharing knowledge on finance, macro, and market positioning is unmatched.
-            </p>
-            <p>
-              James taught me the importance of <strong>positioning yourself where the puck is going to be</strong>. To do that effectively, you need clear data. You need to be able to make decisions quickly without wrestling with your spreadsheet for hours.
-            </p>
-
-            <h2 class="text-3xl font-display mt-10">Optimizing for Freedom (and Taxes)</h2>
-            <p>
-              Living off investments requires discipline, and a big part of that is controlling your environment. I eventually moved to <strong>Andorra</strong>. It offers the perfect balance of beautiful nature and safety, while being a tax-friendly jurisdiction perfectly situated between France and Spain.
-            </p>
-            <p>
-              This environment allows me to focus on what matters: refining this tool and my portfolio.
-            </p>
-
-            <div class="bg-emerald-50 p-8 rounded-2xl my-12 border border-emerald-100">
-              <h3 class="text-2xl font-display mb-4 text-emerald-900">The Mission & Commitment</h3>
-              <p class="text-emerald-800">
-                This project is, first and foremost, a tool I built for myself. I am currently in a private beta (invite-only) and plan to release it under a yearly license model.
-              </p>
-              <ul class="list-disc pl-5 space-y-2 text-emerald-800">
-                <li><strong>No Data-Mining:</strong> Your data stays in your Google Sheet.</li>
-                <li><strong>No Data-Sharing:</strong> I sell software, not your personal information.</li>
-                <li><strong>Simplicity + Power:</strong> A tool that is simple enough to use daily, but powerful enough to handle complex tax and history analysis.</li>
-              </ul>
-            </div>
-
-            <p class="text-center mt-12">
-              <a href="/contact" class="inline-block bg-emerald-600 text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-700 transition-colors">
-                Request an Invite to the Beta
-              </a>
-            </p>
-          </div>
+          <ul class="list-disc pl-5 space-y-2 text-gray-800 dark:text-gray-400">
+            <li><strong>No Data-Mining:</strong> Your data stays in your Google Sheet.</li>
+            <li><strong>No Data-Sharing:</strong> I sell software, not your personal information.</li>
+            <li><strong>Simplicity + Power:</strong> A tool that is simple enough to use daily, but powerful enough to handle complex tax and history analysis.</li>
+          </ul>
         </div>
+
+        <p class="text-center mt-12">
+          <a href="/pricing" class="inline-block bg-emerald-600 text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-700 transition-colors">
+            Get Your Free License
+          </a>
+        </p>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
 
-  <%- include('./src/partials/footer.ejs') %>
-</body>
-
-</html>
+<%- include('./src/partials/layout_bottom.ejs') %>

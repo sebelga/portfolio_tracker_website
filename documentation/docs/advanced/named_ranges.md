@@ -2,13 +2,13 @@
 id: named_ranges
 slug: named-ranges
 title: Named Ranges
-description: Guide to using named ranges in the Portfolio Tracker template for advanced analysis.
-tags: [named-ranges, portfolio-tracker, google-sheets]
+description: Guide to using named ranges in the TradeGist template for advanced analysis.
+tags: [named-ranges, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Named Ranges
 
-Named ranges in Google Sheets are predefined labels for cell ranges, making formulas easier to read and maintain. The Portfolio Tracker template exposes several named ranges for accessing configuration, cash, and trade data dynamically. These update automatically as your data grows, avoiding hard-coded ranges.
+Named ranges in Google Sheets™ are predefined labels for cell ranges, making formulas easier to read and maintain. The TradeGist template exposes several named ranges for accessing configuration, cash, and trade data dynamically. These update automatically as your data grows, avoiding hard-coded ranges.
 
 ## How to Use Named Ranges
 

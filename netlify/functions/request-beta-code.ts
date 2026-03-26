@@ -1,0 +1,144 @@
+import { Resend } from "resend";
+import jwt from "jsonwebtoken";
+import { initFirebase } from "../lib/firebase";
+// @ts-ignore — JSON import attribute handled by esbuild bundler
+import disposableDomains from "disposable-email-domains/index.json" with { type: "json" };
+import { validateEmail } from "../lib/utils";
+
+// Safely load fast `.env.local` for local development
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config({ path: "../../.env.local" });
+}
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+const disposableDomainSet = new Set<string>(disposableDomains);
+
+const JWT_SECRET = process.env.JWT_SECRET;
+const EMAIL_FROM = process.env.EMAIL_FROM;
+const IP_RATE_LIMIT = 3; // max requests per IP per 24 hours
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
+export default async (req: Request) => {
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
+
+  try {
+    if (!JWT_SECRET) {
+      throw new Error("JWT_SECRET environment variable is not set.");
+    }
+    if (!EMAIL_FROM) {
+      throw new Error("EMAIL_FROM environment variable is not set.");
+    }
+
+    const body = await req.json();
+    const email = body.email;
+
+    if (!email) {
+      return Response.json({ error: "Email is required" }, { status: 400 });
+    }
+
+    if (!validateEmail(email)) {
+      return Response.json({ error: "Invalid email format" }, { status: 400 });
+    }
+
+    // --- Anti-abuse: Disposable email blocking ---
+    const emailDomain = email.split("@")[1]?.toLowerCase();
+    if (!emailDomain || disposableDomainSet.has(emailDomain)) {
+      return Response.json(
+        {
+          error:
+            "Please use a permanent email address. Disposable or temporary emails are not allowed.",
+        },
+        { status: 400 },
+      );
+    }
+
+    // Initialize Firebase
+    const db = initFirebase();
+
+    // --- Anti-abuse: IP-based rate limiting (3 per 24h) ---
+    const clientIp =
+      req.headers.get("x-nf-client-connection-ip") ||
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      "unknown";
+
+    if (clientIp !== "unknown") {
+      const ipDocRef = db.collection("ip-rate-limits").doc(clientIp);
+      const ipDoc = await ipDocRef.get();
+      const now = Date.now();
+
+      let timestamps: number[] = [];
+      if (ipDoc.exists) {
+        const rawTimestamps: number[] = ipDoc.data()?.timestamps || [];
+        timestamps = rawTimestamps.filter((ts) => now - ts < ONE_DAY_MS);
+      }
+
+      if (timestamps.length >= IP_RATE_LIMIT) {
+        return Response.json(
+          {
+            error:
+              "Too many license requests from this network. Please try again later.",
+          },
+          { status: 429 },
+        );
+      }
+
+      // Record this request
+      timestamps.push(now);
+      await ipDocRef.set({ timestamps });
+    }
+
+    // Check if the email already has a license
+    const licensesRef = db.collection("licenses");
+    const snapshot = await licensesRef.where("email", "==", email).get();
+
+    if (!snapshot.empty) {
+      return Response.json(
+        {
+          error: "A license has already been generated for this email address.",
+        },
+        { status: 409 },
+      );
+    }
+
+    // Generate a secure 6-digit random code
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Create a JSON Web Token payload containing the email and the code
+    // expiresIn prevents playback attacks of the code an hour from now
+    const token = jwt.sign({ email, code }, JWT_SECRET, { expiresIn: "15m" });
+
+    // Send the email via Resend
+    const { data, error } = await resend.emails.send({
+      from: `TradeGist Beta <${EMAIL_FROM}>`,
+      to: [email],
+      subject: "Your TradeGist Confirmation Code",
+      html: `
+        <div style="font-family: sans-serif; padding: 20px;">
+          <h2>TradeGist Public Beta</h2>
+          <p>You recently requested a free premium license. Here is your 6-digit confirmation code:</p>
+          <div style="font-size: 32px; letter-spacing: 5px; font-weight: bold; margin: 20px 0;">${code}</div>
+          <p style="color: #666; font-size: 14px;">This code will expire in 15 minutes.</p>
+          <hr style="border: none; border-top: 1px solid #eaeaea; margin: 30px 0;" />
+          <p style="color: #999; font-size: 12px;">If you did not request this code, you can safely ignore this email.</p>
+        </div>
+      `,
+    });
+
+    if (error) {
+      console.error("Resend API Error:", error);
+      return Response.json(
+        { error: "Failed to send confirmation email." },
+        { status: 500 },
+      );
+    }
+
+    // Return the JWT back to the client side. The client will store it
+    // and push it back up with the user input string in Step 2.
+    return Response.json({ token });
+  } catch (error) {
+    console.error("Critical error in request-beta-code:", error);
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+};

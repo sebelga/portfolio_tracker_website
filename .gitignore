@@ -4,7 +4,10 @@ dist/
 .docusaurus/
 documentation/build/
 *.log
-*.github/
 .DS_Store
 _trash
 todo.txt
+.env.*
+# Local Netlify folder
+.netlify
+checklist_before_release.md

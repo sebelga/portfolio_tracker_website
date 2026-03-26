@@ -31,6 +31,8 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #1b1618;
+  --ifm-navbar-background-color: #1b1618;
 }
 
 html {
@@ -65,18 +67,20 @@ body {
   padding: 0;
 }
 
+[data-theme="dark"] .navbar {
+  border-bottom: 1px solid color-mix(in oklab, #1fb854 20%, transparent);
+}
+
 .navbar__brand {
-  margin-top: 13px;
-  @media (width >= 64rem) {
-    margin-left: -6px;
-  }
+  display: block;
+  margin: 0;
+  height: 50px;
 }
 
 .navbar__toggle {
   margin-right: 0;
   padding-right: 0.5rem;
   width: 28px;
-  margin-top: -10px;
 }
 
 .navbar-sidebar__brand .navbar__brand {
@@ -85,13 +89,13 @@ body {
 }
 
 .navbar__logo {
-  height: auto;
+  height: 100%;
   margin-right: 0;
 }
 
 .navbar__logo img {
-  width: 280px;
-  height: 41.48px;
+  width: auto;
+  height: 100%;
 }
 
 .navbar__inner {
@@ -186,6 +190,70 @@ footer.pageFooter * {
 
 footer.pageFooter a {
   color: inherit;
+}
+
+.footer {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: row;
+  place-items: start;
+  column-gap: calc(0.25rem * 4);
+  row-gap: calc(0.25rem * 10);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0;
+}
+
+.footer p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+}
+
+.footer & > * {
+  display: grid;
+  place-items: start;
+  gap: calc(0.25rem * 2);
+}
+
+footer.footer-horizontal {
+  grid-auto-flow: column;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.py-4 {
+  padding-block: calc(0.25rem * 4);
+}
+
+.px-10 {
+  padding-inline: calc(0.25rem * 10);
+}
+
+.items-center {
+  align-items: center;
+}
+
+.md\:place-self-center {
+  @media (width >= 48rem) {
+    place-self: center;
+  }
+}
+
+.md\:justify-self-end {
+  @media (width >= 48rem) {
+    justify-self: flex-end;
+  }
 }
 
 .hidden {
@@ -289,7 +357,13 @@ footer.pageFooter a {
       max-width: 80rem;
     }
   }
+  @media (width >= 64rem) {
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
 }
+
 .lg\:flex {
   @media (width >= 64rem) {
     display: flex;

@@ -2,13 +2,13 @@
 id: performance_caching
 title: Performance and Caching
 slug: performance-caching
-description: Learn how to optimize the processing speed of your Portfolio Tracker using the built-in incremental caching engine.
+description: Learn how to optimize the processing speed of TradeGist using the built-in incremental caching engine.
 tags: [performance, cache, optimization, apps-script]
 ---
 
 # Performance and Caching
 
-Processing thousands of financial transactions in Google Sheets can lead to slow execution times or script timeouts. To ensure a "snappy" experience, the Portfolio Tracker uses two distinct caching mechanisms designed to bypass the latency of repetitive spreadsheet reads during complex script executions.
+Processing thousands of financial transactions in Google Sheets™ can lead to slow execution times or script timeouts. To ensure a "snappy" experience, TradeGist uses two distinct caching mechanisms designed to bypass the latency of repetitive spreadsheet reads during complex script executions.
 
 ## 1. Trades Caching
 
@@ -68,7 +68,7 @@ If you change **any** value in the Configuration sheet (e.g., updating an API ke
 
 ## Cache Management Tools
 
-The top menu provides granular control over your data state. Access these via **Portfolio Tracker** > **Cache**:
+The top menu provides granular control over your data state. Access these via **TradeGist** > **Cache**:
 
 | Menu Option                   | When to use it                                                                                                                   |
 | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |

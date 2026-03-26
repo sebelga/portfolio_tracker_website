@@ -3,7 +3,7 @@ id: analysis
 title: Analysis Sheet
 slug: analysis
 description: Learn how to use the Analysis sheet to filter and evaluate your trade performance across different assets, dates, and categories.
-tags: [analysis, performance, portfolio-tracker, google-sheets]
+tags: [analysis, performance, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Analysis Sheet

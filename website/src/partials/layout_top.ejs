@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<%- include('head.ejs', { 
+  title: title, 
+  description: description, 
+  slug: typeof slug !== 'undefined' ? slug : '' 
+}) %>
+
+<body class="font-sans antialiased <%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
+  <% if (typeof jsonLd !== 'undefined') { %>
+  <script type="application/ld+json">
+    <% if (Array.isArray(jsonLd)) { %> {
+      "@context": "https://schema.org",
+      "@graph": <%- JSON.stringify(jsonLd) %>
+    }
+    <% } else { %>
+    <%- JSON.stringify(jsonLd, null, 2) %>
+    <% } %>
+  </script>
+  <% } %>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRM269Z" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <%- include('header.ejs') %>
+
+  <main>

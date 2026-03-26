@@ -1,1 +1,1 @@
-console.log("Welcome to the Portfolio Tracker documentation!");
+console.log("Welcome to the TradeGist documentation!");

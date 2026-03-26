@@ -82,6 +82,9 @@ function WebsiteMainMenu() {
       <li>
         <a href="/">Home</a>
       </li>
+      {/* <li>
+        <a href="/pricing">Pricing</a>
+      </li>
       <li className="active">
         <a href="/docs"> Documentation </a>
       </li>
@@ -90,7 +93,7 @@ function WebsiteMainMenu() {
       </li>
       <li>
         <a href="/contact"> Contact </a>
-      </li>
+      </li> */}
     </ul>
   );
 }

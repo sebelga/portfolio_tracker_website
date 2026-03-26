@@ -2,8 +2,8 @@
 id: cash
 title: Cash Balance
 slug: cash-balance
-description: Guide to managing cash balances across accounts in the Portfolio Tracker add-on.
-tags: [cash, portfolio-tracker, google-sheets]
+description: Guide to managing cash balances across accounts in the TradeGist add-on.
+tags: [cash, portfolio-tracker, tradegist, google-sheets]
 ---
 
 # Cash Balance

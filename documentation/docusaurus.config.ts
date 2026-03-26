@@ -2,24 +2,22 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import path from "path";
-import { templateUrl } from "./src/constants";
+import { WORKSPACE_ADDON_URL } from "../constants.mjs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const isDev = process.env.NODE_ENV === "development";
-const websiteURL = isDev
-  ? "http://localhost:5173"
-  : "https://portfoliotrackergooglesheets.com";
+const websiteURL = isDev ? "http://localhost:5173" : "https://thetradegist.com";
 if (isDev) {
   console.log(`Docusaurus running in development mode.`);
 }
 const baseUrl = isDev ? "/" : "/docs/";
 
 const config: Config = {
-  title: "Portfolio tracker for Google Sheets",
+  title: "TradeGist for Google Sheets",
   tagline:
-    "Track your stock, crypto, and options investments with Google Sheets effortlessly",
-  favicon: "img/favicon.png",
+    "Most portfolio trackers just tell you if you're up or down. TradeGist tells you why.",
+  favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -60,9 +58,9 @@ const config: Config = {
   ],
 
   // Custom fields are exposed to the site/client code via useDocusaurusContext().
-  // Add a single source of truth for the official template URL so docs can reference it.
+  // Add a single source of truth for the official workspace URL so docs can reference it.
   customFields: {
-    templateUrl,
+    workspaceUrl: WORKSPACE_ADDON_URL,
   },
 
   clientModules: [
@@ -114,9 +112,9 @@ const config: Config = {
       innerHTML: JSON.stringify({
         "@context": "https://schema.org/",
         "@type": "Organization",
-        name: "Portfolio Tracker for Google Sheets",
+        name: "TradeGist for Google Sheets",
         url: websiteURL,
-        logo: `${websiteURL}/img/logo.svg`,
+        logo: `${websiteURL}/img/logo-light.svg`,
       }),
     },
   ],
@@ -125,21 +123,22 @@ const config: Config = {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
       defaultMode: "light",
-      disableSwitch: true, // Set to true if you want to remove the dark/light mode toggle
-      respectPrefersColorScheme: false, // Set to true if you want to respect the user's system color scheme preference
+      disableSwitch: false, // Set to true if you want to remove the dark/light mode toggle
+      respectPrefersColorScheme: true, // Set to true if you want to respect the user's system color scheme preference
     },
     metadata: [
       {
         name: "keywords",
         content:
-          "portfolio tracker, google sheets, investment tracking, financial management, stock portfolio, crypto portfolio, options portfolio, asset management",
+          "TradeGist, google sheets, investment tracking, financial management, stock portfolio, crypto portfolio, options portfolio, asset management",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     navbar: {
       logo: {
-        alt: "Portfolio tracker logo",
-        src: "img/logo.svg",
+        alt: "TradeGist logo",
+        src: "img/logo-light.svg",
+        srcDark: "img/logo-dark.svg",
         href: websiteURL,
         target: "_self",
       },

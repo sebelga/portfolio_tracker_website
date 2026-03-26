@@ -3,17 +3,26 @@ slug: /release-notes-template
 sidebar_position: 10
 id: release-notes-template
 title: Template Release Notes
-description: Stay up to date with the latest improvements, bug fixes, and structural changes to the Portfolio Tracker spreadsheet template.
+description: Stay up to date with the latest improvements, bug fixes, and structural changes to the TradeGist spreadsheet template.
 tags: [updates, release-notes, changelog, template]
 ---
 
 # Template Release Notes
 
-To ensure the Portfolio Tracker add-on functions correctly, your spreadsheet must be compatible with the latest version of our template. This page tracks all versions, improvements, and breaking changes.
+To ensure the TradeGist add-on functions correctly, your spreadsheet must be compatible with the latest version of our template. This page tracks all versions, improvements, and breaking changes.
 
 :::info Current Version
-The latest stable version of the template is **v0.5.0**.
+The latest stable version of the template is **v0.6.0**.
 :::
+
+## v0.6.0
+
+This update introduces a licensing system for high-volume traders and refines the data-entry experience.
+
+### New Features & Improvements
+
+- **License Key Configuration**: Added a new `license_key` setting in the General Configuration section. TradeGist now requires a valid license key when your spreadsheet contains more than 30 transactions.
+- **Improved Transactions Sheet UI**: Reordered the columns in the **Transactions** sheet for better clarity. The "Amount" column has been moved to the far right, as this value is auto-calculated and should not be entered manually.
 
 ## v0.5.0
 

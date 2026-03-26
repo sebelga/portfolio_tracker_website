@@ -3,17 +3,16 @@ slug: /
 sidebar_position: 1
 id: intro
 title: Introduction
-description: Welcome to the Portfolio Tracker Add-on documentation. Learn how to track your stock, crypto, and options investments in Google Sheets™.
-tags: [introduction, getting-started, portfolio-tracker, google-sheets]
+description: Welcome to the TradeGist Add-on documentation. Learn how to track your stock, crypto, and options investments in Google Sheets™.
+tags:
+  [introduction, getting-started, portfolio-tracker, tradegist, google-sheets]
 ---
-
-import TemplateLink from '@site/src/components/TemplateLink';
 
 # Introduction
 
-Welcome to the Portfolio Tracker Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
+Welcome to the TradeGist Add-on for Google Sheets™! This documentation provides a comprehensive guide to help you get started, configure, and make the most of the add-on for tracking your stock, crypto, and options investments.
 
-The Portfolio Tracker Add-on transforms your Google Sheets™ spreadsheet into a powerful tool for managing your investment portfolio. It automates trade matching, calculates profits and losses (P&L), handles tax computations, fetches live prices, and generates insightful dashboards—all within a single spreadsheet.
+The TradeGist Add-on transforms your Google Sheets™ spreadsheet into a powerful tool for managing your investment portfolio. It automates trade matching, calculates profits and losses (P&L), handles tax computations, fetches live prices, and generates insightful dashboards—all within a single spreadsheet.
 
 ## Key Concepts
 
@@ -23,7 +22,7 @@ Before diving into setup and usage, let's cover the foundational concepts of how
 
 The add-on is designed to work with a specific Google Sheets™ template file. This template provides the pre-structured layout, formulas, and scripts needed for the add-on to function optimally.
 
-- **How to Get Started**: <TemplateLink>Download the template</TemplateLink> from our website and make a personal copy in your Google Drive. This ensures you have full control and can customize it without affecting the original.
+- **How to Get Started**: Request a license from our main website. Once completed, the link to the official template (along with your license key) will be sent straight to your email. Open the template link and make a personal copy in your Google Drive™. This ensures you have full control and can customize it without affecting the original.
 - **Why a Template?**: The Add-on has been designed around a specific spreadsheet template which includes sheets, scripts, and configurations that integrate seamlessly with the add-on. Therefore, using the template is mandatory to access the add-on's functionalities.
 
 ### User Input Sheets
@@ -45,6 +44,6 @@ This documentation is organized into sections for easy navigation:
 - **Core Features**: Detailed explanations of trade matching, tax calculations, live prices, and more.
 - **Advanced Topics**: Multi-currency support, snapshots, caching, utility functions, and troubleshooting.
 
-If you have questions or need support, check our [FAQ](/faq) or <a href="https://portfoliotrackergooglesheets.com/contact" target="_self">send us a message</a>.
+If you have questions or need support, check our [FAQ](/faq) or <a href="https://thetradegist.com/contact" target="_self">send us a message</a>.
 
 Happy tracking!
