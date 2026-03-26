@@ -114,7 +114,7 @@ const config: Config = {
         "@type": "Organization",
         name: "TradeGist for Google Sheets",
         url: websiteURL,
-        logo: `${websiteURL}/img/logo.svg`,
+        logo: `${websiteURL}/img/logo-light.svg`,
       }),
     },
   ],
@@ -137,7 +137,7 @@ const config: Config = {
     navbar: {
       logo: {
         alt: "TradeGist logo",
-        src: "img/logo.svg",
+        src: "img/logo-light.svg",
         href: websiteURL,
         target: "_self",
       },
