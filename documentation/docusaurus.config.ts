@@ -123,8 +123,8 @@ const config: Config = {
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
       defaultMode: "light",
-      disableSwitch: true, // Set to true if you want to remove the dark/light mode toggle
-      respectPrefersColorScheme: false, // Set to true if you want to respect the user's system color scheme preference
+      disableSwitch: false, // Set to true if you want to remove the dark/light mode toggle
+      respectPrefersColorScheme: true, // Set to true if you want to respect the user's system color scheme preference
     },
     metadata: [
       {
@@ -138,6 +138,7 @@ const config: Config = {
       logo: {
         alt: "TradeGist logo",
         src: "img/logo-light.svg",
+        srcDark: "img/logo-dark.svg",
         href: websiteURL,
         target: "_self",
       },

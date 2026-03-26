@@ -287,7 +287,13 @@ footer.pageFooter a {
       max-width: 80rem;
     }
   }
+  @media (width >= 64rem) {
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
 }
+
 .lg\:flex {
   @media (width >= 64rem) {
     display: flex;

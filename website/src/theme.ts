@@ -1,6 +1,6 @@
 const LIGHT_THEME = "emerald";
 const DARK_THEME = "forest";
-const STORAGE_KEY = "theme-preference";
+const STORAGE_KEY = "theme"; // Same as Docusaurus so users switching from documentation to website have a seamless experience
 
 type ThemePreference = "system" | "light" | "dark";
 
