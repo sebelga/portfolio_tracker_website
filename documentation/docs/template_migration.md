@@ -10,13 +10,21 @@ tags: [updates, migration, template, tradegist, google-sheets]
 
 The TradeGist template continuously evolves with bug fixes, new core sheet features, and improvements to provide you with the best portfolio tracking experience.
 
-The standard and most robust migration path is to make a new copy of the [latest template version](/setup-guides/official-template) and simply copy over the data from your original sheet (specifically from the **Transactions**, **Configuration**, and **Snapshots** tabs).
+The standard and most robust migration path is to make a new copy of the [latest template version](/setup-guides/official-template) and simply copy over the data from your original sheet (specifically from the **Transactions**, **Configuration**, **Cash** and **Snapshots** tabs).
 
 However, we understand that copying over data for every minor update can be tedious and prone to human error. For that reason, we document the specific structural changes made in each version. Using this guide, you can manually replicate those adjustments in your existing spreadsheet without undergoing a full migration process.
 
 :::note Roadmap Highlight
 In the future, we plan to implement a script that can auto-migrate your template structure with a single click, but that feature is still further down on our roadmap!
 :::
+
+:::important
+If you choose to manually migrate your existing sheet, you **must update the template version number** internally so the add-on knows which version you are using.
+
+1. Click the **"All sheets"** hamburger menu in the bottom-left corner of Google Sheets.
+2. Click on the grayed-out **`__AddOnConfig`** sheet to unhide and open it.
+3. Locate the `version` key and update the value in the adjacent cell to the version you are migrating to (e.g., `0.6.0`).
+   :::
 
 ## Migration Paths
 

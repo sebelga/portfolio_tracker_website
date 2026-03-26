@@ -60,6 +60,7 @@ const sidebars: SidebarsConfig = {
     "faq",
     "troubleshooting",
     "release-notes-template",
+    "release-notes-addon",
     "template_migration",
   ],
 };
