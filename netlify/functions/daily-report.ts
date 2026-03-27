@@ -32,21 +32,23 @@ export default async () => {
       .where("createdAt", ">=", Timestamp.fromDate(yesterday))
       .get();
 
-    let free = 0;
-    let premium = 0;
+    const licensesCount: Record<string, number> = {};
 
     snapshot.forEach((doc) => {
       const data = doc.data() as License;
-      if (data.level === "premium") {
-        premium++;
+      if (licensesCount[data.level]) {
+        licensesCount[data.level]++;
       } else {
-        free++;
+        licensesCount[data.level] = 1;
       }
     });
 
-    const total = free + premium;
+    const total = Object.values(licensesCount).reduce(
+      (sum, count) => sum + count,
+      0,
+    );
     console.log(
-      `Daily Report - Total: ${total}, Free: ${free}, Premium: ${premium}`,
+      `Daily Report - Total: ${total}, Breakdown: ${JSON.stringify(licensesCount)}`,
     );
     const reportDate = new Date().toLocaleDateString("en-US", {
       weekday: "long",
@@ -68,14 +70,14 @@ export default async () => {
               <td style="padding: 8px 16px; font-weight: bold;">Total New Licenses</td>
               <td style="padding: 8px 16px;">${total}</td>
             </tr>
-            <tr style="background: #f9f9f9;">
-              <td style="padding: 8px 16px;">Free</td>
-              <td style="padding: 8px 16px;">${free}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 16px;">Premium</td>
-              <td style="padding: 8px 16px;">${premium}</td>
-            </tr>
+            ${Object.entries(licensesCount).map(
+              ([level, count], index) => `
+              <tr style="background: ${index % 2 === 0 ? "#f9f9f9" : "transparent"};">
+                <td style="padding: 8px 16px;">${level}</td>
+                <td style="padding: 8px 16px;">${count}</td>
+              </tr>
+            `,
+            )}
           </table>
           <hr style="border: none; border-top: 1px solid #eaeaea; margin: 30px 0;" />
           <p style="color: #999; font-size: 12px;">This is an automated report from TradeGist.</p>
@@ -89,7 +91,7 @@ export default async () => {
     }
 
     return new Response(
-      JSON.stringify({ message: "Report sent", total, free, premium }),
+      JSON.stringify({ message: "Report sent", total, licensesCount }),
       { status: 200, headers: { "Content-Type": "application/json" } },
     );
   } catch (error) {
