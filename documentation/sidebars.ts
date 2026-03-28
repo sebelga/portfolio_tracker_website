@@ -41,6 +41,7 @@ const sidebars: SidebarsConfig = {
         "core/open_positions_summary",
         "core/closed_positions_summary",
         "core/analysis",
+        "core/fetch_prices",
         "core/cash",
       ],
     },

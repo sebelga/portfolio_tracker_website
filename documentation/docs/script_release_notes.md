@@ -15,6 +15,14 @@ The TradeGist Google Workspace Add-on follows a different release schedule than 
 New versions of the Add-on are automatically rolled out to your installation—you don't need to do anything. You can always verify which version of the Add-on you are running by selecting **TradeGist > Troubleshooting > Show App information** from the Google Sheets menu.
 :::
 
+## v4.0.3
+
+### Bug Fixes
+
+- **Missing Options Greeks**: Fixed an issue where missing "greeks" data from the Massive API would break sheet calculations. The add-on now gracefully defaults to a delta of `1` (Call) or `-1` (Put) when this information is unavailable, ensuring net exposure calculations remain intact.
+- **Preserve Equity Formulas**: Resolved a regression in the "Update Prices" function that was overwriting custom formulas for equity assets. Custom price formulas are now correctly preserved.
+- **Assignment/Exercise Cost Basis**: Corrected the share cost basis calculation logic when option contracts are assigned or exercised.
+
 ## v4.0.1
 
 ### Bug Fixes
